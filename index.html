@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body>
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind?v=1.1;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets>
+        <img id="ustGorsel" src="./FenInfo.png?v=1.1">
+        <img id="ustGorsel1" src="./Fen2.jpg?v=1.2">
+        <img id="ustGorsel2" src="./Fen3.jpg?v=1.2">
+        <img id="ustGorsel3" src="./Fen4.png?v=1.2">
+      </a-assets>
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-plane src="#ustGorsel" position="0 0.7 0" height="0.5625" width="1" rotation="0 0 0" transparent="true" alphaTest="0.5;"></a-plane>
+        <a-plane src="#ustGorsel1" position="1.05 0 0" height="0.705" width="1" rotation="0 0 0" transparent="true" alphaTest="0.5;"></a-plane>
+        <a-plane src="#ustGorsel3" position="0 0 0" height="0.7" width="1" rotation="0 0 0"></a-plane>
+        <a-plane src="#ustGorsel2" position="-1.05 0 0" height="0.705" width="1" rotation="0 0 0" transparent="true" alphaTest="0.5;"></a-plane>
+
+        
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
