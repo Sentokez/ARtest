@@ -4,23 +4,35 @@
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   </head>
-  <script>
-  // Hedef nesnesini ve animasyonlu görseli seçiyoruz
+ <script>
   const targetEl = document.querySelector('[mindar-image-target]');
   const planeEl = document.querySelector('#myPlane');
+  let fadeInterval;
 
-  // Hedef Bulunduğunda
   targetEl.addEventListener("targetFound", event => {
-    console.log("Hedef bulundu, animasyon tetikleniyor...");
-    // Plane içindeki 'startAnimation' olayını ateşle
-    planeEl.emit('startAnimation');
+    console.log("Hedef bulundu, fade-in basliyor...");
+    
+    // Varsa eski animasyonu durdur
+    clearInterval(fadeInterval);
+    
+    let op = 0; // Baslangic seffafligi
+    planeEl.setAttribute('material', 'opacity', op);
+
+    // Her 10 milisaniyede bir seffafligi artir
+    fadeInterval = setInterval(() => {
+      if (op >= 1) {
+        clearInterval(fadeInterval);
+      } else {
+        op += 0.02; // Artis hizi (Bunu düsürürsen daha yavas acilir)
+        planeEl.setAttribute('material', 'opacity', op);
+      }
+    }, 20); // 20ms araliklarla güncelle
   });
 
-  // Hedef Kaybolduğunda
   targetEl.addEventListener("targetLost", event => {
-    console.log("Hedef kayboldu, opacity sıfırlanıyor.");
-    // Bir sonraki buluşta tekrar fade-in yapabilmesi için sıfırlıyoruz
-    planeEl.setAttribute('material', 'opacity', '0');
+    console.log("Hedef kayboldu, sifirlaniyor.");
+    clearInterval(fadeInterval);
+    planeEl.setAttribute('material', 'opacity', 0);
   });
 </script>
   <body>
@@ -32,14 +44,7 @@
       
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
       <a-entity mindar-image-target="targetIndex: 0">
-        <a-plane src="#ustGorsel" position="0 0.5 0" height="0.927" width="1.5" rotation="0 0 0" transparent="true" alphaTest="0.5 opacity: 0;" animation="
-   property: material.opacity; 
-    from: 0; 
-    to: 1; 
-    dur: 1500; 
-    easing: linear; 
-    startEvents: startAnimation">
-    </a-plane>
+        <a-plane src="#ustGorsel" position="0 0.5 0" height="0.927" width="1.5" rotation="0 0 0" transparent="true" alphaTest="0.5 opacity: 0;"></a-plane>
       </a-entity>
     </a-scene>
   </body>
