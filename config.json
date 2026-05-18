@@ -3,8 +3,8 @@
   "firstSceneId": "scene_1779103424387_0_busl9",
   "scenes": {
     "scene_1779103424387_0_busl9": {
-      "title": "bir.jpg",
-      "panorama": "Atatürk Köşesi",
+      "title": "Atatürk Köşesi",
+      "panorama": "images/bir.jpg",
       "pitch": -11.469643529322408,
       "yaw": -98.96236240135687,
       "autoLoad": true,
