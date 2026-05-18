@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeni Sanal Tur</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        #viewer { width: 100%; height: 100%; position: absolute; }
+        
+        #loadingScreen { position: fixed; inset: 0; background: #fff; z-index: 5000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s; }
+        .loading-icon { width: 80px; height: 80px; color: #f97316; margin-bottom: 20px; }
+        .loading-text { font-weight: 900; font-size: 12px; text-transform: uppercase; color: #f97316; letter-spacing: 4px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+        .ui-layer { position: absolute; z-index: 1000; pointer-events: none; width: 100%; height: 100%; }
+        .ui-layer * { pointer-events: auto; }
+
+        .audio-bar { position: absolute; top: 20px; right: 20px; display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.6); padding: 10px 15px; border-radius: 30px; backdrop-filter: blur(10px); }
+        .btn-audio { background: none; border: none; color: white; cursor: pointer; display: flex; align-items: center; }
+        .btn-audio svg { width: 22px; height: 22px; fill: currentColor; }
+
+        .sidebar { 
+            position: absolute; top: 50%; left: 15px; transform: translateY(-50%); 
+            width: 170px; max-height: 60vh; 
+            background: rgba(255,255,255,0.08); backdrop-filter: blur(25px); 
+            border-radius: 28px; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+            display: flex; flex-direction: column; overflow: hidden; 
+            border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 10px 40px rgba(0,0,0,0.3); 
+        }
+        .sidebar.collapsed { transform: translateY(-50%) translateX(-220px); opacity: 0; pointer-events: none; }
+        .sidebar-header { padding: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); color: white; font-weight: 900; font-size: 9px; text-transform: uppercase; letter-spacing: 2px; text-align: center; opacity: 0.7; }
+        .gallery { flex: 1; overflow-y: auto; padding: 10px; scrollbar-width: none; }
+        .gallery::-webkit-scrollbar { display: none; }
+        .scene-item { cursor: pointer; border-radius: 14px; overflow: hidden; margin-bottom: 10px; position: relative; border: 2px solid transparent; transition: all 0.3s; }
+        .scene-item:hover, .scene-item.active { border-color: #f97316; transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+        .scene-item img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+        .scene-item span { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; font-size: 9px; padding: 6px; text-align: center; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        .toggle-btn { position: absolute; top: 50%; left: 15px; transform: translateY(-50%); z-index: 1001; background: #f97316; border: none; color: white; width: 40px; height: 40px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(249,115,22,0.4); transition: all 0.3s; }
+        .sidebar:not(.collapsed) ~ .toggle-btn { left: 200px; background: rgba(0,0,0,0.4); }
+
+        .lang-selector { position: absolute; bottom: 20px; right: 20px; z-index: 1002; display: flex; flex-direction: column-reverse; align-items: center; gap: 8px; }
+        .lang-btn { width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 2px solid #f97316; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s; }
+        .lang-list { display: none; flex-direction: column-reverse; gap: 6px; padding-bottom: 10px; }
+        .lang-selector:hover .lang-list { display: flex; }
+
+        .vt-hotspot::before {
+            content: ''; position: absolute; left: 0; top: 0; transform: translate(-50%, -50%);
+            width: 38px; height: 38px; background: #fff; border-radius: 50%; border: 3px solid #f97316;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4); background-repeat: no-repeat; background-position: center; background-size: 20px; transition: all 0.2s;
+        }
+        .vt-hotspot:hover::before { transform: translate(-50%, -50%) scale(1.15); box-shadow: 0 0 25px rgba(249,115,22,0.6); }
+
+        .icon-move-forward::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='%23f97316'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18' /%3E%3C/svg%3E"); animation: hs-move 1.2s infinite ease-in-out; }
+        .icon-arrow-up::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='%23f97316'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18' /%3E%3C/svg%3E"); animation: hs-pulse 1.5s infinite; }
+        .icon-arrow-down::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='%23f97316'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3' /%3E%3C/svg%3E"); animation: hs-pulse 1.5s infinite; }
+        .icon-arrow-left::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='%23f97316'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18' /%3E%3C/svg%3E"); animation: hs-pulse 1.5s infinite; }
+        .icon-arrow-right::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='%23f97316'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3' /%3E%3C/svg%3E"); animation: hs-pulse 1.5s infinite; }
+        .icon-info::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='%23334155'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z' /%3E%3C/svg%3E"); animation: hs-rotate 4s infinite linear; }
+        .icon-video::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z' /%3E%3C/svg%3E"); background-color: #2563eb; border-color: #3b82f6; animation: hs-pulse 1s infinite; }
+
+        @keyframes hs-move { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -70%) scale(1.1); } }
+        @keyframes hs-pulse { 0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; } 50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; } }
+        @keyframes hs-rotate { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+
+        .info-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; color: white; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+        .info-overlay.active { display: flex; opacity: 1; pointer-events: auto; }
+        .info-content { 
+            max-width: 480px; width: 90%; background: #fff; color: #1e293b; 
+            border-radius: 36px; padding: 40px; text-align: center; 
+            transform: translateY(15px); transition: transform 0.4s; 
+            display: flex; flex-direction: column; align-items: center; gap: 24px; 
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+        .info-overlay.active .info-content { transform: translateY(0); }
+        .info-img { width: 100%; max-height: 35vh; border-radius: 20px; object-fit: contain; }
+        .info-text { 
+            font-size: 19px; font-weight: 600; line-height: 1.6; color: #475569; 
+            width: 100%; word-wrap: break-word; overflow-wrap: break-word; text-align: center;
+        }
+        .btn-close { 
+            position: absolute; top: -12px; right: -12px; background: #f97316; color: white; 
+            border: none; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; 
+            font-size: 20px; font-weight: bold; display: flex; align-items: center; justify-content: center; 
+            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.3); transition: all 0.2s; 
+        }
+        .btn-close:hover { transform: rotate(90deg) scale(1.1); }
+
+        .vt-hotspot::after {
+          position: absolute; left: 24px; top: 0; transform: translate(15px, -50%);
+          background: transparent; padding: 0; font-size: 11px; font-weight: 900; color: white;
+          text-shadow: 0 2px 10px rgba(0,0,0,1); white-space: nowrap; opacity: 0; transition: all 0.3s; pointer-events: none;
+        }
+        .vt-hotspot:hover::after { transform: translate(5px, -50%); opacity: 1; }
+        .vt-hotspot.hs-id-hs_1779103460936::after { content: "GEÇİŞ"; }
+.vt-hotspot.hs-id-hs_1779103499619::after { content: "iki.jpg"; }
+.vt-hotspot.hs-id-hs_1779103801335::after { content: "bir.jpg"; }
+.vt-hotspot.hs-id-hs_1779103563386::after { content: "dört.jpg"; }
+.vt-hotspot.hs-id-hs_1779103778369::after { content: "iki.jpg"; }
+.vt-hotspot.hs-id-hs_1779103682902::after { content: "beş.jpg"; }
+.vt-hotspot.hs-id-hs_1779103749052::after { content: "üç.jpg"; }
+.vt-hotspot.hs-id-hs_1779103722169::after { content: "dört.jpg"; }
+.vt-hotspot.hs-id-hs_1779103927700::after { content: "altı.jpg"; }
+.vt-hotspot.hs-id-hs_1779103943401::after { content: "beş.jpg"; }
+.vt-hotspot.hs-id-hs_1779104061633::after { content: "beş.jpg"; }
+.vt-hotspot.hs-id-hs_1779104267663::after { content: "altı.jpg"; }
+.vt-hotspot.hs-id-hs_1779104312080::after { content: "dokuz.jpg"; }
+.vt-hotspot.hs-id-hs_1779104717711::after { content: "sekiz.jpg"; }
+    </style>
+</head>
+<body>
+    <div id="loadingScreen">
+        <svg viewBox="0 0 100 100" class="loading-icon">
+            <path d="M50 15c-19.3 0-35 15.7-35 35s15.7 35 35 35 35-15.7 35-35" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" style="animation: hs-rotate 2s infinite linear; transform-origin: center;"/>
+            <path d="M85 35l5 15-15-5z" fill="currentColor" style="animation: hs-rotate 2s infinite linear; transform-origin: center;"/>
+            <text x="50" y="58" font-size="24" font-weight="900" text-anchor="middle" fill="currentColor" style="font-family: Arial;">360°</text>
+        </svg>
+        <div class="loading-text" id="loadingLabel">Yükleniyor...</div>
+    </div>
+
+    <div id="viewer"></div>
+    <div class="ui-layer">
+      <div class="sidebar collapsed" id="sidebar">
+        <div class="sidebar-header" id="labelScenes">Sahneler</div>
+        <div class="gallery" id="gallery"></div>
+      </div>
+      <button class="toggle-btn" onclick="toggleSidebar()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="width:20px;"><path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg></button>
+      
+      <div class="audio-bar" id="audioBar" style="display:none;">
+        <button class="btn-audio" onclick="togglePlay()" id="playBtn">
+           <svg id="svgPause" viewBox="0 0 24 24" fill="white"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+           <svg id="svgPlay" viewBox="0 0 24 24" fill="white" style="display:none;"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <button class="btn-audio" onclick="toggleMute()" id="muteBtn">
+          <svg id="svgMute" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <svg id="svgUnmute" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="display:none;"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/></svg>
+        </button>
+        <input type="range" min="0" max="1" step="0.1" value="0.5" oninput="setVolume(this.value)" style="width:50px; accent-color:#f97316; cursor:pointer;">
+      </div>
+
+      <div class="lang-selector">
+        <div class="lang-list">
+          <button class="lang-btn" onclick="changeLang('tr')">🇹🇷</button><button class="lang-btn" onclick="changeLang('en')">🇺🇸</button><button class="lang-btn" onclick="changeLang('de')">🇩🇪</button><button class="lang-btn" onclick="changeLang('fr')">🇫🇷</button><button class="lang-btn" onclick="changeLang('es')">🇪🇸</button><button class="lang-btn" onclick="changeLang('hi')">🇮🇳</button>
+        </div>
+        <button class="lang-btn" id="activeLangBtn">🇹🇷</button>
+      </div>
+    </div>
+    
+    <div class="info-overlay" id="infoOverlay" onclick="closeInfo()">
+      <div class="info-content" onclick="event.stopPropagation()">
+        <button class="btn-close" onclick="closeInfo()">&times;</button>
+        <img id="infoImg" class="info-img" style="display:none;">
+        <div class="info-text" id="infoText"></div>
+      </div>
+    </div>
+    
+    <audio id="bgMusic" loop></audio>
+    <style id="dynamicStyles"></style>
+    <script>
+        const config = {"projectName":"Yeni Sanal Tur","firstSceneId":"scene_1779103424387_0_busl9","scenes":{"scene_1779103424387_0_busl9":{"title":"bir.jpg","panorama":"images/bir.jpg","pitch":-11.469643529322408,"yaw":-98.96236240135687,"autoLoad":true,"audio":null,"hotSpots":[{"pitch":-13.314029593041033,"yaw":-96.80768102485585,"type":"scene","text":"GEÇİŞ","description":"GEÇİŞ","sceneId":"scene_1779103445254_0_tc8kl","coverImage":null,"cssClass":"vt-hotspot icon-move-forward type-scene hs-id-hs_1779103460936"}]},"scene_1779103445254_0_tc8kl":{"title":"iki.jpg","panorama":"images/iki.jpg","pitch":-10.976486375910792,"yaw":88.75306139884185,"autoLoad":true,"audio":null,"hotSpots":[{"pitch":-16.99490889014435,"yaw":87.41144015247994,"type":"scene","text":"iki.jpg","description":"iki.jpg","sceneId":"scene_1779103487935_0_pk1dw","coverImage":null,"cssClass":"vt-hotspot icon-move-forward type-scene hs-id-hs_1779103499619"},{"pitch":-20.21525035916121,"yaw":-94.38866073188373,"type":"scene","text":"bir.jpg","description":"bir.jpg","sceneId":"scene_1779103424387_0_busl9","coverImage":null,"cssClass":"vt-hotspot icon-move-forward type-scene hs-id-hs_1779103801335"}]},"scene_1779103487935_0_pk1dw":{"title":"üç.jpg","panorama":"images/üç.jpg","pitch":-25.0468104450325,"yaw":6.263183623451255,"autoLoad":true,"audio":null,"hotSpots":[{"pitch":-34.84342475491312,"yaw":3.41334235176614,"type":"scene","text":"dört.jpg","description":"dört.jpg","sceneId":"scene_1779103546436_0_ayncs","coverImage":null,"cssClass":"vt-hotspot icon-move-forward type-scene hs-id-hs_1779103563386"},{"pitch":-20.506117978368604,"yaw":-79.66117589285652,"type":"scene","text":"iki.jpg","description":"iki.jpg","sceneId":"scene_1779103445254_0_tc8kl","coverImage":null,"cssClass":"vt-hotspot icon-move-forward type-scene hs-id-hs_1779103778369"}]},"scene_1779103546436_0_ayncs":{"title":"dört.jpg","panorama":"images/dört.jpg","pitch":-16.04235862963597,"yaw":65.86686847536521,"autoLoad":true,"audio":null,"hotSpots":[{"pitch":-43.795395473925566,"yaw":68.63865127178501,"type":"scene","text":"beş.jpg","description":"beş.jpg","sceneId":"scene_1779103596320_0_b69mt","coverImage":null,"cssClass":"vt-hotspot icon-move-forward type-scene hs-id-hs_1779103682902"},{"pitch":-36.90708896912375,"yaw":-113.83403363611126,"type":"scene","text":"üç.jpg","description":"üç.jpg","sceneId":"scene_1779103487935_0_pk1dw","coverImage":null,"cssClass":"vt-hotspot icon-move-forward type-scene hs-id-hs_1779103749052"}]},"scene_1779103596320_0_b69mt":{"title":"beş.jpg","panorama":"images/beş.jpg","pitch":-15.872239077261252,"yaw":78.04443326055775,"autoLoad":true,"audio":null,"hotSpots":[{"pitch":-39.924128834567384,"yaw":-110.3726329792267,"type":"scene","text":"dört.jpg","description":"dört.jpg","sceneId":"scene_1779103546436_0_ayncs","coverImage":null,"cssClass":"vt-hotspot icon-move-forward type-scene hs-id-hs_1779103722169"},{"pitch":-23.418968843804944,"yaw":77.27376422764071,"type":"scene","text":"altı.jpg","description":"altı.jpg","sceneId":"scene_1779103915236_0_374f8","coverImage":null,"cssClass":"vt-hotspot icon-move-forward type-scene hs-id-hs_1779103927700"}]},"scene_1779103915236_0_374f8":{"title":"altı.jpg","panorama":"images/altı.jpg","pitch":-3.4981313200283424,"yaw":-22.051867638576823,"autoLoad":true,"audio":null,"hotSpots":[{"pitch":-29.63459257068382,"yaw":159.06000628091815,"type":"scene","text":"beş.jpg","description":"beş.jpg","sceneId":"scene_1779103596320_0_b69mt","coverImage":null,"cssClass":"vt-hotspot icon-move-forward type-scene hs-id-hs_1779103943401"},{"pitch":-21.53994672920063,"yaw":15.49499872202583,"type":"scene","text":"beş.jpg","description":"beş.jpg","sceneId":"scene_1779104050430_0_4fs15","coverImage":null,"cssClass":"vt-hotspot icon-move-forward type-scene hs-id-hs_1779104061633"}]},"scene_1779104050430_0_4fs15":{"title":"sekiz.jpg","panorama":"images/sekiz.jpg","pitch":-15.553787234117198,"yaw":-175.60098642369178,"autoLoad":true,"audio":null,"hotSpots":[{"pitch":-27.068427360810404,"yaw":-132.5086544462832,"type":"scene","text":"altı.jpg","description":"altı.jpg","sceneId":"scene_1779103915236_0_374f8","coverImage":null,"cssClass":"vt-hotspot icon-move-forward type-scene hs-id-hs_1779104267663"},{"pitch":-41.077271713532404,"yaw":177.62951999014237,"type":"scene","text":"dokuz.jpg","description":"dokuz.jpg","sceneId":"scene_1779104293190_0_nnw6y","coverImage":null,"cssClass":"vt-hotspot icon-move-forward type-scene hs-id-hs_1779104312080"}]},"scene_1779104293190_0_nnw6y":{"title":"dokuz.jpg","panorama":"images/dokuz.jpg","pitch":-16.066583917333823,"yaw":-126.44220167449197,"autoLoad":true,"audio":null,"hotSpots":[{"pitch":-42.55923233364516,"yaw":50.51348377145916,"type":"scene","text":"sekiz.jpg","description":"sekiz.jpg","sceneId":"scene_1779104050430_0_4fs15","coverImage":null,"cssClass":"vt-hotspot icon-move-forward type-scene hs-id-hs_1779104717711"}]}}};
+        const trans = {"tr":{"editor":"ÖN İZLEME","watch":"ÖN İZLEMEYİ KAPAT","upload":"YÜKLE","processing":"İşleniyor...","scenes":"Sahneler","clickToPlace":"Konum Seçin","addPassage":"GEÇİŞ EKLE","addInfo":"BİLGİ EKLE","addVideo":"VİDEO EKLE","addMusic":"MÜZİK EKLE","modalTitle":"Nokta Özellikleri","iconSelection":"İkon Seçimi","targetScene":"Hedef Sahne","infoText":"Bilgi Metni","coverImg":"Görsel Yükle","videoUrl":"YouTube Linki","delete":"SİL","save":"KAYDET","footer":"VIRTUALTOUR.COM.TR","testVideo":"TEST ET","setStart":"Başlangıç Yap","download":"İNDİR","projectName":"Projene İsim Ver","dropFiles":"Dosyaları Buraya Bırakın","createTour":"360° Sanal Tur Oluştur","saveView":"Açıyı Kaydet","angleSaved":"Açı Kaydedildi","autoSaved":"Kaydedildi","goHome":"Ana Sayfa","restoring":"Son Çalışmanız Açılıyor...","rotateMsg":"Daha iyi bir deneyim için lütfen cihazınızı yatay konuma getirin.","loading":"Yükleniyor...","infoLabel":"BİLGİ"},"en":{"editor":"PREVIEW","watch":"EXIT PREVIEW","upload":"UPLOAD","processing":"Processing...","scenes":"Scenes","clickToPlace":"Pick Position","addPassage":"ADD PASSAGE","addInfo":"ADD INFO","addVideo":"ADD VIDEO","addMusic":"ADD MUSIC","modalTitle":"Properties","iconSelection":"Icons","targetScene":"Target","infoText":"Text","coverImg":"Upload Image","videoUrl":"YouTube Link","delete":"DELETE","save":"SAVE","footer":"VIRTUALTOUR.COM.TR","testVideo":"TEST VIDEO","setStart":"Set Start","download":"DOWNLOAD","projectName":"Name Your Project","dropFiles":"Drop Files Here","createTour":"Create 360° Virtual Tour","saveView":"Save View","angleSaved":"Angle Saved","autoSaved":"Saved","goHome":"Home","restoring":"Opening Last Work...","rotateMsg":"Please rotate your device for a better experience.","loading":"Loading...","infoLabel":"INFO"},"de":{"editor":"VORSCHAU","watch":"VORSCHAU BEENDEN","upload":"HOCHLADEN","processing":"Verarbeitung...","scenes":"Szenen","clickToPlace":"Position wählen","addPassage":"ÜBERGANG","addInfo":"INFO","addVideo":"VIDEO","addMusic":"MUSIK","modalTitle":"Eigenschaften","iconSelection":"Icon-Auswahl","targetScene":"Zielszene","infoText":"Infotext","coverImg":"Bild hochladen","videoUrl":"YouTube-Link","delete":"LÖSCHEN","save":"SPEICHERN","footer":"VIRTUALTOUR.COM.TR","testVideo":"VIDEO TESTEN","setStart":"Start setzen","download":"DOWNLOAD","projectName":"Projekt benennen","dropFiles":"Dateien hier ablegen","createTour":"360° Virtuelle Tour erstellen","saveView":"Ansicht speichern","angleSaved":"Ansicht gespeichert","autoSaved":"Gespeichert","goHome":"Startseite","restoring":"Letzte Arbeit wird geöffnet...","rotateMsg":"Bitte drehen Sie Ihr Gerät.","loading":"Wird geladen...","infoLabel":"INFO"},"fr":{"editor":"APERÇU","watch":"QUITTER L'APERÇU","upload":"CHARGER","processing":"Traitement...","scenes":"Scènes","clickToPlace":"Choisir position","addPassage":"AJOUTER PASSAGE","addInfo":"AJOUTER INFO","addVideo":"AJOUTER VIDÉO","addMusic":"AJOUTER MUSIQUE","modalTitle":"Propriétés","iconSelection":"Sélection d'icônes","targetScene":"Scène cible","infoText":"Texte d'info","coverImg":"Charger image","videoUrl":"Lien YouTube","delete":"SUPPRIMER","save":"ENREGISTRER","footer":"VIRTUALTOUR.COM.TR","testVideo":"TESTER VIDÉO","setStart":"Définir départ","download":"TÉLÉCHARGER","projectName":"Nommez votre projet","dropFiles":"Déposez les fichiers ici","createTour":"Créer visite virtuelle 360°","saveView":"Enregistrer vue","angleSaved":"Vue enregistrée","autoSaved":"Enregistré","goHome":"Accueil","restoring":"Ouverture du dernier travail...","rotateMsg":"Veuillez faire pivoter votre appareil.","loading":"Chargement...","infoLabel":"INFO"},"es":{"editor":"PREVISTA","watch":"SALIR DE PREVISTA","upload":"SUBIR","processing":"Procesando...","scenes":"Escenas","clickToPlace":"Elegir posición","addPassage":"AÑADIR PASAJE","addInfo":"AÑADIR INFO","addVideo":"AÑADIR VÍDEO","addMusic":"AÑADIR MÜSICA","modalTitle":"Propiedades","iconSelection":"Selección de iconos","targetScene":"Escena destino","infoText":"Texto de info","coverImg":"Subir imagen","videoUrl":"Enlace YouTube","delete":"BORRAR","save":"GUARDAR","footer":"VIRTUALTOUR.COM.TR","testVideo":"PROBAR VÍDEO","setStart":"Establecer inicio","download":"DESCARGAR","projectName":"Nombra tu proyecto","dropFiles":"Arrastra archivos aquí","createTour":"Crear tour virtual 360°","saveView":"Guardar vista","angleSaved":"Vista guardada","autoSaved":"Guardado","goHome":"Inicio","restoring":"Abriendo último trabalho...","rotateMsg":"Gire su dispositivo.","loading":"Cargando...","infoLabel":"INFO"},"hi":{"editor":"पूर्वावलोकन","watch":"बाहर निकलें","upload":"अपलोड","processing":"प्रसंस्करण...","scenes":"दृश्य","clickToPlace":"स्थान चुनें","addPassage":"रास्ता जोड़ें","addInfo":"जानकारी","addVideo":"वीडियो","addMusic":"संगीत","modalTitle":"विशेषताएं","iconSelection":"आイクন","targetScene":"लक्षy दृश्य","infoText":"जानकारी पाठ","coverImg":"छवि अपलोड करें","videoUrl":"यूट्यूब लिंक","delete":"मिटाएं","save":"सहेजें","footer":"VIRTUALTOUR.COM.TR","testVideo":"वीडियो टेस्ट","setStart":"प्रारंभ सेट करें","download":"डाउनलोड","projectName":"परियोजना को नाम दें","dropFiles":"फाइलें छोड़ें","createTour":"360° वर्चुअल टूर बनाएं","saveView":"दृश्य सहेजें","angleSaved":"दृश्य सहेजा गया","autoSaved":"सहेजा गया","goHome":"होम","restoring":"काम खुल रहा है...","rotateMsg":"कृपया अपने डिवाइस को घुमाएं।","loading":"लोड हो रहा है...","infoLabel":"जानकारी"}};
+        let currentLang = "tr";
+        const bgMusic = document.getElementById('bgMusic');
+        const audioBar = document.getElementById('audioBar');
+        const gallery = document.getElementById('gallery');
+        const sidebar = document.getElementById('sidebar');
+        const infoOverlay = document.getElementById('infoOverlay');
+        const infoTextEl = document.getElementById('infoText');
+        const infoImgEl = document.getElementById('infoImg');
+        const activeLangBtn = document.getElementById('activeLangBtn');
+        const loadingScreen = document.getElementById('loadingScreen');
+        const dynamicStyles = document.getElementById('dynamicStyles');
+
+        function updateInfoLabels() {
+          const label = trans[currentLang].infoLabel || "INFO";
+          dynamicStyles.innerText = '.vt-hotspot.type-info::after { content: "' + label + '"; }';
+        }
+
+        const viewer = pannellum.viewer('viewer', {
+            "default": { 
+              "firstScene": config.firstSceneId, 
+              "sceneFadeDuration": 800, 
+              "autoLoad": true, 
+              "autoRotate": -0.8,
+              "crossOrigin": "anonymous"
+            },
+            "scenes": config.scenes
+        });
+
+        viewer.on('load', () => {
+          loadingScreen.style.opacity = '0';
+          setTimeout(() => loadingScreen.style.display = 'none', 500);
+          
+          const sid = viewer.getScene(); const sdata = config.scenes[sid];
+          if(sdata.audio) {
+            audioBar.style.display = 'flex';
+            if(bgMusic.src !== location.origin + '/' + sdata.audio) {
+              bgMusic.src = sdata.audio;
+              bgMusic.play().catch(() => {
+                document.addEventListener('click', () => bgMusic.play(), { once: true });
+              });
+            } else if(bgMusic.paused) {
+              bgMusic.play().catch(() => {});
+            }
+          } else { audioBar.style.display = 'none'; bgMusic.pause(); }
+          
+          renderGallery(sid);
+        });
+
+        function changeLang(code) {
+          currentLang = code;
+          const lData = [{"code":"tr","name":"Türkçe","flag":"🇹🇷"},{"code":"en","name":"English","flag":"🇺🇸"},{"code":"de","name":"Deutsch","flag":"🇩🇪"},{"code":"fr","name":"Français","flag":"🇫🇷"},{"code":"es","name":"Español","flag":"🇪🇸"},{"code":"hi","name":"हिन्दी","flag":"🇮🇳"}];
+          const l = lData.find(x => x.code === code);
+          activeLangBtn.innerText = l ? l.flag : '🌐';
+          document.getElementById('labelScenes').innerText = trans[code].scenes;
+          document.getElementById('loadingLabel').innerText = trans[code].loading;
+          updateInfoLabels();
+          renderGallery(viewer.getScene());
+        }
+
+        function toggleSidebar() { sidebar.classList.toggle('collapsed'); }
+        
+        function openInfo(text, img) { 
+          infoTextEl.innerText = text; 
+          if(img) {
+            infoImgEl.src = img;
+            infoImgEl.style.display = 'block';
+          } else {
+            infoImgEl.style.display = 'none';
+          }
+          infoOverlay.classList.add('active'); 
+        }
+        
+        function closeInfo() { infoOverlay.classList.remove('active'); }
+        
+        function togglePlay() {
+          if (bgMusic.paused) {
+            bgMusic.play();
+            document.getElementById('svgPause').style.display = 'block';
+            document.getElementById('svgPlay').style.display = 'none';
+          } else {
+            bgMusic.pause();
+            document.getElementById('svgPause').style.display = 'none';
+            document.getElementById('svgPlay').style.display = 'block';
+          }
+        }
+
+        function toggleMute() {
+          bgMusic.muted = !bgMusic.muted;
+          document.getElementById('svgMute').style.display = bgMusic.muted ? 'none' : 'block';
+          document.getElementById('svgUnmute').style.display = bgMusic.muted ? 'block' : 'none';
+        }
+
+        function setVolume(v) { bgMusic.volume = v; }
+
+        function renderGallery(activeId) {
+          gallery.innerHTML = '';
+          Object.keys(config.scenes).forEach(id => {
+            const scene = config.scenes[id];
+            const div = document.createElement('div');
+            div.className = 'scene-item' + (id === activeId ? ' active' : '');
+            div.onclick = () => { 
+              if(id !== viewer.getScene()) {
+                viewer.loadScene(id); 
+              }
+              if(window.innerWidth < 1024) toggleSidebar(); 
+            };
+            div.innerHTML = '<img src="' + scene.panorama + '"><span>' + scene.title + '</span>';
+            gallery.appendChild(div);
+          });
+        }
+
+        updateInfoLabels();
+        renderGallery(config.firstSceneId);
+
+        window.addEventListener('click', (e) => {
+          const target = e.target.closest('.type-info');
+          if(target) {
+            const hsId = Array.from(target.classList).find(c => c.startsWith('hs-id-')).split('hs-id-')[1];
+            const sceneId = viewer.getScene();
+            const hs = config.scenes[sceneId].hotSpots.find(h => h.cssClass.includes(hsId));
+            if(hs) openInfo(hs.description || hs.text, hs.coverImage);
+          }
+        });
+    </script>
+</body>
+</html>
