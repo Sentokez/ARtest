@@ -79,6 +79,15 @@
           "sceneId": "scene_1779103445254_0_tc8kl",
           "coverImage": null,
           "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779103778369"
+        },
+        {
+          "pitch": -0.7010827482942195,
+          "yaw": -22.06773122141537,
+          "type": "info",
+          "text": "Ecza Dolabı",
+          "description": "Ecza Dolabı",
+          "coverImage": null,
+          "cssClass": "vt-hotspot icon-info type-info hs-id-hs_1779108584430"
         }
       ]
     },
