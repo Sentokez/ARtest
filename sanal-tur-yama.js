@@ -281,7 +281,7 @@ document.addEventListener('mouseleave', () => {
 
 
 // ==========================================
-// ARKA PLAN TEMİZLİKÇİSİ VE TIKLAMA YÖNETİMİ
+// ARKA PLAN TEMİZLİKÇİSİ VE MOBİL GÜVENLİK KÖPRÜSÜ (GÜNCELLENDİ)
 // ==========================================
 
 function temizleButonYazilari() {
@@ -307,22 +307,37 @@ if(typeof viewer !== 'undefined') {
   });
 }
 
+// MOBİL ÇÖKME VE KİLİTLENMEYİ ÖNLEYEN GÜVENLİ HATA FİLTRESİ
 function tamEkranKontrol() {
-  const infoOverlay = document.getElementById('infoOverlay');
-  const videoOverlay = document.getElementById('videoOverlay');
-  const viewerEl = document.getElementById('viewer');
-  
-  if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
-    if(infoOverlay && infoOverlay.parentNode !== viewerEl) viewerEl.appendChild(infoOverlay);
-    if(videoOverlay && videoOverlay.parentNode !== viewerEl) viewerEl.appendChild(videoOverlay);
-  } else {
-    if(infoOverlay && infoOverlay.parentNode === viewerEl) document.body.appendChild(infoOverlay);
-    if(videoOverlay && videoOverlay.parentNode === viewerEl) document.body.appendChild(videoOverlay);
+  try {
+    const infoOverlay = document.getElementById('infoOverlay');
+    const videoOverlay = document.getElementById('videoOverlay');
+    const viewerEl = document.getElementById('viewer');
+    
+    if (!viewerEl) return; // Eğer viewer elementi henüz yüklenmediyse fonksiyondan güvenle çık (Çökmeyi önler)
+    
+    const isFullscreen = document.fullscreenElement || 
+                         document.webkitFullscreenElement || 
+                         document.msFullscreenElement || 
+                         document.mozFullScreenElement;
+    
+    if (isFullscreen) {
+      if(infoOverlay && infoOverlay.parentNode !== viewerEl) viewerEl.appendChild(infoOverlay);
+      if(videoOverlay && videoOverlay.parentNode !== viewerEl) viewerEl.appendChild(videoOverlay);
+    } else {
+      if(infoOverlay && infoOverlay.parentNode === viewerEl) document.body.appendChild(infoOverlay);
+      if(videoOverlay && videoOverlay.parentNode === viewerEl) document.body.appendChild(videoOverlay);
+    }
+  } catch (error) {
+    console.log("Mobil Fullscreen API atlandı."); // Hata fırlatılmasını engelleyerek yükleme ekranının devam etmesini sağlar
   }
 }
+
+// Mobil tarayıcıların desteklediği tüm event türlerini güvenli kapsama alıyoruz
 document.addEventListener('fullscreenchange', tamEkranKontrol);
 document.addEventListener('webkitfullscreenchange', tamEkranKontrol);
 document.addEventListener('msfullscreenchange', tamEkranKontrol);
+document.addEventListener('mozfullscreenchange', tamEkranKontrol);
 
 document.addEventListener('click', (e) => {
   if(e.target.closest('.type-scene')) {
