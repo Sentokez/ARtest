@@ -359,3 +359,23 @@ document.addEventListener('click', (e) => {
     }
   }
 }, true);
+// ==========================================
+// ÖZEL LOADING EKRANINI KALDIRMA MOTORU
+// ==========================================
+function ozelLoadingEkraniniKapat() {
+  const ozelEkran = document.getElementById('ozel-loading-screen');
+  if (ozelEkran) {
+    // Tur hazır olduğunda sınıfa 'kaybol' ekleyerek 0.8 saniyede pürüzsüzce kapatır
+    ozelEkran.classList.add('kaybol');
+    // Bellekten tamamen silmek için animasyon bitiminde DOM'dan uçurur
+    setTimeout(() => { ozelEkran.remove(); }, 800);
+  }
+}
+
+// Pannellum motoru ilk sahneyi tamamen çizdiği an ekranı kapatır
+if (typeof viewer !== 'undefined') {
+  viewer.on('load', ozelLoadingEkraniniKapat);
+} else {
+  // Eğer motor gecikirse tarayıcı yüklemesi bittiğinde her halükarda kapatır (Güvenlik kilidi)
+  window.addEventListener('load', ozelLoadingEkraniniKapat);
+}

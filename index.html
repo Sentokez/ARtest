@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yeni Sanal Tur</title>
+    <title>A.Ü Tarihi Müze</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
     <style>
@@ -36,11 +36,11 @@
         .gallery { flex: 1; overflow-y: auto; padding: 10px; scrollbar-width: none; }
         .gallery::-webkit-scrollbar { display: none; }
         .scene-item { cursor: pointer; border-radius: 14px; overflow: hidden; margin-bottom: 10px; position: relative; border: 2px solid transparent; transition: all 0.3s; }
-        .scene-item:hover, .scene-item.active { border-color: #f97316; transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+        .scene-item:hover, .scene-item.active { border-color: #284985; transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
         .scene-item img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
         .scene-item span { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: white; font-size: 9px; padding: 6px; text-align: center; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        .toggle-btn { position: absolute; top: 50%; left: 15px; transform: translateY(-50%); z-index: 1001; background: #f97316; border: none; color: white; width: 40px; height: 40px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(249,115,22,0.4); transition: all 0.3s; }
+        .toggle-btn { position: absolute; top: 50%; left: 15px; transform: translateY(-50%); z-index: 1001; background: #284985; border: none; color: white; width: 40px; height: 40px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(12, 43, 146, 0.4); transition: all 0.3s; }
         .sidebar:not(.collapsed) ~ .toggle-btn { left: 200px; background: rgba(0,0,0,0.4); }
 
         .lang-selector { position: absolute; bottom: 20px; right: 20px; z-index: 1002; display: flex; flex-direction: column-reverse; align-items: center; gap: 8px; }
@@ -50,18 +50,18 @@
 
         .vt-hotspot::before {
             content: ''; position: absolute; left: 0; top: 0; transform: translate(-50%, -50%);
-            width: 38px; height: 38px; background: #fff; border-radius: 50%; border: 3px solid #f97316;
+            width: 38px; height: 38px; background: #fff; border-radius: 50%; border: 3px solid #284985;
             box-shadow: 0 4px 20px rgba(0,0,0,0.4); background-repeat: no-repeat; background-position: center; background-size: 20px; transition: all 0.2s;
         }
-        .vt-hotspot:hover::before { transform: translate(-50%, -50%) scale(1.15); box-shadow: 0 0 25px rgba(249,115,22,0.6); }
+        .vt-hotspot:hover::before { transform: translate(-50%, -50%) scale(1.15); box-shadow: 0 0 25px rgba(14, 43, 172, 0.6); }
 
-        .icon-move-forward::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='%23f97316'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18' /%3E%3C/svg%3E"); animation: hs-move 1.2s infinite ease-in-out; }
+        .icon-move-forward::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='%23284985'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18' /%3E%3C/svg%3E"); animation: hs-move 1.2s infinite ease-in-out; }
         .icon-arrow-up::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='%23f97316'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18' /%3E%3C/svg%3E"); animation: hs-pulse 1.5s infinite; }
         .icon-arrow-down::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='%23f97316'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3' /%3E%3C/svg%3E"); animation: hs-pulse 1.5s infinite; }
         .icon-arrow-left::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='%23f97316'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18' /%3E%3C/svg%3E"); animation: hs-pulse 1.5s infinite; }
         .icon-arrow-right::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='%23f97316'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3' /%3E%3C/svg%3E"); animation: hs-pulse 1.5s infinite; }
         .icon-info::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='%23334155'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z' /%3E%3C/svg%3E"); animation: hs-rotate 4s infinite linear; }
-        .icon-video::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z' /%3E%3C/svg%3E"); background-color: #2563eb; border-color: #3b82f6; animation: hs-pulse 1s infinite; }
+        .icon-video::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='3' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z' /%3E%3C/svg%3E"); background-color: #284985; border-color: #284985; animation: hs-pulse 1s infinite; }
 
         @keyframes hs-move { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -70%) scale(1.1); } }
         @keyframes hs-pulse { 0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; } 50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; } }
@@ -98,6 +98,32 @@
         }
         .vt-hotspot:hover::after { transform: translate(5px, -50%); opacity: 1; }
         .vt-hotspot.hs-id-hs_1779126602433::after { content: "iki.jpg"; }
+        /* ==========================================
+   SAĞ ALTA SABİTLENEN LOGO AYARLARI
+   ========================================== */
+#tur-sabit-logo {
+  position: fixed;
+  bottom: 20px; /* Alttan ne kadar yukarıda dursun? */
+  right: 20px;  /* Sağdan ne kadar içeride dursun? */
+  
+  /* Logonun sanal tur ekranının, butonların ve her şeyin en üstünde kalmasını sağlar */
+  z-index: 2147483640 !important; 
+  
+  /* Kritik Kural: Kullanıcı logonun üzerine tıklayıp arkadaki tura dokunabilmek isterse 
+     tıklama akışını engellemez, fare logoyu yok sayıp arkaya geçer */
+  pointer-events: none; 
+}
+
+#tur-sabit-logo img {
+  width: 90px;     /* Logonun ekrandaki genişliği (Buradan büyütebilir/küçültebilirsin) */
+  height: auto;     /* Oranların bozulmasını engeller */
+  opacity: 0.70;    /* Logoyu hafif şeffaf yaparak turun arkasını biraz gösterir (Şık durur) */
+  
+  /* Yumuşatılmış gölge efekti (Logonun beyaz veya koyu zeminlerde parlamasını sağlar) */
+  filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.5)); 
+  
+  transition: opacity 0.3s ease;
+}
 
 
 
@@ -157,6 +183,64 @@
     </style>
 </head>
 <body>
+  <div id="ozel-loading-screen">
+  <div class="loading-icerik">
+    <img src="images/kurumsal-logo.png" alt="Logo" class="loading-logo">
+    <div class="loading-spinner"></div>
+    <p class="loading-yazi">Sanal Tur Yükleniyor...</p>
+  </div>
+</div>
+
+<style>
+  #ozel-loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #284985; /* Arka plan rengi (Örn: Koyu Gri/Mavi) */
+    z-index: 99999999; /* Her şeyin, platformun bile en üstünde yer alsın */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+  }
+  .loading-icerik {
+    text-align: center;
+    font-family: sans-serif;
+  }
+  .loading-logo {
+    max-width: 180px; /* Logo boyutu */
+    height: auto;
+    margin-bottom: 25px;
+  }
+  /* Modern dönen halka animasyonu */
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255,255,255,0.1);
+    border-top: 4px solid #3b82f6; /* Halkanın dönen renkli kısmı (Örn: Canlı Mavi) */
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+    animation: dondur 1s linear infinite;
+  }
+  .loading-yazi {
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+  @keyframes dondur {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  /* Ekranı kapatırken kullanılacak pürüzsüz kaybolma sınıfı */
+  #ozel-loading-screen.kaybol {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+</style>
     <div id="loadingScreen">
         <svg viewBox="0 0 100 100" class="loading-icon">
             <path d="M50 15c-19.3 0-35 15.7-35 35s15.7 35 35 35 35-15.7 35-35" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" style="animation: hs-rotate 2s infinite linear; transform-origin: center;"/>
@@ -183,7 +267,7 @@
           <svg id="svgMute" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           <svg id="svgUnmute" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="display:none;"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/></svg>
         </button>
-        <input type="range" min="0" max="1" step="0.1" value="0.5" oninput="setVolume(this.value)" style="width:50px; accent-color:#f97316; cursor:pointer;">
+        <input type="range" min="0" max="1" step="0.1" value="0.5" oninput="setVolume(this.value)" style="width:50px; accent-color:#284985; cursor:pointer;">
       </div>
 
       
@@ -326,5 +410,8 @@
         });
     </script>
 </body>
+<div id="tur-sabit-logo">
+  <img src="images/kurumsal-logo2.png" alt="Müze Logo">
+</div>
 <script src="sanal-tur-yama.js"></script>
 </html>
