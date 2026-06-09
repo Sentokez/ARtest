@@ -1,781 +1,771 @@
 {
   "projectName": "Yeni Sanal Tur",
-  "firstSceneId": "scene_1779126560714_0_qoj4i",
+  "firstSceneId": "scene_1780519285486_0_gpo7y",
   "scenes": {
-    "scene_1779126560714_0_qoj4i": {
-      "title": "bir.jpg",
-      "panorama": "images/bir.jpg",
-      "pitch": -0.904509959058837,
-      "yaw": -96.67085781792497,
+    "scene_1780519285486_2_sg32f": {
+      "title": "3.jpg",
+      "panorama": "images/3.jpg",
+      "pitch": -8.305645326581761,
+      "yaw": 10.347280533124376,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -12.93310772810986,
-          "yaw": -96.16053665412075,
+          "pitch": -29.752697373811046,
+          "yaw": 6.347165024305481,
           "type": "scene",
-          "text": "iki.jpg",
-          "description": "iki.jpg",
-          "sceneId": "scene_1779126560714_2_tbi0x",
+          "text": "4.jpg",
+          "description": "4.jpg",
+          "sceneId": "scene_1780519285486_3_od2gs",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779126602433"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519416994"
         },
         {
-          "pitch": -22.643021083780006,
-          "yaw": 67.87836106768663,
-          "type": "info",
-          "text": "",
-          "description": "Atatürk Köşesi",
-          "coverImage": "images/hs_hs_1779135890471.jpg",
-          "cssClass": "vt-hotspot icon-info type-info hs-id-hs_1779135890471"
-        },
-        {
-          "pitch": -23.575588566335092,
-          "yaw": 87.96337261426565,
-          "type": "info",
-          "text": "",
-          "description": "Atatürk Köşesi",
-          "coverImage": "images/hs_hs_1779137186720.jpg",
-          "cssClass": "vt-hotspot icon-info type-info hs-id-hs_1779137186720"
-        },
-        {
-          "pitch": -19.42676491982269,
-          "yaw": 46.84977420656256,
-          "type": "info",
-          "text": "",
-          "description": "Anıtkabir’deki 5 tonluk bayrak direğini aslen Makedonya’nın Üsküp kentinde doğan, 8 yaşında İzmir’e, 14’ünde ABD’ye yerleşen Nazmi Cemal adlı bir Türk tarafından yaptırılmıştı. 30 yıl sonra William Johnson ismini alan Nazmi Cemal, daha sonra ABD’nin en büyük bayrak direği şirketi olan Plac Pole Company’i kurmuştu. Atatürk için anıtkabir inşa edildiğini duyunca dünyada eşi benzeri olmayan bir bayrak direği yapmak istedi. 1945’de önce New York büyükelçisi Münir Ertegün ile görüştü sonra Başbakan Şükrü Saraçoğlu’na bir mektup yazarak direğin tüm masraflarının kendisince karşılanacağını söyler. İsteği kabul edildiğinde fabrikalarındaki tüm üretimi durdurup sadece bu iş için çalışır.",
+          "pitch": -14.586813628103846,
+          "yaw": -79.49277471725331,
+          "type": "scene",
+          "text": "2.jpg",
+          "description": "2.jpg",
+          "sceneId": "scene_1780519285486_1_wah8y",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-info type-info hs-id-hs_1779137413588"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519452723"
         },
         {
-          "pitch": -20.81897883297937,
-          "yaw": 106.73528553153858,
+          "pitch": -26.522108472215038,
+          "yaw": 125.12770107763697,
+          "type": "scene",
+          "text": "19.jpg",
+          "description": "19.jpg",
+          "sceneId": "scene_1780519285486_18_160d9",
+          "coverImage": null,
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520423746"
+        },
+        {
+          "pitch": -27.45854347907821,
+          "yaw": 80.42273074114517,
+          "type": "scene",
+          "text": "15.jpg",
+          "description": "15.jpg",
+          "sceneId": "scene_1780519285486_14_kgt7p",
+          "coverImage": null,
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520448782"
+        },
+        {
+          "pitch": 8.576838877818089,
+          "yaw": -23.63643417716001,
           "type": "info",
           "text": "VİDEO",
           "description": "VİDEO",
-          "URL": "https://www.youtube.com/watch?v=d2CvqRsvCUk",
+          "URL": "https://www.youtube.com/watch?v=Xx2aZDDhGjc",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-video type-video hs-id-hs_1779137666373"
+          "cssClass": "vt-hotspot icon-video type-video hs-id-hs_1780955343668"
+        },
+        {
+          "pitch": 1.913746564809574,
+          "yaw": -23.270065983894373,
+          "type": "info",
+          "text": "VİDEO",
+          "description": "VİDEO",
+          "URL": "https://drive.google.com/file/d/1B27f5MNYRIjhhEgXQ9OnMVJtKjHfmynC/view?usp=drive_link",
+          "coverImage": null,
+          "cssClass": "vt-hotspot icon-video type-video hs-id-hs_1780955348343"
+        },
+        {
+          "pitch": -5.398469155217037,
+          "yaw": -23.3248688109075,
+          "type": "info",
+          "text": "",
+          "description": "GEÇİŞ",
+          "coverImage": "images/hs_hs_1780955373616.jpg",
+          "cssClass": "vt-hotspot icon-info type-info hs-id-hs_1780955373616"
+        },
+        {
+          "pitch": -12.34883057401663,
+          "yaw": -23.08756362983332,
+          "type": "info",
+          "text": "",
+          "description": "Porselen Havan",
+          "coverImage": "images/hs_hs_1780955527830.jpg",
+          "cssClass": "vt-hotspot icon-info type-info hs-id-hs_1780955527830"
+        },
+        {
+          "pitch": -19.518949905112173,
+          "yaw": -22.94526350157938,
+          "type": "info",
+          "text": "",
+          "description": "Ülkemizin Eczacılık öğretimi yapan 2. eğitim kurumu, ancak ilk Eczacılık Fakültesi olan Ankara Üniversitesi Eczacılık Fakültesi, 16 Aralık 1960 tarihinde kurulmuş, eğitim ve öğretime ise, 1961-1962 öğretim yılında başlanmıştır. iki bloğun oluşturduğu 23.000 m2 kapalı alanı olan binalarında 160’şer kişilik 3 amfi, toplam 989 kişilik 12 dersane bulunmaktadır. Eczacılık lisans öğretimi 5 yıllıktır. Türkçe eğitimin yanında 2015-2016 eğitim-öğretim yılından itibaren İngilizce lisans programına da başlanmış olup halihazırda iki dilde Eczacılık eğitimi sürdürülmektedir. ",
+          "coverImage": null,
+          "cssClass": "vt-hotspot icon-info type-info hs-id-hs_1780955590795"
         }
       ]
     },
-    "scene_1779126560714_2_tbi0x": {
-      "title": "iki.jpg",
-      "panorama": "images/iki.jpg",
-      "pitch": -5.4998259920343955,
-      "yaw": 88.49315424732583,
+    "scene_1780519285486_1_wah8y": {
+      "title": "2.jpg",
+      "panorama": "images/2.jpg",
+      "pitch": -10.64264812278688,
+      "yaw": 89.05788147923795,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -16.67842302169803,
-          "yaw": -92.9484790416198,
+          "pitch": -16.420237157721633,
+          "yaw": 85.57478484539777,
           "type": "scene",
-          "text": "bir.jpg",
-          "description": "bir.jpg",
-          "sceneId": "scene_1779126560714_0_qoj4i",
+          "text": "3.jpg",
+          "description": "3.jpg",
+          "sceneId": "scene_1780519285486_2_sg32f",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779126625352"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519393940"
         },
         {
-          "pitch": -19.442589112656297,
-          "yaw": 89.72438215498671,
+          "pitch": -15.275898289068872,
+          "yaw": -93.68434867209788,
           "type": "scene",
-          "text": "üç.jpg",
-          "description": "üç.jpg",
-          "sceneId": "scene_1779126560714_3_u4kdc",
+          "text": "1.jpg",
+          "description": "1.jpg",
+          "sceneId": "scene_1780519285486_0_gpo7y",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779126694529"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519434323"
         }
       ]
     },
-    "scene_1779126560714_3_u4kdc": {
-      "title": "üç.jpg",
-      "panorama": "images/üç.jpg",
-      "pitch": -9.425957609578221,
-      "yaw": 11.489484773174922,
+    "scene_1780519285486_0_gpo7y": {
+      "title": "1.jpg",
+      "panorama": "images/1.jpg",
+      "pitch": -5.5051264960308135,
+      "yaw": -94.92158822432918,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -28.23729629665665,
-          "yaw": 7.1142385685668765,
+          "pitch": -11.862252088050207,
+          "yaw": -97.51774405674173,
           "type": "scene",
-          "text": "dört.jpg",
-          "description": "dört.jpg",
-          "sceneId": "scene_1779126560714_1_xd6v0",
+          "text": "2.jpg",
+          "description": "2.jpg",
+          "sceneId": "scene_1780519285486_1_wah8y",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779126731594"
-        },
-        {
-          "pitch": -12.845224670723773,
-          "yaw": -78.7999511432147,
-          "type": "scene",
-          "text": "iki.jpg",
-          "description": "iki.jpg",
-          "sceneId": "scene_1779126560714_2_tbi0x",
-          "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779128838915"
-        },
-        {
-          "pitch": -26.49896402198305,
-          "yaw": 80.25034553942352,
-          "type": "scene",
-          "text": "onbeş.jpg",
-          "description": "onbeş.jpg",
-          "sceneId": "scene_1779127741717_1_kvilm",
-          "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779134168894"
-        },
-        {
-          "pitch": -5.006023821188348,
-          "yaw": -12.455374286666494,
-          "type": "scene",
-          "text": "yirmibeş.jpg",
-          "description": "yirmibeş.jpg",
-          "sceneId": "scene_1779132882583_0_i6ybe",
-          "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779134353180"
-        },
-        {
-          "pitch": -26.356712678255924,
-          "yaw": 125.1240714372812,
-          "type": "scene",
-          "text": "ondokuz.jpg",
-          "description": "ondokuz.jpg",
-          "sceneId": "scene_1779144216273_0_bntlm",
-          "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779144510326"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519307075"
         }
       ]
     },
-    "scene_1779126560714_1_xd6v0": {
-      "title": "dört.jpg",
-      "panorama": "images/dört.jpg",
-      "pitch": -7.617113833509822,
-      "yaw": 67.54416224211172,
+    "scene_1780519285486_3_od2gs": {
+      "title": "4.jpg",
+      "panorama": "images/4.jpg",
+      "pitch": -12.146438337252738,
+      "yaw": 69.49626128751129,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -33.42171486865225,
-          "yaw": -115.11984789788582,
+          "pitch": -36.209081575908996,
+          "yaw": -114.09081957252276,
           "type": "scene",
-          "text": "üç.jpg",
-          "description": "üç.jpg",
-          "sceneId": "scene_1779126560714_3_u4kdc",
+          "text": "3.jpg",
+          "description": "3.jpg",
+          "sceneId": "scene_1780519285486_2_sg32f",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779126763477"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519465746"
         },
         {
-          "pitch": -38.738656352544744,
-          "yaw": 64.95118364051385,
+          "pitch": -10.179515850214871,
+          "yaw": 26.426862513501835,
           "type": "scene",
-          "text": "beş.jpg",
-          "description": "beş.jpg",
-          "sceneId": "scene_1779126882311_0_ih0ez",
+          "text": "25.jpg",
+          "description": "25.jpg",
+          "sceneId": "scene_1780519285486_24_lyfmu",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779126904877"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520836914"
         },
         {
-          "pitch": -10.750868077605983,
-          "yaw": 26.66211726008325,
+          "pitch": -34.48154475706638,
+          "yaw": 66.36653750468555,
           "type": "scene",
-          "text": "yirmibeş.jpg",
-          "description": "yirmibeş.jpg",
-          "sceneId": "scene_1779132882583_0_i6ybe",
+          "text": "5.jpg",
+          "description": "5.jpg",
+          "sceneId": "scene_1780519285486_4_ksh2h",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779132905691"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780521419529"
         }
       ]
     },
-    "scene_1779126882311_0_ih0ez": {
-      "title": "beş.jpg",
-      "panorama": "images/beş.jpg",
-      "pitch": -6.702494163322994,
-      "yaw": 77.95671911223576,
+    "scene_1780519285486_4_ksh2h": {
+      "title": "5.jpg",
+      "panorama": "images/5.jpg",
+      "pitch": -2.0240715333205332,
+      "yaw": 77.91513177129275,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -21.516990245620995,
-          "yaw": 77.17259505658066,
+          "pitch": -47.278026742402844,
+          "yaw": -104.99580047184823,
           "type": "scene",
-          "text": "altı.jpg",
-          "description": "altı.jpg",
-          "sceneId": "scene_1779126952107_0_wecd4",
+          "text": "4.jpg",
+          "description": "4.jpg",
+          "sceneId": "scene_1780519285486_3_od2gs",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779127003474"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519543159"
         },
         {
-          "pitch": -47.423807751744086,
-          "yaw": -114.32258138722267,
+          "pitch": -26.825685793964542,
+          "yaw": 77.30180003879174,
           "type": "scene",
-          "text": "dört.jpg",
-          "description": "dört.jpg",
-          "sceneId": "scene_1779126560714_1_xd6v0",
+          "text": "6.jpg",
+          "description": "6.jpg",
+          "sceneId": "scene_1780519285486_5_71evm",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779132626541"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519564871"
         },
         {
-          "pitch": -14.73038536577152,
-          "yaw": -5.295573621795098,
+          "pitch": -13.022557200534598,
+          "yaw": -5.063918249454737,
           "type": "scene",
-          "text": "yirmibeş.jpg",
-          "description": "yirmibeş.jpg",
-          "sceneId": "scene_1779132882583_0_i6ybe",
+          "text": "25.jpg",
+          "description": "25.jpg",
+          "sceneId": "scene_1780519285486_24_lyfmu",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779133497800"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520849490"
         }
       ]
     },
-    "scene_1779126952107_0_wecd4": {
-      "title": "altı.jpg",
-      "panorama": "images/altı.jpg",
-      "pitch": -2.3192659648327396,
-      "yaw": -19.32077490480981,
+    "scene_1780519285486_5_71evm": {
+      "title": "6.jpg",
+      "panorama": "images/6.jpg",
+      "pitch": -16.021126819912737,
+      "yaw": -20.739185769527353,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -28.991018398971963,
-          "yaw": 158.05492643517942,
+          "pitch": -29.298794648064156,
+          "yaw": 158.83049065956627,
           "type": "scene",
-          "text": "beş.jpg",
-          "description": "beş.jpg",
-          "sceneId": "scene_1779126882311_0_ih0ez",
+          "text": "5.jpg",
+          "description": "5.jpg",
+          "sceneId": "scene_1780519285486_4_ksh2h",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779127024677"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519596337"
         },
         {
-          "pitch": -21.278589687556956,
-          "yaw": 14.985915041509422,
+          "pitch": -21.833245964135354,
+          "yaw": 15.232293986729275,
           "type": "scene",
-          "text": "sekiz.jpg",
-          "description": "sekiz.jpg",
-          "sceneId": "scene_1779127050791_1_xqads",
+          "text": "8.jpg",
+          "description": "8.jpg",
+          "sceneId": "scene_1780519285486_7_fmjrz",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779127109929"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519622525"
         },
         {
-          "pitch": -5.602365532006185,
-          "yaw": -170.96577285522469,
+          "pitch": -5.673645826924266,
+          "yaw": -170.9113716938473,
           "type": "scene",
-          "text": "yirmibeş.jpg",
-          "description": "yirmibeş.jpg",
-          "sceneId": "scene_1779132882583_0_i6ybe",
+          "text": "25.jpg",
+          "description": "25.jpg",
+          "sceneId": "scene_1780519285486_24_lyfmu",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779133568135"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780521126007"
         }
       ]
     },
-    "scene_1779127050791_1_xqads": {
-      "title": "sekiz.jpg",
-      "panorama": "images/sekiz.jpg",
-      "pitch": -11.055452036480691,
-      "yaw": -179.7521031709316,
+    "scene_1780519285486_7_fmjrz": {
+      "title": "8.jpg",
+      "panorama": "images/8.jpg",
+      "pitch": -5.62790743728937,
+      "yaw": -178.99308386496745,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -27.156503839981404,
-          "yaw": -127.83334113290866,
+          "pitch": -25.4032725561717,
+          "yaw": -132.25451482071995,
           "type": "scene",
-          "text": "altı.jpg",
-          "description": "altı.jpg",
-          "sceneId": "scene_1779126952107_0_wecd4",
+          "text": "6.jpg",
+          "description": "6.jpg",
+          "sceneId": "scene_1780519285486_5_71evm",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779127133862"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519648747"
         },
         {
-          "pitch": -35.35396612997334,
-          "yaw": 174.71017361476225,
+          "pitch": -24.298728255462688,
+          "yaw": 178.0260959736468,
           "type": "scene",
-          "text": "dokuz.jpg",
-          "description": "dokuz.jpg",
-          "sceneId": "scene_1779127050791_0_jhjmr",
+          "text": "10.jpg",
+          "description": "10.jpg",
+          "sceneId": "scene_1780519285486_9_iqiku",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779127153483"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519712285"
         }
       ]
     },
-    "scene_1779127050791_0_jhjmr": {
-      "title": "dokuz.jpg",
-      "panorama": "images/dokuz.jpg",
-      "pitch": -6.71866676829033,
-      "yaw": -121.83891677132726,
+    "scene_1780519285486_9_iqiku": {
+      "title": "10.jpg",
+      "panorama": "images/10.jpg",
+      "pitch": -11.743318638920705,
+      "yaw": 99.7243161323745,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -36.82927636992917,
-          "yaw": -131.23257428294775,
+          "pitch": -36.12044750139323,
+          "yaw": 88.2862222446032,
           "type": "scene",
-          "text": "on.jpg",
-          "description": "on.jpg",
-          "sceneId": "scene_1779127192530_0_63oxe",
+          "text": "11.jpg",
+          "description": "11.jpg",
+          "sceneId": "scene_1780519285486_10_2v43w",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779132740872"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519756902"
+        },
+        {
+          "pitch": -23.589806021732432,
+          "yaw": -83.64353446184693,
+          "type": "scene",
+          "text": "8.jpg",
+          "description": "8.jpg",
+          "sceneId": "scene_1780519285486_7_fmjrz",
+          "coverImage": null,
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519768200"
         }
       ]
     },
-    "scene_1779127192530_0_63oxe": {
-      "title": "on.jpg",
-      "panorama": "images/on.jpg",
-      "pitch": -2.0023663840706583,
-      "yaw": 103.02021357137687,
+    "scene_1780519285486_10_2v43w": {
+      "title": "11.jpg",
+      "panorama": "images/11.jpg",
+      "pitch": -28.51718130430705,
+      "yaw": -100.3243392982024,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -31.205881511658365,
-          "yaw": -82.07248876551427,
+          "pitch": -30.677155749340372,
+          "yaw": 153.03172064563884,
           "type": "scene",
-          "text": "dokuz.jpg",
-          "description": "dokuz.jpg",
-          "sceneId": "scene_1779127050791_0_jhjmr",
+          "text": "12.jpg",
+          "description": "12.jpg",
+          "sceneId": "scene_1780519285486_11_x8xhv",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779127262972"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519797926"
         },
         {
-          "pitch": -35.85795385856471,
-          "yaw": 89.35886498457285,
+          "pitch": -12.739160460314402,
+          "yaw": 167.42185844413936,
           "type": "scene",
-          "text": "onbir.jpg",
-          "description": "onbir.jpg",
-          "sceneId": "scene_1779127192530_1_oozxe",
+          "text": "13.jpg",
+          "description": "13.jpg",
+          "sceneId": "scene_1780519285486_12_yw116",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779129176667"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519930649"
+        },
+        {
+          "pitch": -36.21043217699682,
+          "yaw": -107.67269780090876,
+          "type": "scene",
+          "text": "15.jpg",
+          "description": "15.jpg",
+          "sceneId": "scene_1780519285486_14_kgt7p",
+          "coverImage": null,
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519974115"
+        },
+        {
+          "pitch": -44.372657507503995,
+          "yaw": 71.9378962497974,
+          "type": "scene",
+          "text": "10.jpg",
+          "description": "10.jpg",
+          "sceneId": "scene_1780519285486_9_iqiku",
+          "coverImage": null,
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520053930"
         }
       ]
     },
-    "scene_1779127192530_1_oozxe": {
-      "title": "onbir.jpg",
-      "panorama": "images/onbir.jpg",
-      "pitch": -16.73053643696313,
-      "yaw": 170.7679104333119,
+    "scene_1780519285486_11_x8xhv": {
+      "title": "12.jpg",
+      "panorama": "images/12.jpg",
+      "pitch": -19.562636780362027,
+      "yaw": -81.33227712478055,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -31.117996043992743,
-          "yaw": 153.65894871045685,
+          "pitch": -35.25954978297685,
+          "yaw": 73.41277814797397,
           "type": "scene",
-          "text": "oniki.jpg",
-          "description": "oniki.jpg",
-          "sceneId": "scene_1779127192530_2_jn7cs",
+          "text": "11.jpg",
+          "description": "11.jpg",
+          "sceneId": "scene_1780519285486_10_2v43w",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779127348134"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519807804"
         },
         {
-          "pitch": -14.30689492789265,
-          "yaw": 167.6874729694273,
+          "pitch": -36.21524108539511,
+          "yaw": -69.85021544418683,
           "type": "scene",
-          "text": "onüç.jpg",
-          "description": "onüç.jpg",
-          "sceneId": "scene_1779127192530_3_hbtqf",
+          "text": "13.jpg",
+          "description": "13.jpg",
+          "sceneId": "scene_1780519285486_12_yw116",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779127682059"
-        },
-        {
-          "pitch": -43.233109998420474,
-          "yaw": 71.455565926651,
-          "type": "scene",
-          "text": "on.jpg",
-          "description": "on.jpg",
-          "sceneId": "scene_1779127192530_0_63oxe",
-          "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779129138557"
-        },
-        {
-          "pitch": -37.64566243227641,
-          "yaw": -105.51137359548537,
-          "type": "scene",
-          "text": "onbeş.jpg",
-          "description": "onbeş.jpg",
-          "sceneId": "scene_1779127741717_1_kvilm",
-          "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779129815749"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519830029"
         }
       ]
     },
-    "scene_1779127192530_2_jn7cs": {
-      "title": "oniki.jpg",
-      "panorama": "images/oniki.jpg",
-      "pitch": -10.363697700847505,
-      "yaw": -82.75296603004159,
+    "scene_1780519285486_12_yw116": {
+      "title": "13.jpg",
+      "panorama": "images/13.jpg",
+      "pitch": -10.965664882991206,
+      "yaw": -18.937387184750833,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -38.1385488009095,
-          "yaw": -70.4495968620052,
+          "pitch": -35.73149658588457,
+          "yaw": 5.099413227170455,
           "type": "scene",
-          "text": "onüç.jpg",
-          "description": "onüç.jpg",
-          "sceneId": "scene_1779127192530_3_hbtqf",
+          "text": "12.jpg",
+          "description": "12.jpg",
+          "sceneId": "scene_1780519285486_11_x8xhv",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779127407847"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519838818"
         },
         {
-          "pitch": -33.41228729813308,
-          "yaw": 80.57802343322396,
+          "pitch": -5.263479265743893,
+          "yaw": -21.810244124136066,
           "type": "scene",
-          "text": "onbir.jpg",
-          "description": "onbir.jpg",
-          "sceneId": "scene_1779127192530_1_oozxe",
+          "text": "11.jpg",
+          "description": "11.jpg",
+          "sceneId": "scene_1780519285486_10_2v43w",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779127466031"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519849612"
         }
       ]
     },
-    "scene_1779127192530_3_hbtqf": {
-      "title": "onüç.jpg",
-      "panorama": "images/onüç.jpg",
-      "pitch": -8.998913321439796,
-      "yaw": -21.72754091815409,
+    "scene_1780519285486_14_kgt7p": {
+      "title": "15.jpg",
+      "panorama": "images/15.jpg",
+      "pitch": -14.300058101213487,
+      "yaw": 17.13468071019247,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -36.11058559222589,
-          "yaw": 3.8456350743501844,
+          "pitch": -25.37524055671347,
+          "yaw": -169.59032083179386,
           "type": "scene",
-          "text": "oniki.jpg",
-          "description": "oniki.jpg",
-          "sceneId": "scene_1779127192530_2_jn7cs",
+          "text": "11.jpg",
+          "description": "11.jpg",
+          "sceneId": "scene_1780519285486_10_2v43w",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779127431569"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519998072"
         },
         {
-          "pitch": -6.8847065944596055,
-          "yaw": -21.682307016643968,
+          "pitch": -23.349824508213235,
+          "yaw": -91.93002765191967,
           "type": "scene",
-          "text": "onbir.jpg",
-          "description": "onbir.jpg",
-          "sceneId": "scene_1779127192530_1_oozxe",
+          "text": "16.jpg",
+          "description": "16.jpg",
+          "sceneId": "scene_1780519285486_15_7x6jo",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779127585663"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520123433"
+        },
+        {
+          "pitch": -3.0950395485901345,
+          "yaw": -76.28128788408996,
+          "type": "scene",
+          "text": "17.jpg",
+          "description": "17.jpg",
+          "sceneId": "scene_1780519285486_16_8ghjn",
+          "coverImage": null,
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520133246"
+        },
+        {
+          "pitch": -30.023240235449162,
+          "yaw": 6.3153570521030105,
+          "type": "scene",
+          "text": "18.jpg",
+          "description": "18.jpg",
+          "sceneId": "scene_1780519285486_18_160d9",
+          "coverImage": null,
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520232784"
+        },
+        {
+          "pitch": -22.198309293588128,
+          "yaw": 85.94914107476119,
+          "type": "scene",
+          "text": "3.jpg",
+          "description": "3.jpg",
+          "sceneId": "scene_1780519285486_2_sg32f",
+          "coverImage": null,
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520479716"
         }
       ]
     },
-    "scene_1779127741717_1_kvilm": {
-      "title": "onbeş.jpg",
-      "panorama": "images/onbeş.jpg",
-      "pitch": -0.3348845590393701,
-      "yaw": -75.45177528340326,
+    "scene_1780519285486_15_7x6jo": {
+      "title": "16.jpg",
+      "panorama": "images/16.jpg",
+      "pitch": -17.501494339606285,
+      "yaw": -73.57447743762532,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -3.912149594177553,
-          "yaw": -76.06994522366315,
+          "pitch": -40.317271429767004,
+          "yaw": -63.24306458517711,
           "type": "scene",
-          "text": "onyedi.jpg",
-          "description": "onyedi.jpg",
-          "sceneId": "scene_1779127741717_3_s8iqc",
+          "text": "17.jpg",
+          "description": "17.jpg",
+          "sceneId": "scene_1780519285486_16_8ghjn",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779128072213"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520173971"
         },
         {
-          "pitch": -22.72926915196184,
-          "yaw": -90.54261575890492,
+          "pitch": -39.03426688096009,
+          "yaw": 75.89015007873782,
           "type": "scene",
-          "text": "onaltı.jpg",
-          "description": "onaltı.jpg",
-          "sceneId": "scene_1779127741717_0_czyrk",
+          "text": "15.jpg",
+          "description": "15.jpg",
+          "sceneId": "scene_1780519285486_14_kgt7p",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779128348439"
-        },
-        {
-          "pitch": -26.952034617049016,
-          "yaw": -168.18146689278512,
-          "type": "scene",
-          "text": "onbir.jpg",
-          "description": "onbir.jpg",
-          "sceneId": "scene_1779127192530_1_oozxe",
-          "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779129791981"
-        },
-        {
-          "pitch": -22.293461201919055,
-          "yaw": 85.50983809011669,
-          "type": "scene",
-          "text": "üç.jpg",
-          "description": "üç.jpg",
-          "sceneId": "scene_1779126560714_3_u4kdc",
-          "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779134209003"
-        },
-        {
-          "pitch": -32.573179766872165,
-          "yaw": 7.953996679560229,
-          "type": "scene",
-          "text": "ondokuz.jpg",
-          "description": "ondokuz.jpg",
-          "sceneId": "scene_1779144216273_0_bntlm",
-          "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779144491089"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520605852"
         }
       ]
     },
-    "scene_1779127741717_0_czyrk": {
-      "title": "onaltı.jpg",
-      "panorama": "images/onaltı.jpg",
-      "pitch": -4.853443981563128,
-      "yaw": -77.1721449272166,
+    "scene_1780519285486_16_8ghjn": {
+      "title": "17.jpg",
+      "panorama": "images/17.jpg",
+      "pitch": -3.990219734659429,
+      "yaw": -159.39955572090463,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -41.73842754843816,
-          "yaw": -62.918864695666684,
+          "pitch": -32.577665100099516,
+          "yaw": -138.50301831545153,
           "type": "scene",
-          "text": "onyedi.jpg",
-          "description": "onyedi.jpg",
-          "sceneId": "scene_1779127741717_3_s8iqc",
+          "text": "16.jpg",
+          "description": "16.jpg",
+          "sceneId": "scene_1780519285486_15_7x6jo",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779128193857"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520192760"
         },
         {
-          "pitch": -35.28736388330976,
-          "yaw": 75.03395352434656,
+          "pitch": -4.930018791961527,
+          "yaw": -161.63488028536713,
           "type": "scene",
-          "text": "onbeş.jpg",
-          "description": "onbeş.jpg",
-          "sceneId": "scene_1779127741717_1_kvilm",
+          "text": "15.jpg",
+          "description": "15.jpg",
+          "sceneId": "scene_1780519285486_14_kgt7p",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779131792799"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520201527"
         }
       ]
     },
-    "scene_1779127741717_3_s8iqc": {
-      "title": "onyedi.jpg",
-      "panorama": "images/onyedi.jpg",
-      "pitch": -2.7135076913497223,
-      "yaw": -156.5373324828871,
+    "scene_1780519285486_18_160d9": {
+      "title": "19.jpg",
+      "panorama": "images/19.jpg",
+      "pitch": -1.4416339131268008,
+      "yaw": -98.08757620188209,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -35.92904425299863,
-          "yaw": -136.3709693845272,
+          "pitch": -32.02208964794495,
+          "yaw": 166.0729346226007,
           "type": "scene",
-          "text": "onaltı.jpg",
-          "description": "onaltı.jpg",
-          "sceneId": "scene_1779127741717_0_czyrk",
+          "text": "15.jpg",
+          "description": "15.jpg",
+          "sceneId": "scene_1780519285486_14_kgt7p",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779131956294"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520289746"
         },
         {
-          "pitch": -5.994967133083494,
-          "yaw": -161.840555011794,
+          "pitch": -23.338319635195912,
+          "yaw": -86.97933059514182,
           "type": "scene",
-          "text": "onbeş.jpg",
-          "description": "onbeş.jpg",
-          "sceneId": "scene_1779127741717_1_kvilm",
+          "text": "20.jpg",
+          "description": "20.jpg",
+          "sceneId": "scene_1780519285486_19_b9xh1",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779145286093"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520318002"
+        },
+        {
+          "pitch": -4.377092367549832,
+          "yaw": -102.6113888056,
+          "type": "scene",
+          "text": "21.jpg",
+          "description": "21.jpg",
+          "sceneId": "scene_1780519285486_20_hft95",
+          "coverImage": null,
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520391833"
+        },
+        {
+          "pitch": -22.854450859669015,
+          "yaw": 98.78044427808106,
+          "type": "scene",
+          "text": "3.jpg",
+          "description": "3.jpg",
+          "sceneId": "scene_1780519285486_2_sg32f",
+          "coverImage": null,
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520468272"
         }
       ]
     },
-    "scene_1779144216273_0_bntlm": {
-      "title": "ondokuz.jpg",
-      "panorama": "images/ondokuz.jpg",
-      "pitch": -9.113438513271376,
-      "yaw": -103.36168142069778,
+    "scene_1780519285486_19_b9xh1": {
+      "title": "20.jpg",
+      "panorama": "images/20.jpg",
+      "pitch": -17.43890404108131,
+      "yaw": 81.23620822478597,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -23.655330284097268,
-          "yaw": -87.83225688539954,
+          "pitch": -32.84885221470375,
+          "yaw": -62.03103236301253,
           "type": "scene",
-          "text": "yirmi.jpg",
-          "description": "yirmi.jpg",
-          "sceneId": "scene_1779128289569_2_rybre",
+          "text": "19.jpg",
+          "description": "19.jpg",
+          "sceneId": "scene_1780519285486_18_160d9",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779144328796"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520328351"
         },
         {
-          "pitch": -22.193001813528806,
-          "yaw": 96.8250676366277,
+          "pitch": -36.75058587036613,
+          "yaw": 74.88116179149786,
           "type": "scene",
-          "text": "üç.jpg",
-          "description": "üç.jpg",
-          "sceneId": "scene_1779126560714_3_u4kdc",
+          "text": "21.jpg",
+          "description": "21.jpg",
+          "sceneId": "scene_1780519285486_20_hft95",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779144454126"
-        },
-        {
-          "pitch": -30.953397032813072,
-          "yaw": 163.49615901412167,
-          "type": "scene",
-          "text": "onbeş.jpg",
-          "description": "onbeş.jpg",
-          "sceneId": "scene_1779127741717_1_kvilm",
-          "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779144463631"
-        },
-        {
-          "pitch": -5.808565928214868,
-          "yaw": -102.4338602622176,
-          "type": "scene",
-          "text": "yirmibir.jpg",
-          "description": "yirmibir.jpg",
-          "sceneId": "scene_1779128587610_0_ysktv",
-          "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779145545747"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520340335"
         }
       ]
     },
-    "scene_1779128289569_2_rybre": {
-      "title": "yirmi.jpg",
-      "panorama": "images/yirmi.jpg",
-      "pitch": -26.456851202610114,
-      "yaw": 8.392017504214778,
+    "scene_1780519285486_20_hft95": {
+      "title": "21.jpg",
+      "panorama": "images/21.jpg",
+      "pitch": -5.118150631953645,
+      "yaw": 159.6449885045888,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -36.668649099130754,
-          "yaw": 75.6355787799545,
+          "pitch": -34.24407586315427,
+          "yaw": 131.86553486827262,
           "type": "scene",
-          "text": "yirmibir.jpg",
-          "description": "yirmibir.jpg",
-          "sceneId": "scene_1779128587610_0_ysktv",
+          "text": "20.jpg",
+          "description": "20.jpg",
+          "sceneId": "scene_1780519285486_19_b9xh1",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779128604166"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520366440"
         },
         {
-          "pitch": -7.435035838734545,
-          "yaw": -101.98469823137737,
+          "pitch": -5.465338338846477,
+          "yaw": 154.44208337648553,
           "type": "scene",
-          "text": "ondokuz.jpg",
-          "description": "ondokuz.jpg",
-          "sceneId": "scene_1779144216273_0_bntlm",
+          "text": "19.jpg",
+          "description": "19.jpg",
+          "sceneId": "scene_1780519285486_18_160d9",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779131681988"
-        },
-        {
-          "pitch": -33.37978581399256,
-          "yaw": -59.46342108139493,
-          "type": "scene",
-          "text": "ondokuz.jpg",
-          "description": "ondokuz.jpg",
-          "sceneId": "scene_1779144216273_0_bntlm",
-          "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779144402560"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520380409"
         }
       ]
     },
-    "scene_1779128587610_0_ysktv": {
-      "title": "yirmibir.jpg",
-      "panorama": "images/yirmibir.jpg",
-      "pitch": -1.2096750594857966,
-      "yaw": 157.76966868446289,
+    "scene_1780519285486_21_qh1pz": {
+      "title": "22.jpg",
+      "panorama": "images/22.jpg",
+      "pitch": -4.5420962176228326,
+      "yaw": -8.362915438821801,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -37.57023207187106,
-          "yaw": 131.35931881146809,
+          "pitch": -25.800453097923256,
+          "yaw": 166.01386901928564,
           "type": "scene",
-          "text": "yirmi.jpg",
-          "description": "yirmi.jpg",
-          "sceneId": "scene_1779128289569_2_rybre",
+          "text": "25.jpg",
+          "description": "25.jpg",
+          "sceneId": "scene_1780519285486_24_lyfmu",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779128616942"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520887469"
         },
         {
-          "pitch": -6.781739241741399,
-          "yaw": 154.81895985602003,
+          "pitch": -20.96030468786397,
+          "yaw": -143.43946717074675,
           "type": "scene",
-          "text": "ondokuz.jpg",
-          "description": "ondokuz.jpg",
-          "sceneId": "scene_1779144216273_0_bntlm",
+          "text": "24.jpg",
+          "description": "24.jpg",
+          "sceneId": "scene_1780519285486_23_gf42l",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779144437311"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780521035959"
         }
       ]
     },
-    "scene_1779132882583_0_i6ybe": {
-      "title": "yirmibeş.jpg",
-      "panorama": "images/yirmibeş.jpg",
-      "pitch": -12.379098880497068,
-      "yaw": 169.90940490949254,
+    "scene_1780519285486_23_gf42l": {
+      "title": "24.jpg",
+      "panorama": "images/24.jpg",
+      "pitch": -3.6552330660424346,
+      "yaw": -42.16683396025206,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -13.051003896876152,
-          "yaw": 121.82239135869824,
+          "pitch": -14.997149529676475,
+          "yaw": 142.15380590391757,
           "type": "scene",
-          "text": "yirmidört.jpg",
-          "description": "yirmidört.jpg",
-          "sceneId": "scene_1779133096833_0_5u5mr",
+          "text": "25.jpg",
+          "description": "25.jpg",
+          "sceneId": "scene_1780519285486_24_lyfmu",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779133112490"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520949954"
         },
         {
-          "pitch": -25.307805410182635,
-          "yaw": -144.57338558244578,
+          "pitch": -17.138165419370115,
+          "yaw": 78.09512055601637,
           "type": "scene",
-          "text": "yirmiiki.jpg",
-          "description": "yirmiiki.jpg",
-          "sceneId": "scene_1779133171464_0_rfso5",
+          "text": "22.jpg",
+          "description": "22.jpg",
+          "sceneId": "scene_1780519285486_21_qh1pz",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779133175744"
-        },
-        {
-          "pitch": -10.15184431403003,
-          "yaw": -46.47609205086508,
-          "type": "scene",
-          "text": "beş.jpg",
-          "description": "beş.jpg",
-          "sceneId": "scene_1779126882311_0_ih0ez",
-          "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779133453746"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780521024463"
         }
       ]
     },
-    "scene_1779133096833_0_5u5mr": {
-      "title": "yirmidört.jpg",
-      "panorama": "images/yirmidört.jpg",
-      "pitch": 0,
-      "yaw": 0,
+    "scene_1780519285486_24_lyfmu": {
+      "title": "25.jpg",
+      "panorama": "images/25.jpg",
+      "pitch": -17.374330421075797,
+      "yaw": -141.09360009372693,
       "autoLoad": true,
       "audio": null,
       "hotSpots": [
         {
-          "pitch": -20.97953087336152,
-          "yaw": 140.21678678334942,
+          "pitch": -21.19387728251161,
+          "yaw": -149.46673174774918,
           "type": "scene",
-          "text": "yirmibeş.jpg",
-          "description": "yirmibeş.jpg",
-          "sceneId": "scene_1779132882583_0_i6ybe",
+          "text": "22.jpg",
+          "description": "22.jpg",
+          "sceneId": "scene_1780519285486_21_qh1pz",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779133266554"
-        }
-      ]
-    },
-    "scene_1779133171464_0_rfso5": {
-      "title": "yirmiiki.jpg",
-      "panorama": "images/yirmiiki.jpg",
-      "pitch": 0,
-      "yaw": 0,
-      "autoLoad": true,
-      "audio": null,
-      "hotSpots": [
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520867046"
+        },
         {
-          "pitch": -25.34450411957491,
-          "yaw": 164.75217629581704,
+          "pitch": -16.324675944590496,
+          "yaw": 120.99695417629226,
           "type": "scene",
-          "text": "yirmibeş.jpg",
-          "description": "yirmibeş.jpg",
-          "sceneId": "scene_1779132882583_0_i6ybe",
+          "text": "24.jpg",
+          "description": "24.jpg",
+          "sceneId": "scene_1780519285486_23_gf42l",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1779133235335"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520917779"
+        },
+        {
+          "pitch": -9.034080982387396,
+          "yaw": -46.26301948110486,
+          "type": "scene",
+          "text": "5.jpg",
+          "description": "5.jpg",
+          "sceneId": "scene_1780519285486_4_ksh2h",
+          "coverImage": null,
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780521756271"
         }
       ]
     }
