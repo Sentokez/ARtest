@@ -115,29 +115,24 @@ document.head.appendChild(styleSheet);
 
 
 // =========================================================================
-// GÜVENLİ VE DİNAMİK BOYUTLU MEDYA POP-UP KATMANI (KAPATMA İSTİSNALI)
+// GÜVENLİ VE DİNAMİK BOYUTLU MEDYA POP-UP KATMANI (GITHUB PAGES UYUMLU)
 // =========================================================================
 const videoOverlayHTML = `
 <div class="info-overlay" id="videoOverlay" onclick="closeVideo()">
   <div class="info-content" id="videoGövde" style="max-width: 800px; width: 90%; padding: 25px 20px 20px 20px; background: #fff; border-radius: 20px; position: relative;">
     <button class="btn-close" onclick="closeVideo()" style="position: absolute; top: -15px; right: -15px; z-index: 9999999 !important; pointer-events: auto !important;">×</button>
-    <div id="videoWrapper" style="position: relative; width: 100%; height: auto; overflow: hidden; border-radius: 15px;">
-      <iframe id="videoPlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; display: block;"></iframe>
+    <div id="videoWrapper" style="position: relative; width: 100%; overflow: hidden; border-radius: 15px; transition: all 0.2s ease;">
+      <iframe id="videoPlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block;"></iframe>
     </div>
   </div>
 </div>`;
 
 document.documentElement.insertAdjacentHTML('beforeend', videoOverlayHTML);
 
-// ÇARPI BUTONUNU KORUYAN PLATFORM ENGELLEME KALKANI
 const güvenliBölge = document.getElementById('videoOverlay');
 if (güvenliBölge) {
   const olaylarıKes = (e) => { 
-    // Eğer tıklanan şey veya tıklanan şeyin üst elemanı çarpı butonu ise engelleme yapma!
-    if (e.target.closest('.btn-close')) {
-      return; 
-    }
-    // Diğer tüm tık tık hareketlerinde platformun videoyu durdurmasını engelle
+    if (e.target.closest('.btn-close')) return; 
     e.stopPropagation(); 
   };
   güvenliBölge.addEventListener('click', olaylarıKes, true);
@@ -158,7 +153,7 @@ if (typeof config !== 'undefined' && config.scenes) {
 }
 
 // =========================================================================
-// EVRENSEL MEDYA OYNATICI MOTORU (DİNAMİK BOYUT SÜRÜMÜ)
+// EVRENSEL MEDYA OYNATICI MOTORU (GITHUB HAZIR SÜRÜMÜ)
 // =========================================================================
 window.openVideo = function(url) {
   const videoPlayer = document.getElementById('videoPlayer');
@@ -166,33 +161,30 @@ window.openVideo = function(url) {
   const videoWrapper = document.getElementById('videoWrapper');
   
   let embedUrl = url;
-  let pencereYukseklik = "450px"; // Varsayılan genel yükseklik
   
-  // 1. YouTube Dönüştürücü (Klasik 16:9 Sinematik Oran İster)
+  // 1. YouTube Dönüştürücü (Tarayıcı hızı fark etmeksizin CSS ile tam 16:9 oran kilitler)
   if (url.includes('youtube.com/watch?v=') || url.includes('youtu.be/')) {
     const videoId = url.includes('youtu.be/') ? url.split('youtu.be/')[1].split('?')[0] : url.split('v=')[1].split('&')[0];
     embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&controls=0&disablekb=1';
     
-    // Genişliğin %56.25'i kadar yükseklik vererek tam 16:9 YouTube standartı yakalıyoruz
-    pencereYukseklik = (videoWrapper.offsetWidth * 0.5625) + "px";
+    // CSS padding hilesi ile YouTube için kusursuz 16:9 kalıbı oluşturuyoruz
+    videoWrapper.style.paddingBottom = "56.25%"; 
+    videoWrapper.style.height = "0";
   } 
   
-  // 2. Google Drive Dönüştürücü (Belgeler veya videolar için ideal dikey/yatay oran)
+  // 2. Google Drive Dönüştürücü
   else if (url.includes('drive.google.com') && url.includes('/view')) {
     embedUrl = url.split('/view')[0] + '/preview';
-    pencereYukseklik = "500px"; // Drive dökümanları veya videoları için en temiz boy
+    videoWrapper.style.paddingBottom = "0";
+    videoWrapper.style.height = "500px"; // Sabit dikey döküman boyutu
   } 
   
-  // 3. Spotify Dönüştürücü (Spotify kompakt bir player olduğu için yüksekliği daraltıyoruz)
+  // 3. Spotify Dönüştürücü (Kutuyu tam boyuna presler ve alt beyazlığı yok eder)
   else if (url.includes('spotify.com')) {
     embedUrl = url;
-    // Gönderdiğin görseldeki dikey player boşluğunu sıfırlamak için tam yükseklik
-    pencereYukseklik = "155px"; 
+    videoWrapper.style.paddingBottom = "0";
+    videoWrapper.style.height = "155px"; // Spotify'ın tam dikey gövde boyu
   }
-  
-  // iframe ve dış kutunun yüksekliğini milimetrik olarak eşitliyoruz
-  videoPlayer.style.height = pencereYukseklik;
-  videoWrapper.style.height = pencereYukseklik;
   
   videoPlayer.src = embedUrl;
   videoOverlay.classList.add('active');
