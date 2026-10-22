@@ -2,3 +2,16 @@ backups/
 config.json.tmp
 node_modules/
 .DS_Store
+
+# Local authoring tools; publish only the visitor museum tour.
+/editor.html
+/app.js
+/server.mjs
+/baslat.cmd
+/baslat.ps1
+/package.json
+/tests/
+/legacy.html
+/sanal-tur-yama.js
+/config.original.json
+/README-local.md
