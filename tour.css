@@ -26,3 +26,32 @@
 .animate-points #panorama .tour-point::before{animation:point-halo-pulse 2.5s ease-in-out infinite}
 @keyframes point-halo-pulse{0%,100%{opacity:.15}50%{opacity:1}}
 @media(prefers-reduced-motion:reduce){.animate-points #panorama .tour-point::before{animation:none;opacity:.65}}
+
+/* Indeterminate loading: stays visible until the actual panorama load event. */
+#loading{gap:0;overflow:hidden}
+.loading-mark{position:relative;display:grid;place-items:center;width:176px;height:176px;margin-bottom:28px;flex-shrink:0}
+#loading .loading-mark img{width:104px;height:104px;object-fit:contain;position:relative;z-index:1}
+.loading-orbit{position:absolute;border-radius:50%;border:1px solid #ffffff20;pointer-events:none}
+.loading-orbit-outer{inset:0;border-top:2px solid #ffffffe6;border-right-color:#ffffff60;animation:loading-orbit-turn 3s linear infinite}
+.loading-orbit-inner{inset:13px;border-bottom:1px solid #ffffffb3;border-left-color:#ffffff45;animation:loading-orbit-turn 4.5s linear infinite reverse}
+.loading-orbit-outer::after{content:'';position:absolute;top:24px;right:21px;width:5px;height:5px;border-radius:50%;background:#fff;box-shadow:0 0 10px #ffffff80}
+.loading-caption{font-size:9px;font-weight:600;letter-spacing:4px;color:#ffffff8c;margin-bottom:12px}
+#loadingText{max-width:400px;font-size:15px;font-weight:400;line-height:1.7;letter-spacing:.3px}
+.loading-progress{height:2px;width:144px;margin-top:25px;background:#ffffff20;border-radius:2px;overflow:hidden}
+.loading-progress>span{display:block;width:38%;height:100%;background:#ffffffd9;border-radius:2px;animation:loading-progress-move 1.8s ease-in-out infinite}
+#loading #retry{margin-top:22px}
+#loading.is-error .loading-orbit{animation-play-state:paused}
+#loading.is-error .loading-progress{display:none}
+@keyframes loading-orbit-turn{to{transform:rotate(360deg)}}
+@keyframes loading-progress-move{0%{transform:translateX(-110%)}100%{transform:translateX(370%)}}
+@media(max-height:600px){.loading-mark{width:128px;height:128px;margin-bottom:18px}#loading .loading-mark img{width:78px;height:78px}.loading-orbit-outer::after{top:17px;right:14px}.loading-caption{margin-bottom:7px}.loading-progress{margin-top:17px}}
+@media(prefers-reduced-motion:reduce){.loading-orbit,.loading-progress>span{animation:none}.loading-progress>span{width:100%;opacity:.6}}
+
+/* Spotify uses its compact player, not the tall video frame. */
+#contentDialog[data-media=spotify]{width:calc(100% - 32px);max-width:640px;max-height:calc(100dvh - 32px);padding:26px 22px 18px;border-radius:16px}
+#contentDialog[data-media=spotify] #contentBody{display:flex;flex-direction:column;gap:14px;white-space:normal;min-width:0}
+.media-caption{font-size:9px;letter-spacing:1.7px;font-weight:600;color:var(--muted);padding-right:22px}
+#contentDialog[data-media=spotify] iframe{flex:none;width:100%;border-radius:12px}
+#contentDialog[data-media=spotify] #contentBody>a{align-self:flex-end;font-size:12px;line-height:1.5;text-decoration:none;padding:5px 0}
+#contentDialog[data-media=spotify] #contentBody>a:hover{text-decoration:underline}
+@media(max-width:560px){#contentDialog[data-media=spotify]{width:calc(100% - 20px);padding:24px 12px 14px}.media-caption{font-size:8px}}

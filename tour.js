@@ -29,12 +29,12 @@ function applyTheme() {
   document.title = `${project.projectName} · 360° Sanal Tur`;
 }
 function startLoading() {
-  $('loading').hidden = false; $('retry').hidden = true;
+  $('loading').classList.remove('is-error'); $('loading').hidden = false; $('retry').hidden = true;
   $('loadingText').textContent = project.theme.loadingMessage;
   clearTimeout(loadingTimer);
   loadingTimer = setTimeout(() => loadingError('Görsel yüklenemedi. Dosya yolunu ve WebGL desteğini kontrol edin.'), 25000);
 }
-function loadingError(text) { clearTimeout(loadingTimer); $('loading').hidden = false; $('loadingText').textContent = text; $('retry').hidden = false; }
+function loadingError(text) { clearTimeout(loadingTimer); $('loading').classList.add('is-error'); $('loading').hidden = false; $('loadingText').textContent = text; $('retry').hidden = false; }
 
 function makePoint(hs, index) {
   return {
@@ -107,11 +107,25 @@ function embedUrl(value) {
   return null;
 }
 function openContent(hs) {
-  const body = $('contentBody'); body.replaceChildren();
+  const body = $('contentBody'); body.replaceChildren(); delete $('contentDialog').dataset.media;
   if (pointKind(hs) === 'video') {
     const url = hs.videoURL || hs.URL; const embed = embedUrl(url);
-    if (embed) { const iframe = document.createElement('iframe'); iframe.src = embed; iframe.title = hs.text || 'Müze medya içeriği'; iframe.allow = 'fullscreen; encrypted-media; picture-in-picture'; iframe.allowFullscreen = true; body.append(iframe); }
-    const href = safeAsset(url); if (href) { const a = document.createElement('a'); a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = 'İçeriği yeni sekmede aç ↗'; body.append(a); }
+    if (embed) {
+      const spotify = new URL(embed).hostname === 'open.spotify.com';
+      if (spotify) {
+        $('contentDialog').dataset.media = 'spotify';
+        const caption = document.createElement('div'); caption.className = 'media-caption'; caption.textContent = 'SPOTIFY · SESLİ İÇERİK';
+        body.append(caption);
+      }
+      const iframe = document.createElement('iframe'); iframe.src = embed; iframe.title = hs.text || 'Müze medya içeriği';
+      iframe.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture'; iframe.allowFullscreen = true;
+      if (spotify) {
+        const height = /\/embed\/(episode|track)\//.test(embed) ? 152 : 352;
+        iframe.height = String(height); iframe.style.height = `${height}px`;
+      }
+      body.append(iframe);
+    }
+    const href = safeAsset(url); if (href) { const a = document.createElement('a'); a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = $('contentDialog').dataset.media === 'spotify' ? 'Spotify’da aç ↗' : 'İçeriği yeni sekmede aç ↗'; body.append(a); }
   } else {
     if (hs.coverImage) {
       const img = document.createElement('img'); img.src = safeAsset(hs.coverImage); img.alt = hs.text || 'Eser görseli';
