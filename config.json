@@ -1,9 +1,9 @@
 {
-  "projectName": "Yeni Sanal Tur",
-  "firstSceneId": "scene_1780519285486_0_gpo7y",
+  "projectName": "Ankara Üniversitesi Müzesi",
+  "firstSceneId": "scene_1780519285486_2_sg32f",
   "scenes": {
     "scene_1780519285486_2_sg32f": {
-      "title": "3.jpg",
+      "title": "Atatürk Köşesi Giriş",
       "panorama": "images/3.jpg",
       "pitch": -8.305645326581761,
       "yaw": 10.347280533124376,
@@ -18,7 +18,8 @@
           "description": "4.jpg",
           "sceneId": "scene_1780519285486_3_od2gs",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519416994"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519416994",
+          "id": "e1264f43-e1e9-41ce-bf16-361ea8ff7855"
         },
         {
           "pitch": -14.586813628103846,
@@ -28,7 +29,8 @@
           "description": "2.jpg",
           "sceneId": "scene_1780519285486_1_wah8y",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519452723"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519452723",
+          "id": "9eaab24b-1d43-4151-8868-f700ced7f21d"
         },
         {
           "pitch": -26.522108472215038,
@@ -38,7 +40,8 @@
           "description": "19.jpg",
           "sceneId": "scene_1780519285486_18_160d9",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520423746"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520423746",
+          "id": "e55cde90-1f9e-4e8e-9c3b-7ffe5e21841c"
         },
         {
           "pitch": -27.45854347907821,
@@ -48,59 +51,14 @@
           "description": "15.jpg",
           "sceneId": "scene_1780519285486_14_kgt7p",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520448782"
-        },
-        {
-          "pitch": 8.576838877818089,
-          "yaw": -23.63643417716001,
-          "type": "info",
-          "text": "VİDEO",
-          "description": "VİDEO",
-          "URL": "https://www.youtube.com/watch?v=Xx2aZDDhGjc",
-          "coverImage": null,
-          "cssClass": "vt-hotspot icon-video type-video hs-id-hs_1780955343668"
-        },
-        {
-          "pitch": 1.913746564809574,
-          "yaw": -23.270065983894373,
-          "type": "info",
-          "text": "VİDEO",
-          "description": "VİDEO",
-          "URL": "https://drive.google.com/file/d/1B27f5MNYRIjhhEgXQ9OnMVJtKjHfmynC/view?usp=drive_link",
-          "coverImage": null,
-          "cssClass": "vt-hotspot icon-video type-video hs-id-hs_1780955348343"
-        },
-        {
-          "pitch": -5.398469155217037,
-          "yaw": -23.3248688109075,
-          "type": "info",
-          "text": "",
-          "description": "GEÇİŞ",
-          "coverImage": "images/hs_hs_1780955373616.jpg",
-          "cssClass": "vt-hotspot icon-info type-info hs-id-hs_1780955373616"
-        },
-        {
-          "pitch": -12.34883057401663,
-          "yaw": -23.08756362983332,
-          "type": "info",
-          "text": "",
-          "description": "Porselen Havan",
-          "coverImage": "images/hs_hs_1780955527830.jpg",
-          "cssClass": "vt-hotspot icon-info type-info hs-id-hs_1780955527830"
-        },
-        {
-          "pitch": -19.518949905112173,
-          "yaw": -22.94526350157938,
-          "type": "info",
-          "text": "",
-          "description": "Ülkemizin Eczacılık öğretimi yapan 2. eğitim kurumu, ancak ilk Eczacılık Fakültesi olan Ankara Üniversitesi Eczacılık Fakültesi, 16 Aralık 1960 tarihinde kurulmuş, eğitim ve öğretime ise, 1961-1962 öğretim yılında başlanmıştır. iki bloğun oluşturduğu 23.000 m2 kapalı alanı olan binalarında 160’şer kişilik 3 amfi, toplam 989 kişilik 12 dersane bulunmaktadır. Eczacılık lisans öğretimi 5 yıllıktır. Türkçe eğitimin yanında 2015-2016 eğitim-öğretim yılından itibaren İngilizce lisans programına da başlanmış olup halihazırda iki dilde Eczacılık eğitimi sürdürülmektedir. ",
-          "coverImage": null,
-          "cssClass": "vt-hotspot icon-info type-info hs-id-hs_1780955590795"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520448782",
+          "id": "9b3f574a-8b37-4da9-9323-ca36983527ca"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/3.jpg"
     },
     "scene_1780519285486_1_wah8y": {
-      "title": "2.jpg",
+      "title": "Atatürk Köşesi Koridor",
       "panorama": "images/2.jpg",
       "pitch": -10.64264812278688,
       "yaw": 89.05788147923795,
@@ -115,7 +73,8 @@
           "description": "3.jpg",
           "sceneId": "scene_1780519285486_2_sg32f",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519393940"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519393940",
+          "id": "78c84570-a95c-4534-9e22-8ba55230958b"
         },
         {
           "pitch": -15.275898289068872,
@@ -125,12 +84,14 @@
           "description": "1.jpg",
           "sceneId": "scene_1780519285486_0_gpo7y",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519434323"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519434323",
+          "id": "b62b715f-3cc3-47a5-9f35-c474872ccf8f"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/2.jpg"
     },
     "scene_1780519285486_0_gpo7y": {
-      "title": "1.jpg",
+      "title": "Atatürk Köşesi",
       "panorama": "images/1.jpg",
       "pitch": -5.5051264960308135,
       "yaw": -94.92158822432918,
@@ -145,12 +106,14 @@
           "description": "2.jpg",
           "sceneId": "scene_1780519285486_1_wah8y",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519307075"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519307075",
+          "id": "11dfbe58-8675-4d2b-ab23-a3e137a1085e"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/1.jpg"
     },
     "scene_1780519285486_3_od2gs": {
-      "title": "4.jpg",
+      "title": "Giriş Koridoru",
       "panorama": "images/4.jpg",
       "pitch": -12.146438337252738,
       "yaw": 69.49626128751129,
@@ -165,7 +128,8 @@
           "description": "3.jpg",
           "sceneId": "scene_1780519285486_2_sg32f",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519465746"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519465746",
+          "id": "28527c2b-4c10-4d2e-a9be-f9049fd56be8"
         },
         {
           "pitch": -10.179515850214871,
@@ -175,7 +139,8 @@
           "description": "25.jpg",
           "sceneId": "scene_1780519285486_24_lyfmu",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520836914"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520836914",
+          "id": "5ab7d87f-04d7-41c7-933a-f55e6e3729ff"
         },
         {
           "pitch": -34.48154475706638,
@@ -185,12 +150,14 @@
           "description": "5.jpg",
           "sceneId": "scene_1780519285486_4_ksh2h",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780521419529"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780521419529",
+          "id": "cec87ed0-c9ae-456e-8d12-db8d675b032d"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/4.jpg"
     },
     "scene_1780519285486_4_ksh2h": {
-      "title": "5.jpg",
+      "title": "Giriş Koridoru Orta",
       "panorama": "images/5.jpg",
       "pitch": -2.0240715333205332,
       "yaw": 77.91513177129275,
@@ -205,7 +172,8 @@
           "description": "4.jpg",
           "sceneId": "scene_1780519285486_3_od2gs",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519543159"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519543159",
+          "id": "ecdbab2c-56ee-4367-b035-be73d9b04c86"
         },
         {
           "pitch": -26.825685793964542,
@@ -215,7 +183,8 @@
           "description": "6.jpg",
           "sceneId": "scene_1780519285486_5_71evm",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519564871"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519564871",
+          "id": "92bcbd16-5939-45dd-981c-f0dc33962e96"
         },
         {
           "pitch": -13.022557200534598,
@@ -225,12 +194,14 @@
           "description": "25.jpg",
           "sceneId": "scene_1780519285486_24_lyfmu",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520849490"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520849490",
+          "id": "11a99347-0ba2-41fe-9b62-edc46a06a055"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/5.jpg"
     },
     "scene_1780519285486_5_71evm": {
-      "title": "6.jpg",
+      "title": "Giriş Koridoru Son",
       "panorama": "images/6.jpg",
       "pitch": -16.021126819912737,
       "yaw": -20.739185769527353,
@@ -245,7 +216,8 @@
           "description": "5.jpg",
           "sceneId": "scene_1780519285486_4_ksh2h",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519596337"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519596337",
+          "id": "d94b7345-e751-4f4a-8910-4c3f00f8e33c"
         },
         {
           "pitch": -21.833245964135354,
@@ -255,7 +227,8 @@
           "description": "8.jpg",
           "sceneId": "scene_1780519285486_7_fmjrz",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519622525"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519622525",
+          "id": "71f4ee06-9d36-4983-bc2b-81f717f39548"
         },
         {
           "pitch": -5.673645826924266,
@@ -265,12 +238,14 @@
           "description": "25.jpg",
           "sceneId": "scene_1780519285486_24_lyfmu",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780521126007"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780521126007",
+          "id": "27357c1f-01e3-4630-b89a-daa4fea8f99c"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/6.jpg"
     },
     "scene_1780519285486_7_fmjrz": {
-      "title": "8.jpg",
+      "title": "Ana Koridor",
       "panorama": "images/8.jpg",
       "pitch": -5.62790743728937,
       "yaw": -178.99308386496745,
@@ -285,7 +260,8 @@
           "description": "6.jpg",
           "sceneId": "scene_1780519285486_5_71evm",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519648747"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519648747",
+          "id": "104a9dfa-bd16-4767-a5bf-c550b57a424c"
         },
         {
           "pitch": -24.298728255462688,
@@ -295,12 +271,14 @@
           "description": "10.jpg",
           "sceneId": "scene_1780519285486_9_iqiku",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519712285"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519712285",
+          "id": "907af14f-7fed-4f45-8d0a-579f384b849e"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/8.jpg"
     },
     "scene_1780519285486_9_iqiku": {
-      "title": "10.jpg",
+      "title": "Ana Koridor Son",
       "panorama": "images/10.jpg",
       "pitch": -11.743318638920705,
       "yaw": 99.7243161323745,
@@ -315,7 +293,8 @@
           "description": "11.jpg",
           "sceneId": "scene_1780519285486_10_2v43w",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519756902"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519756902",
+          "id": "11a46626-ef2b-48ee-b8d0-423e82fa105e"
         },
         {
           "pitch": -23.589806021732432,
@@ -325,12 +304,14 @@
           "description": "8.jpg",
           "sceneId": "scene_1780519285486_7_fmjrz",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519768200"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519768200",
+          "id": "c718a2b4-1626-46d4-8f0a-d3b0649c92ad"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/10.jpg"
     },
     "scene_1780519285486_10_2v43w": {
-      "title": "11.jpg",
+      "title": "Fakülteler 1",
       "panorama": "images/11.jpg",
       "pitch": -28.51718130430705,
       "yaw": -100.3243392982024,
@@ -345,7 +326,8 @@
           "description": "12.jpg",
           "sceneId": "scene_1780519285486_11_x8xhv",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519797926"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519797926",
+          "id": "4258bb2f-4380-4dc2-a63f-a70049511011"
         },
         {
           "pitch": -12.739160460314402,
@@ -355,7 +337,8 @@
           "description": "13.jpg",
           "sceneId": "scene_1780519285486_12_yw116",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519930649"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519930649",
+          "id": "b1f3597b-3a69-413d-a675-1430a088adab"
         },
         {
           "pitch": -36.21043217699682,
@@ -365,7 +348,8 @@
           "description": "15.jpg",
           "sceneId": "scene_1780519285486_14_kgt7p",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519974115"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519974115",
+          "id": "69f2cac4-3300-4884-a68b-888a8f842bbc"
         },
         {
           "pitch": -44.372657507503995,
@@ -375,12 +359,14 @@
           "description": "10.jpg",
           "sceneId": "scene_1780519285486_9_iqiku",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520053930"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520053930",
+          "id": "82a0e88d-735f-4827-bc3d-a257951fd1d4"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/11.jpg"
     },
     "scene_1780519285486_11_x8xhv": {
-      "title": "12.jpg",
+      "title": "Fakülteler 1/1",
       "panorama": "images/12.jpg",
       "pitch": -19.562636780362027,
       "yaw": -81.33227712478055,
@@ -395,7 +381,8 @@
           "description": "11.jpg",
           "sceneId": "scene_1780519285486_10_2v43w",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519807804"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519807804",
+          "id": "48a305d1-4a08-47bb-8dba-1a1a02d3562b"
         },
         {
           "pitch": -36.21524108539511,
@@ -405,12 +392,64 @@
           "description": "13.jpg",
           "sceneId": "scene_1780519285486_12_yw116",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519830029"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519830029",
+          "id": "ed5f2792-19ee-4fc5-9a84-203d853011c4"
+        },
+        {
+          "id": "ca9b9ce5-f59c-47ff-951d-d615e71dea2a",
+          "type": "info",
+          "text": "Veteriner Fakültesi Dekanı Prof. Dr. Necmettin Ünal Podcast",
+          "description": "",
+          "pitch": -32.6531409414564,
+          "yaw": 127.119455748508,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/5jtChTQygBo7hfS6JgVruc?si=6021db26bd464b18"
+        },
+        {
+          "id": "45a8a9e7-0f30-41e5-b6fd-005eda2600ae",
+          "type": "info",
+          "text": "Ziraat Fakültesi Dekanı Prof. Dr. Hasan Hüseyin Atar Podcast",
+          "description": "",
+          "pitch": -27.985804664424613,
+          "yaw": -117.31117884421712,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/30GB8zNkkuiB2KDDojTbQq?si=fbfa95ee3d4b4478"
+        },
+        {
+          "id": "b8f5f14c-10ca-4ad0-9996-f9ede4bf861b",
+          "type": "info",
+          "text": "Fen Fakültesi Dekanı Prof. Dr. Canay Aykol Kocakuşaklı Podcast",
+          "description": "",
+          "pitch": -19.4498180635966,
+          "yaw": 21.0221456879109,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/3a9STLYhJYlBEmATEemv4c?si=ae937698910f42e8"
+        },
+        {
+          "id": "58f5ad89-d6ed-4f69-bb41-55c59b98a86d",
+          "type": "info",
+          "text": "Dil ve Tarih-Coğrafya Fakültesi Dekanı Prof. Dr. İrfan Albayrak Podcast",
+          "description": "",
+          "pitch": -18.5975531676518,
+          "yaw": -21.6076034710883,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/71MmGoC3e3QKQJZ46MKx87?si=dae4ce71c64542ea"
+        },
+        {
+          "id": "5ecf12b2-ebe9-4e30-bf6a-ce72fdb0f28d",
+          "type": "info",
+          "text": "Hukuk Fakültesi Dekanı Prof. Dr. İbrahim Ermenek Podcast",
+          "description": "",
+          "pitch": -15.0989407156907,
+          "yaw": -50.4720049667849,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/6vXAcPOqpZLulDBNKs7qka?si=a827763d8f014c60"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/12.jpg"
     },
     "scene_1780519285486_12_yw116": {
-      "title": "13.jpg",
+      "title": "Fakülteler 1/2 ",
       "panorama": "images/13.jpg",
       "pitch": -10.965664882991206,
       "yaw": -18.937387184750833,
@@ -425,7 +464,8 @@
           "description": "12.jpg",
           "sceneId": "scene_1780519285486_11_x8xhv",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519838818"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519838818",
+          "id": "80d6d8e5-94c9-412e-bea4-4138c51c883c"
         },
         {
           "pitch": -5.263479265743893,
@@ -435,12 +475,64 @@
           "description": "11.jpg",
           "sceneId": "scene_1780519285486_10_2v43w",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519849612"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519849612",
+          "id": "b3f1b97e-b166-46f9-b4ac-b5774dd332ce"
+        },
+        {
+          "id": "4fc37720-8859-4006-aa9d-baeeaf00e8d2",
+          "type": "info",
+          "text": "Fen Fakültesi Dekanı Prof. Dr. Canay Aykol Kocakuşaklı Podcast",
+          "description": "",
+          "pitch": -9.138815084454595,
+          "yaw": -43.97289646616072,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/3a9STLYhJYlBEmATEemv4c?si=ae937698910f42e8"
+        },
+        {
+          "id": "3e2bde64-c35d-491c-af93-02bcec2f4385",
+          "type": "info",
+          "text": "Ziraat Fakültesi Dekanı Prof. Dr. Hasan Hüseyin Atar Podcast",
+          "description": "",
+          "pitch": -13.1211313344243,
+          "yaw": 24.3158998759736,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/30GB8zNkkuiB2KDDojTbQq?si=fbfa95ee3d4b4478"
+        },
+        {
+          "id": "7c9d2d88-d93a-4829-b573-742311b3591d",
+          "type": "info",
+          "text": "Veteriner Fakültesi Dekanı Prof. Dr. Necmettin Ünal Podcast",
+          "description": "",
+          "pitch": -9.15567781941346,
+          "yaw": 1.5260500840756,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/5jtChTQygBo7hfS6JgVruc?si=6021db26bd464b18"
+        },
+        {
+          "id": "a478dca9-8859-4ec0-8a84-e4d3b0df4a76",
+          "type": "info",
+          "text": "Dil ve Tarih-Coğrafya Fakültesi Dekanı Prof. Dr. İrfan Albayrak Podcast",
+          "description": "",
+          "pitch": -13.2331858888963,
+          "yaw": -66.4733003525581,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/71MmGoC3e3QKQJZ46MKx87?si=dae4ce71c64542ea"
+        },
+        {
+          "id": "fd2b2c3d-b31c-4dcd-b3ee-b921b0e99ac8",
+          "type": "info",
+          "text": "Hukuk Fakültesi Dekanı Prof. Dr. İbrahim Ermenek Podcast",
+          "description": "",
+          "pitch": -17.3813518836037,
+          "yaw": -126.314278625145,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/6vXAcPOqpZLulDBNKs7qka?si=a827763d8f014c60"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/13.jpg"
     },
     "scene_1780519285486_14_kgt7p": {
-      "title": "15.jpg",
+      "title": "Fakülteler 2",
       "panorama": "images/15.jpg",
       "pitch": -14.300058101213487,
       "yaw": 17.13468071019247,
@@ -455,7 +547,8 @@
           "description": "11.jpg",
           "sceneId": "scene_1780519285486_10_2v43w",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519998072"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519998072",
+          "id": "587aa42d-622b-4280-b96b-f0580ec154fc"
         },
         {
           "pitch": -23.349824508213235,
@@ -465,7 +558,8 @@
           "description": "16.jpg",
           "sceneId": "scene_1780519285486_15_7x6jo",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520123433"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520123433",
+          "id": "e3efc69a-e722-46e4-8bad-c75971ed4d43"
         },
         {
           "pitch": -3.0950395485901345,
@@ -475,7 +569,8 @@
           "description": "17.jpg",
           "sceneId": "scene_1780519285486_16_8ghjn",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520133246"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520133246",
+          "id": "444bfb67-8593-4cc9-b83d-7887cc50ae7b"
         },
         {
           "pitch": -30.023240235449162,
@@ -485,7 +580,8 @@
           "description": "18.jpg",
           "sceneId": "scene_1780519285486_18_160d9",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520232784"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520232784",
+          "id": "6ebed02c-a115-421c-b47b-6e912260d850"
         },
         {
           "pitch": -22.198309293588128,
@@ -495,12 +591,14 @@
           "description": "3.jpg",
           "sceneId": "scene_1780519285486_2_sg32f",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520479716"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520479716",
+          "id": "6a7d3345-5fd8-4be1-b604-fd505a684e19"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/15.jpg"
     },
     "scene_1780519285486_15_7x6jo": {
-      "title": "16.jpg",
+      "title": "Fakülteler 2/1",
       "panorama": "images/16.jpg",
       "pitch": -17.501494339606285,
       "yaw": -73.57447743762532,
@@ -515,7 +613,8 @@
           "description": "17.jpg",
           "sceneId": "scene_1780519285486_16_8ghjn",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520173971"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520173971",
+          "id": "ba1ab616-5e34-4eb9-ae03-5144b8c73bbc"
         },
         {
           "pitch": -39.03426688096009,
@@ -525,12 +624,74 @@
           "description": "15.jpg",
           "sceneId": "scene_1780519285486_14_kgt7p",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520605852"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520605852",
+          "id": "3a56db63-da76-41f9-8b5e-d732cf5650c6"
+        },
+        {
+          "id": "603bbab5-da5e-45b2-836e-0bb9a85b6dc3",
+          "type": "info",
+          "text": "İletişim Fakültesi Dekanı Prof. Dr. Fatih Keskin Podcast",
+          "description": "",
+          "pitch": -22.0450857739901,
+          "yaw": 26.7171471725697,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/6942903AcJbKzPHzTZ9nkQ?si=d4dd38b362104ef3"
+        },
+        {
+          "id": "d0058641-7b43-4e46-94de-1afbfd851d97",
+          "type": "info",
+          "text": "Eğitim Bilimleri Fakültesi Dekanı Prof. Dr. İlhan Yalçın Podcast",
+          "description": "",
+          "pitch": -21.3587570149202,
+          "yaw": -13.6883106861936,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/0wSCT2HhM90bTEEU0cPiHr?si=d4feb5a2ec8d4e97"
+        },
+        {
+          "id": "4e0d28ac-8343-41da-bc09-d03ad6125218",
+          "type": "info",
+          "text": "Diş Hekimliği Fakültesi Dekanı Prof. Dr. Mehmet Eray Kolsuz Podcast",
+          "description": "",
+          "pitch": -17.5531621012634,
+          "yaw": -43.4009324591045,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/36YiGPFb5tc4U294mrOQH7?si=dc9a9be2ee10402b"
+        },
+        {
+          "id": "2da16a6e-8aad-43eb-b037-fd23692cb885",
+          "type": "info",
+          "text": "Tıp Fakültesi Dekanı Prof. Dr. Zehra Aycan Podcast",
+          "description": "",
+          "pitch": -35.3271512382326,
+          "yaw": 124.252340175838,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/6HoHjh6khcAq4ljktDWBpp?si=00e95bc009c3428a"
+        },
+        {
+          "id": "c4b5cd8c-7f11-49d5-b54a-b933407b3a23",
+          "type": "info",
+          "text": "İlahiyat Fakültesi Dekanı Prof. Dr. İrfan Aycan Podcast",
+          "description": "",
+          "pitch": -38.0459059706733,
+          "yaw": -122.772617712087,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/4RtuKFFXjz7gFqPLk28HdL?si=3e12d4ff15ef4580"
+        },
+        {
+          "id": "6ff03c2b-4bf4-42b7-849f-8c34a4378440",
+          "type": "info",
+          "text": "Eczacılık Fakültesi Dekanı Prof. Dr. Asuman Bozkır Podcast",
+          "description": "",
+          "pitch": -19.3013966774912,
+          "yaw": -94.0281468252404,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/4AOTusq7hRAXtNrORVVGTL?si=7e739a0d84c94f73"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/16.jpg"
     },
     "scene_1780519285486_16_8ghjn": {
-      "title": "17.jpg",
+      "title": "Fakülteler 2/2",
       "panorama": "images/17.jpg",
       "pitch": -3.990219734659429,
       "yaw": -159.39955572090463,
@@ -545,7 +706,8 @@
           "description": "16.jpg",
           "sceneId": "scene_1780519285486_15_7x6jo",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520192760"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520192760",
+          "id": "be8955eb-5cf2-41d1-9fb5-a7cf7b27c90e"
         },
         {
           "pitch": -4.930018791961527,
@@ -555,12 +717,74 @@
           "description": "15.jpg",
           "sceneId": "scene_1780519285486_14_kgt7p",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520201527"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520201527",
+          "id": "3f7d954c-3965-48ac-8879-cda2004d33cd"
+        },
+        {
+          "id": "c50c97c8-77ce-4bee-bea7-f02b5a775937",
+          "type": "info",
+          "text": "İletişim Fakültesi Dekanı Prof. Dr. Fatih Keskin Podcast",
+          "description": "",
+          "pitch": -8.49718145144243,
+          "yaw": 176.777587513986,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/6942903AcJbKzPHzTZ9nkQ?si=d4dd38b362104ef3"
+        },
+        {
+          "id": "afa922e6-c17d-4d4c-8279-4d2fc12459e3",
+          "type": "info",
+          "text": "Eğitim Bilimleri Fakültesi Dekanı Prof. Dr. İlhan Yalçın Podcast",
+          "description": "",
+          "pitch": -13.3558636038568,
+          "yaw": 152.543018161874,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/0wSCT2HhM90bTEEU0cPiHr?si=d4feb5a2ec8d4e97"
+        },
+        {
+          "id": "1a95ab0a-bde9-49ab-ae0b-104c3c630784",
+          "type": "info",
+          "text": "Diş Hekimliği Fakültesi Dekanı Prof. Dr. Mehmet Eray Kolsuz Podcast",
+          "description": "",
+          "pitch": -17.5707672797252,
+          "yaw": 100.131684314881,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/36YiGPFb5tc4U294mrOQH7?si=dc9a9be2ee10402b"
+        },
+        {
+          "id": "220957ea-11b6-46ad-85c7-e7b2819944f7",
+          "type": "info",
+          "text": "Tıp Fakültesi Dekanı Prof. Dr. Zehra Aycan Podcast",
+          "description": "",
+          "pitch": -9.77351242580957,
+          "yaw": -139.064043599486,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/6HoHjh6khcAq4ljktDWBpp?si=00e95bc009c3428a"
+        },
+        {
+          "id": "1bcccab4-f240-4de3-b63a-43f969408e0f",
+          "type": "info",
+          "text": "İlahiyat Fakültesi Dekanı Prof. Dr. İrfan Aycan Podcast",
+          "description": "",
+          "pitch": -14.641715083220936,
+          "yaw": -118.06205415042507,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/4RtuKFFXjz7gFqPLk28HdL?si=3e12d4ff15ef4580"
+        },
+        {
+          "id": "9e516a4a-0fcf-47df-a35a-172f22ecd05a",
+          "type": "info",
+          "text": "Eczacılık Fakültesi Dekanı Prof. Dr. Asuman Bozkır Podcast",
+          "description": "",
+          "pitch": -18.9947699001712,
+          "yaw": -57.2340554796337,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/4AOTusq7hRAXtNrORVVGTL?si=7e739a0d84c94f73"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/17.jpg"
     },
     "scene_1780519285486_18_160d9": {
-      "title": "19.jpg",
+      "title": "Fakülteler 3",
       "panorama": "images/19.jpg",
       "pitch": -1.4416339131268008,
       "yaw": -98.08757620188209,
@@ -575,7 +799,8 @@
           "description": "15.jpg",
           "sceneId": "scene_1780519285486_14_kgt7p",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520289746"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520289746",
+          "id": "82ca8f56-04c7-4d8e-9297-d7a4a6f3a50a"
         },
         {
           "pitch": -23.338319635195912,
@@ -585,7 +810,8 @@
           "description": "20.jpg",
           "sceneId": "scene_1780519285486_19_b9xh1",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520318002"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520318002",
+          "id": "d6732d95-a804-48d4-a88d-f027036b40a7"
         },
         {
           "pitch": -4.377092367549832,
@@ -595,7 +821,8 @@
           "description": "21.jpg",
           "sceneId": "scene_1780519285486_20_hft95",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520391833"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520391833",
+          "id": "3da943f3-70a3-4388-81d0-ff6cbe758c99"
         },
         {
           "pitch": -22.854450859669015,
@@ -605,12 +832,14 @@
           "description": "3.jpg",
           "sceneId": "scene_1780519285486_2_sg32f",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520468272"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520468272",
+          "id": "9bb0e670-14a2-419e-84d4-9365dfafa547"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/19.jpg"
     },
     "scene_1780519285486_19_b9xh1": {
-      "title": "20.jpg",
+      "title": "Fakülteler 3/1",
       "panorama": "images/20.jpg",
       "pitch": -17.43890404108131,
       "yaw": 81.23620822478597,
@@ -625,7 +854,8 @@
           "description": "19.jpg",
           "sceneId": "scene_1780519285486_18_160d9",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520328351"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520328351",
+          "id": "8889e9e1-af84-4bc1-afdb-7af17f00e106"
         },
         {
           "pitch": -36.75058587036613,
@@ -635,12 +865,74 @@
           "description": "21.jpg",
           "sceneId": "scene_1780519285486_20_hft95",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520340335"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520340335",
+          "id": "b2249afc-e36a-4938-bb12-67cb2e7b2d25"
+        },
+        {
+          "id": "59e21379-4c22-439d-8309-0645bb4acf8e",
+          "type": "info",
+          "text": "Spor Bilimleri Fakültesi Dekanı Prof. Dr. Semiyha Tuncel Podcast",
+          "description": "",
+          "pitch": -19.230997898558,
+          "yaw": -14.1770670417274,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/4TfeZrlTBCBd5GNx7Y5FuC?si=f606984bdae94fb7"
+        },
+        {
+          "id": "2ebf9aac-e251-45ee-b0b6-23dd00ba4cbe",
+          "type": "info",
+          "text": "Sağlık Bilimleri Fakültesi Dekanı Prof. Dr. Emine Özmete Podcast",
+          "description": "",
+          "pitch": -20.024372349012,
+          "yaw": 28.0772773984796,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/6lAG2hodpx7RIUeZWHQ6MB?si=e23a87e541d14f14"
+        },
+        {
+          "id": "8a0bf476-d92e-4223-91fd-0fc104f65a1e",
+          "type": "info",
+          "text": "Mühendislik Fakültesi Dekanı Prof. Dr. Yusuf Kağan Kadıoğlu Podcast",
+          "description": "",
+          "pitch": -17.3561997131863,
+          "yaw": 56.7432965922847,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/1bdUADc07vp9eLcAH1IndP?si=c024c496bf284320"
+        },
+        {
+          "id": "eadcf437-4205-4b8b-9679-8500880ffb2f",
+          "type": "info",
+          "text": "Açık ve Uzaktan Eğitim Fakültesi Dekanı Prof. Dr. İsmail Akyol Podcast",
+          "description": "",
+          "pitch": -30.2377594878334,
+          "yaw": -122.027421325066,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/2od29DWQdpuujHNAG5sCMN?si=bd85c0965d7045a0"
+        },
+        {
+          "id": "f4f9fe6f-b684-4afd-b316-5f3b01ef7d46",
+          "type": "info",
+          "text": "Güzel Sanatlar Fakültesi Dekanı Prof. Dr. Zeynep Erdoğan Podcast",
+          "description": "",
+          "pitch": -31.5320769073578,
+          "yaw": 131.617809147754,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/3q23IjBsHQO7RcN4obIQFM?si=a4473a5a96f94172"
+        },
+        {
+          "id": "7a57d256-6439-45a8-b8ad-48ab0de64fa6",
+          "type": "info",
+          "text": "Hemşirelik Fakültesi Dekanı Prof. Dr. Ayfer Tezel Podcast",
+          "description": "",
+          "pitch": -37.6943081332782,
+          "yaw": -147.014555127153,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/4qMwc41rpjS60OMADxK9Qx?si=b59fa892204a4e0e"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/20.jpg"
     },
     "scene_1780519285486_20_hft95": {
-      "title": "21.jpg",
+      "title": "Fakülteler 3/2",
       "panorama": "images/21.jpg",
       "pitch": -5.118150631953645,
       "yaw": 159.6449885045888,
@@ -655,7 +947,8 @@
           "description": "20.jpg",
           "sceneId": "scene_1780519285486_19_b9xh1",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520366440"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520366440",
+          "id": "2e5d0d8d-2538-4c98-ad6e-7ed212e6b787"
         },
         {
           "pitch": -5.465338338846477,
@@ -665,12 +958,74 @@
           "description": "19.jpg",
           "sceneId": "scene_1780519285486_18_160d9",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520380409"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520380409",
+          "id": "513e2be7-77a4-4084-b49f-b3abb8fb4b45"
+        },
+        {
+          "id": "95908fc7-c681-436b-bd9d-6e8c2fdcf8d9",
+          "type": "info",
+          "text": "Açık ve Uzaktan Eğitim Fakültesi Dekanı Prof. Dr. İsmail Akyol Podcast",
+          "description": "",
+          "pitch": -7.92822022788568,
+          "yaw": 129.500528356262,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/2od29DWQdpuujHNAG5sCMN?si=bd85c0965d7045a0"
+        },
+        {
+          "id": "f975db9e-950d-4299-a296-c81b20e00e84",
+          "type": "info",
+          "text": "Güzel Sanatlar Fakültesi Dekanı Prof. Dr. Zeynep Erdoğan Podcast",
+          "description": "",
+          "pitch": -13.104496959576094,
+          "yaw": 106.97337575862814,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/3q23IjBsHQO7RcN4obIQFM?si=a4473a5a96f94172"
+        },
+        {
+          "id": "aea1d27a-7efd-4134-860b-195e2b7051c8",
+          "type": "info",
+          "text": "Spor Bilimleri Fakültesi Dekanı Prof. Dr. Semiyha Tuncel Podcast",
+          "description": "",
+          "pitch": -9.694036382099526,
+          "yaw": 175.784979556838,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/4TfeZrlTBCBd5GNx7Y5FuC?si=f606984bdae94fb7"
+        },
+        {
+          "id": "d5c43a8c-2f76-47a4-ae35-a46bba6f9e23",
+          "type": "info",
+          "text": "Sağlık Bilimleri Fakültesi Dekanı Prof. Dr. Emine Özmete Podcast",
+          "description": "",
+          "pitch": -15.459083539035838,
+          "yaw": -163.28813568283815,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/6lAG2hodpx7RIUeZWHQ6MB?si=e23a87e541d14f14"
+        },
+        {
+          "id": "2320b17f-dc87-4339-8ed3-75b746d1d882",
+          "type": "info",
+          "text": "Mühendislik Fakültesi Dekanı Prof. Dr. Yusuf Kağan Kadıoğlu Podcast",
+          "description": "",
+          "pitch": -21.7754743874193,
+          "yaw": -105.257596032994,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/1bdUADc07vp9eLcAH1IndP?si=c024c496bf284320"
+        },
+        {
+          "id": "09f9f11b-93c0-49b7-9338-24b795879fd3",
+          "type": "info",
+          "text": "Hemşirelik Fakültesi Dekanı Prof. Dr. Ayfer Tezel Podcast",
+          "description": "",
+          "pitch": -9.07211858156083,
+          "yaw": 124.357427685171,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/4qMwc41rpjS60OMADxK9Qx?si=b59fa892204a4e0e"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/21.jpg"
     },
     "scene_1780519285486_21_qh1pz": {
-      "title": "22.jpg",
+      "title": "Karşılama Salonu 1",
       "panorama": "images/22.jpg",
       "pitch": -4.5420962176228326,
       "yaw": -8.362915438821801,
@@ -685,7 +1040,8 @@
           "description": "25.jpg",
           "sceneId": "scene_1780519285486_24_lyfmu",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520887469"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520887469",
+          "id": "07ca4d91-ea6e-451d-b0ef-475ca5595602"
         },
         {
           "pitch": -20.96030468786397,
@@ -695,12 +1051,14 @@
           "description": "24.jpg",
           "sceneId": "scene_1780519285486_23_gf42l",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780521035959"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780521035959",
+          "id": "d817b6fa-54c6-4ff4-9833-fdd821c6ab8f"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/22.jpg"
     },
     "scene_1780519285486_23_gf42l": {
-      "title": "24.jpg",
+      "title": "Karşılama Salonu 2",
       "panorama": "images/24.jpg",
       "pitch": -3.6552330660424346,
       "yaw": -42.16683396025206,
@@ -715,7 +1073,8 @@
           "description": "25.jpg",
           "sceneId": "scene_1780519285486_24_lyfmu",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520949954"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520949954",
+          "id": "e04d7b0f-9ab9-4707-921b-9e63ff7163ce"
         },
         {
           "pitch": -17.138165419370115,
@@ -725,12 +1084,14 @@
           "description": "22.jpg",
           "sceneId": "scene_1780519285486_21_qh1pz",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780521024463"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780521024463",
+          "id": "5a40b8ea-5ca3-4609-8af4-047f9c73a7c4"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/24.jpg"
     },
     "scene_1780519285486_24_lyfmu": {
-      "title": "25.jpg",
+      "title": "Karşılama Salonu 3",
       "panorama": "images/25.jpg",
       "pitch": -17.374330421075797,
       "yaw": -141.09360009372693,
@@ -745,7 +1106,8 @@
           "description": "22.jpg",
           "sceneId": "scene_1780519285486_21_qh1pz",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520867046"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520867046",
+          "id": "8b4280ec-d6d7-4720-ba1e-8e667d2ae7eb"
         },
         {
           "pitch": -16.324675944590496,
@@ -755,7 +1117,8 @@
           "description": "24.jpg",
           "sceneId": "scene_1780519285486_23_gf42l",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520917779"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520917779",
+          "id": "8b19ae20-06df-44a8-86b0-1512f4378511"
         },
         {
           "pitch": -9.034080982387396,
@@ -765,9 +1128,22 @@
           "description": "5.jpg",
           "sceneId": "scene_1780519285486_4_ksh2h",
           "coverImage": null,
-          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780521756271"
+          "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780521756271",
+          "id": "f7118f1b-36f0-4f6c-90b3-2c68e2b6b5ba"
         }
-      ]
+      ],
+      "thumbnail": "images/thumbs/25.jpg"
     }
+  },
+  "theme": {
+    "accent": "#284985",
+    "hotspotBg": "#ffffff",
+    "hotspotColor": "#284985",
+    "hotspotSize": 40,
+    "hotspotShape": "circle",
+    "animate": true,
+    "labels": true,
+    "loadingBg": "#284985",
+    "loadingMessage": "Sanal tur yükleniyor…"
   }
 }

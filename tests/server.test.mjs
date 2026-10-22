@@ -1,0 +1,36 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtemp, writeFile, readFile, readdir, rm } from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import { createServer } from '../server.mjs';
+
+test('Local server serves modules, saves atomically with backup, uploads and rejects unsafe requests', async t => {
+  const rootDir = await mkdtemp(path.join(os.tmpdir(),'muze-tur-test-'));
+  const project = {projectName:'Test',firstSceneId:'a',scenes:{a:{title:'Giriş',panorama:'images/a.jpg',hotSpots:[]}}};
+  await writeFile(path.join(rootDir,'config.json'),JSON.stringify(project));
+  await writeFile(path.join(rootDir,'validation.mjs'),'export const ok = true;');
+  const server = createServer({rootDir});
+  await new Promise(resolve => server.listen(0,'127.0.0.1',resolve));
+  t.after(async () => { await new Promise(resolve => server.close(resolve)); await rm(rootDir,{recursive:true,force:true}); });
+  const base = `http://127.0.0.1:${server.address().port}`;
+  const request = (url,body,origin=base) => fetch(base+url,{method:'POST',headers:{Origin:origin,'X-Tour-Editor':'1'},body});
+  const module = await fetch(base+'/validation.mjs');
+  assert.equal(module.status,200); assert.match(module.headers.get('content-type'),/javascript/);
+  assert.equal((await fetch(base+'/.git/config')).status,404);
+  assert.equal((await fetch(base+'/server.mjs')).status,404);
+  assert.equal((await request('/api/save',JSON.stringify(project),'https://example.com')).status,403);
+  assert.equal((await request('/api/save',JSON.stringify({...project,firstSceneId:'missing'}))).status,400);
+  const updated = {...project,projectName:'Kaydedildi'};
+  assert.equal((await request('/api/save',JSON.stringify(updated))).status,200);
+  assert.equal(JSON.parse(await readFile(path.join(rootDir,'config.json'),'utf8')).projectName,'Kaydedildi');
+  const backups = await readdir(path.join(rootDir,'backups'));
+  assert.equal(backups.length,1);
+  assert.equal(JSON.parse(await readFile(path.join(rootDir,'backups',backups[0]),'utf8')).projectName,'Test');
+  assert.equal((await fetch(base+'/backups/'+backups[0])).status,404);
+  const uploaded = await request('/api/upload?name=test.jpg',Buffer.from([255,216,255,217]));
+  assert.equal(uploaded.status,201); const asset = (await uploaded.json()).path;
+  assert.match(asset,/^images\/upload-[\w-]+\.jpg$/);
+  assert.equal((await fetch(base+'/'+asset)).status,200);
+  assert.equal((await request('/api/upload?name=bad.html','<script></script>')).status,400);
+});
