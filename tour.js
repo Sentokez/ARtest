@@ -1,17 +1,17 @@
 import { validateProject } from './validation.mjs';
+import { resolveIcon, iconElement, iconStroke, pointVisual } from './icons.js';
 
 // Public, read-only museum tour. The local editor is kept outside Git.
 const $ = id => document.getElementById(id);
 if (innerWidth <= 850) document.body.classList.add('scenes-hidden');
-const defaults = { accent:'#284985', hotspotBg:'#ffffff', hotspotColor:'#284985', hotspotSize:40, hotspotShape:'circle', animate:true, labels:true, loadingBg:'#284985', loadingMessage:'Sanal tur yükleniyor…' };
-const symbols = { 'arrow-up':'↑', 'arrow-right':'→', 'arrow-left':'←', 'arrow-down':'↓', info:'i', video:'▷' };
+const defaults = { accent:'#284985', hotspotBg:'#ffffff', hotspotColor:'#284985', hotspotSize:40, hotspotStroke:2.5, hotspotShape:'circle', animate:true, labels:true, loadingBg:'#284985', loadingMessage:'Sanal tur yükleniyor…' };
 let project, viewer, active, toastTimer, loadingTimer;
 
 function notify(text) { $('toast').textContent = text; $('toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('toast').hidden = true, 4500); }
 
 function scene() { return project.scenes[active]; }
 function pointKind(hs) { return hs.type === 'scene' ? 'scene' : hs.videoURL || hs.URL || hs.cssClass?.includes('type-video') ? 'video' : 'info'; }
-function pointIcon(hs) { return hs.icon || Object.keys(symbols).find(icon => hs.cssClass?.includes(`icon-${icon}`)) || (pointKind(hs) === 'scene' ? 'arrow-up' : pointKind(hs)); }
+function pointIcon(hs) { return resolveIcon(hs, pointKind(hs) === 'scene' ? 'arrow-up' : pointKind(hs)); }
 function normalise(data) {
   validateProject(data);
   data.theme = { ...defaults, ...data.theme };
@@ -22,7 +22,7 @@ function normalise(data) {
 function applyTheme() {
   const t = project.theme;
   const color = value => /^#[0-9a-f]{6}$/i.test(value) ? value : '#284985';
-  for (const [key, value] of Object.entries({ '--accent':color(t.accent), '--hs-bg':color(t.hotspotBg), '--hs-color':color(t.hotspotColor), '--hs-size':`${Math.max(24,Math.min(80,Number(t.hotspotSize) || 40))}px`, '--hs-radius':t.hotspotShape === 'rounded' ? '10px' : '50%', '--loading-bg':color(t.loadingBg) })) document.documentElement.style.setProperty(key, value);
+  for (const [key, value] of Object.entries({ '--accent':color(t.accent), '--hs-stroke':String(iconStroke(t.hotspotStroke)), '--hs-bg':color(t.hotspotBg), '--hs-color':color(t.hotspotColor), '--hs-size':`${Math.max(24,Math.min(80,Number(t.hotspotSize) || 40))}px`, '--hs-radius':t.hotspotShape === 'rounded' ? '10px' : '50%', '--loading-bg':color(t.loadingBg) })) document.documentElement.style.setProperty(key, value);
   document.body.classList.toggle('animate-points', !!t.animate);
   document.body.classList.toggle('show-labels', !!t.labels);
   $('loadingText').textContent = t.loadingMessage;
@@ -40,10 +40,11 @@ function makePoint(hs, index) {
   return {
     id:hs.id, pitch:hs.pitch, yaw:hs.yaw, type:'info', cssClass:'tour-point',
     createTooltipFunc:el => {
-      el.textContent = symbols[pointIcon(hs)] || 'i';
+      el.replaceChildren(pointVisual(pointIcon(hs)));
       const label = pointKind(hs) === 'scene' ? project.scenes[hs.sceneId]?.title : hs.text || hs.description || 'Bilgi';
       el.dataset.label = label || 'Nokta'; el.setAttribute('aria-label', label || 'Nokta'); el.setAttribute('role','button'); el.tabIndex = 0;
       if (hs.style) {
+        if (hs.style.stroke != null) el.style.setProperty('--hs-stroke', String(iconStroke(hs.style.stroke)));
         if (/^#[0-9a-f]{6}$/i.test(hs.style.bg)) el.style.setProperty('--hs-bg', hs.style.bg);
         if (/^#[0-9a-f]{6}$/i.test(hs.style.color)) el.style.setProperty('--hs-color', hs.style.color);
         el.style.setProperty('--hs-size', `${Math.max(24,Math.min(80,Number(hs.style.size) || 40))}px`);

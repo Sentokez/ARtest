@@ -1140,6 +1140,7 @@
     "hotspotBg": "#ffffff",
     "hotspotColor": "#284985",
     "hotspotSize": 40,
+    "hotspotStroke": 2.5,
     "hotspotShape": "circle",
     "animate": true,
     "labels": true,
