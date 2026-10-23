@@ -3,6 +3,7 @@ import { resolveIcon, iconElement, iconStroke, pointVisual } from './icons.js';
 
 // Public, read-only museum tour. The local editor is kept outside Git.
 const $ = id => document.getElementById(id);
+let museumMap, mapOpening = false, mapInitialization;
 if (innerWidth <= 850) document.body.classList.add('scenes-hidden');
 const defaults = { accent:'#284985', hotspotBg:'#ffffff', hotspotColor:'#284985', hotspotSize:40, hotspotStroke:2.5, hotspotShape:'circle', animate:true, labels:true, loadingBg:'#284985', loadingMessage:'Sanal tur yükleniyor…' };
 let project, viewer, active, toastTimer, loadingTimer;
@@ -59,13 +60,13 @@ function activatePoint(hs) {
   if (pointKind(hs) === 'scene') return viewer.loadScene(hs.sceneId);
   openContent(hs);
 }
-function fillScene() { $('sceneHeading').textContent = scene().title; }
+function fillScene() { syncMapVisibility(); $('sceneHeading').textContent = scene().title; museumMap?.refreshMarkers(); }
 function mount(id = project.firstSceneId) {
   clearTimeout(loadingTimer); viewer?.destroy(); active = id;
   applyTheme(); startLoading();
   const scenes = Object.fromEntries(Object.entries(project.scenes).map(([sid,s]) => [sid, { ...s, hfov:s.hfov || 100, hotSpots:s.hotSpots.map(makePoint) }]));
   viewer = pannellum.viewer('panorama', { default:{ firstScene:id, autoLoad:true, sceneFadeDuration:450, showControls:false, escapeHTML:true }, scenes });
-  viewer.on('load', () => { clearTimeout(loadingTimer); $('loading').hidden = true; active = viewer.getScene(); renderSceneList(); fillScene(); updateAudio(); });
+  viewer.on('load', () => { clearTimeout(loadingTimer); $('loading').hidden = true; active = viewer.getScene(); renderSceneList(); fillScene(); updateAudio(); startMiniMap(); });
   viewer.on('scenechange', sid => { active = sid; startLoading(); renderSceneList(); fillScene(); $('audio').pause(); });
   viewer.on('error', text => loadingError(`Panorama açılamadı: ${text}`));
   renderSceneList(); fillScene();
@@ -142,6 +143,46 @@ function openContent(hs) {
 
 function handle(id, fn) { $(id).addEventListener('click', async event => { try { await fn(event); } catch(error) { notify(error.message); } }); }
 
+
+
+function syncMapVisibility() {
+  const enabled = project.map3d?.enabled !== false;
+  $('openMap').hidden = !enabled;
+  if (!enabled) museumMap?.hide();
+  return enabled;
+}
+async function ensureMuseumMap() {
+  if (mapInitialization) return mapInitialization;
+  if (museumMap) return museumMap;
+  mapInitialization = (async () => {
+    const { MuseumMap } = await import('./map3d.js');
+    museumMap = new MuseumMap({
+      getProject:() => project,
+      getActive:() => ({id:active,yaw:viewer?.getYaw() || 0}),
+      onNavigate:id => { if (id !== active) viewer.loadScene(id); },
+      keepOpen:false
+    });
+
+    return museumMap;
+  })();
+  try { return await mapInitialization; }
+  catch(error) { museumMap?.dispose(); museumMap = null; throw error; }
+  finally { mapInitialization = null; }
+}
+async function startMiniMap() {
+  if (!project || !syncMapVisibility()) return;
+  try { const map = await ensureMuseumMap(); if (!syncMapVisibility()) { map.hide(); return; } await map.showMini(); }
+  catch(error) { notify(`Mini harita açılamadı: ${error.message}`); }
+}
+async function openMap3D() {
+  if (!project || mapOpening || !syncMapVisibility()) return;
+  mapOpening = true;
+  try { const map = await ensureMuseumMap(); if (!syncMapVisibility()) { map.hide(); return; } await map.open(); }
+  finally { mapOpening = false; }
+}
+handle('openMap',openMap3D);
+window.addEventListener('pagehide',event => { if (event.persisted) museumMap?.stop(); else museumMap?.dispose(); });
+window.addEventListener('pageshow',event => { if (event.persisted) startMiniMap(); });
 
 handle('retry', () => mount(active));
 handle('toggleScenes', () => { document.body.classList.toggle('scenes-hidden'); viewer.resize(); });

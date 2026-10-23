@@ -1,0 +1,54 @@
+.map-dialog{width:calc(100% - 40px);max-width:1050px;max-height:calc(100dvh - 40px);padding:0;overflow:auto;background:#fff;border:1px solid #dae1dc;border-radius:16px}
+.map-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--line)}
+.map-header h2{font-size:21px;font-weight:600;letter-spacing:-.4px;margin:7px 0 0}
+.map-close{font-size:26px;border:0;background:transparent;padding:4px 9px;line-height:1}
+.map-layout{display:grid;grid-template-columns:minmax(0,1fr)}
+.map-viewport{position:relative;min-width:0;height:min(58dvh,550px);min-height:290px;overflow:hidden;background:#edf1ef;isolation:isolate}
+.map-canvas{display:block;width:100%;height:100%;touch-action:none}
+.map-marker-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.map-marker{position:absolute;transform:translate(-50%,-50%);width:30px;height:30px;min-width:30px;display:grid;place-items:center;border:2px solid #fff;border-radius:50%;padding:0;background:#59766e;color:#fff;font-size:11px;font-weight:700;box-shadow:0 2px 9px #17372b40;pointer-events:auto;line-height:1}
+.map-marker:hover,.map-marker:focus-visible{background:var(--accent);outline:2px solid var(--accent);outline-offset:3px;z-index:3}
+.map-marker.is-active{background:var(--accent);width:36px;height:36px;z-index:2;box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 18%,transparent)}
+.map-bearing{position:absolute;left:50%;top:50%;width:13px;height:12px;clip-path:polygon(50% 0,100% 100%,50% 75%,0 100%);background:var(--accent);pointer-events:none}
+.map-status{position:absolute;inset:0;display:grid;place-items:center;padding:30px 25px 65px;text-align:center;font-size:13px;line-height:1.8;background:#edf1eff0;z-index:4}
+.map-viewport>button:not(.map-marker){position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:5}
+.map-footer{padding:16px 24px 20px;border-top:1px solid var(--line)}
+.map-hint{font-size:11px;line-height:1.7;color:var(--muted);margin:0 0 14px}
+.map-view-tools{display:flex;align-items:center;flex-wrap:wrap;gap:9px}
+.map-view-tools>button{font-size:11px;padding:9px 12px}
+.map-opacity-label{display:grid;grid-template-columns:1fr auto;gap:4px 12px;font-size:11px;min-width:180px;margin-right:auto}
+.map-opacity-label input{grid-column:1/-1;width:100%;margin:5px 0 0;accent-color:var(--accent)}
+.map-opacity-label output{color:var(--muted)}
+.map-dialog.has-map-editor{max-width:1230px}
+.has-map-editor .map-layout{grid-template-columns:minmax(0,1fr) 280px}
+.has-map-editor .map-viewport{height:min(64dvh,620px)}
+.map-editor-controls{padding:22px 20px;border-left:1px solid var(--line);overflow:auto;max-height:min(64dvh,620px);min-width:0}
+.map-editor-controls label{margin:18px 0 10px}
+.map-editor-controls input,.map-editor-controls select{width:100%;min-width:0;padding:10px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);font:inherit}
+.map-editor-controls input[type=range]{padding:0}
+.map-editor-controls output{display:block;color:var(--muted);font-size:11px;text-align:right;margin-top:8px}
+.map-editor-controls button{font-size:11px}
+.map-editor-controls hr{margin:20px 0}
+.map-viewport.is-placing .map-canvas{cursor:crosshair}
+.map-viewport.is-placing .map-marker{pointer-events:none;opacity:.6}
+.stage-bottom .view-controls{flex-wrap:wrap;justify-content:flex-end;min-width:0}
+@media(max-width:750px){.map-dialog{width:calc(100% - 16px);max-height:calc(100dvh - 16px)}.map-header{padding:16px}.map-header h2{font-size:18px}.has-map-editor .map-layout{grid-template-columns:1fr}.map-viewport,.has-map-editor .map-viewport{height:45dvh;min-height:260px}.map-editor-controls{max-height:none;border-left:0;border-top:1px solid var(--line);padding:18px}.map-footer{padding:15px}.map-view-tools{gap:7px}.map-opacity-label{min-width:100%;margin-bottom:8px}}
+
+/* The same WebGL canvas moves between the HUD and the expanded dialog. */
+.map-minimap{position:absolute;top:18px;right:18px;width:220px;height:182px;border:1px solid #ffffffa6;border-radius:13px;overflow:hidden;background:#edf1ef;box-shadow:0 5px 22px #0004;z-index:3}
+.map-minimap .map-viewport{width:100%;height:100%;min-height:0;border-radius:inherit}
+.map-mini-open{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:inherit;background:transparent;padding:0;text-align:left;z-index:6;cursor:zoom-in;color:#20312e}
+.map-mini-open:hover{background:transparent}
+.map-mini-open:focus-visible{outline:3px solid var(--accent);outline-offset:-4px}
+.map-mini-label{position:absolute;top:11px;left:12px;font-size:8px;font-weight:700;letter-spacing:1.7px;text-shadow:0 1px 4px #fff}
+.map-mini-scene{position:absolute;bottom:10px;left:11px;right:66px;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 5px #fff,0 1px 5px #fff}
+.map-mini-expand{position:absolute;bottom:7px;right:7px;background:#ffffffdd;border:1px solid #d3ddd7;border-radius:5px;padding:4px 6px;font-size:9px}
+.map-minimap .map-marker{width:17px;height:17px;min-width:17px;border-width:1.5px;font-size:8px;pointer-events:none}
+.map-minimap .map-marker.is-active{width:23px;height:23px;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 20%,transparent)}
+.map-minimap .map-bearing{width:10px;height:9px}
+.map-minimap .map-status{padding:35px 12px;font-size:10px}
+.stage:has(.map-minimap:not([hidden])) .stage-heading{max-width:calc(100% - 275px)}
+body.is-editor:not(.is-preview) .stage-toolbar{top:auto;bottom:86px}
+body.is-editor:not(.is-preview) #placementHint{bottom:150px}
+@media(max-width:1000px){.map-minimap{width:180px;height:155px;top:14px;right:14px}.stage:has(.map-minimap:not([hidden])) .stage-heading{max-width:calc(100% - 225px)}}
+@media(max-width:560px){.map-minimap{width:145px;height:128px;top:10px;right:10px;border-radius:10px}.map-mini-label{font-size:7px;left:8px;top:8px;letter-spacing:1px}.map-mini-scene{left:8px;bottom:9px;right:55px;font-size:8px}.map-mini-expand{font-size:8px;right:5px;bottom:5px;padding:3px 4px}.stage:has(.map-minimap:not([hidden])) .stage-heading{max-width:calc(100% - 180px)}.stage:has(.map-minimap:not([hidden])) .stage-heading h2{font-size:16px}}

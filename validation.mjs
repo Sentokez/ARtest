@@ -1,3 +1,5 @@
+import { validateMap } from './map-data.js';
+
 export function validateProject(project) {
   const fail = message => { throw new Error(message); };
   if (!project || !project.scenes || Array.isArray(project.scenes) || typeof project.scenes !== 'object') fail('Geçerli bir tur projesi seçin.');
@@ -13,5 +15,6 @@ export function validateProject(project) {
       if (hs.type === 'scene' && !ids.includes(hs.sceneId)) fail('Bir geçişin hedef sahnesi bulunamadı.');
     }
   }
+  validateMap(project.map3d, project.scenes);
   return project;
 }
