@@ -444,6 +444,16 @@
           "yaw": -50.4720049667849,
           "icon": "video",
           "videoURL": "https://open.spotify.com/episode/6vXAcPOqpZLulDBNKs7qka?si=a827763d8f014c60"
+        },
+        {
+          "id": "30ce8782-a84e-4acc-b5f6-df163e2b2f8d",
+          "type": "info",
+          "text": "Siyasal Bilgiler Fakültesi Dekanı Prof. Dr. Alper Özer Podcast",
+          "description": "",
+          "pitch": -17.5137398626787,
+          "yaw": -100.329722985876,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/7C5s54AbMqsA6Z5gjzOAVP?si=49a4cb2705494303"
         }
       ],
       "thumbnail": "images/thumbs/12.jpg"
@@ -527,6 +537,16 @@
           "yaw": -126.314278625145,
           "icon": "video",
           "videoURL": "https://open.spotify.com/episode/6vXAcPOqpZLulDBNKs7qka?si=a827763d8f014c60"
+        },
+        {
+          "id": "0dc506c2-da52-4573-bd67-0de473cbb459",
+          "type": "info",
+          "text": "Siyasal Bilgiler Fakültesi Dekanı Prof. Dr. Alper Özer Podcast",
+          "description": "",
+          "pitch": -16.6890384900317,
+          "yaw": 77.4922803640556,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/7C5s54AbMqsA6Z5gjzOAVP?si=49a4cb2705494303"
         }
       ],
       "thumbnail": "images/thumbs/13.jpg"
@@ -927,6 +947,16 @@
           "yaw": -147.014555127153,
           "icon": "video",
           "videoURL": "https://open.spotify.com/episode/4qMwc41rpjS60OMADxK9Qx?si=b59fa892204a4e0e"
+        },
+        {
+          "id": "78544921-9c5a-4a6e-986f-1176674fb961",
+          "type": "info",
+          "text": "Uygulamalı Bilimler Fakültesi Dekanı Prof. Dr. Harun Tanrıvermiş Podcast",
+          "description": "",
+          "pitch": -18.941371740985645,
+          "yaw": 106.64659854592739,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/5StxO3ZaSKkx695ZKn5YIV?si=011a5967b42945f7"
         }
       ],
       "thumbnail": "images/thumbs/20.jpg"
@@ -1020,6 +1050,16 @@
           "yaw": 124.357427685171,
           "icon": "video",
           "videoURL": "https://open.spotify.com/episode/4qMwc41rpjS60OMADxK9Qx?si=b59fa892204a4e0e"
+        },
+        {
+          "id": "8afc74ba-346b-4860-8cc8-72c6b772b3c0",
+          "type": "info",
+          "text": "Uygulamalı Bilimler Fakültesi Dekanı Prof. Dr. Harun Tanrıvermiş Podcast",
+          "description": "",
+          "pitch": -17.7038261224678,
+          "yaw": 47.4177764799597,
+          "icon": "video",
+          "videoURL": "https://open.spotify.com/episode/5StxO3ZaSKkx695ZKn5YIV?si=011a5967b42945f7"
         }
       ],
       "thumbnail": "images/thumbs/21.jpg"
