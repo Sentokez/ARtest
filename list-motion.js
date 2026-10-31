@@ -1,3 +1,19 @@
+export function enableCatalogHover(list) {
+  if (!list) return;
+  let current;
+  const clear = () => { current?.removeAttribute('data-catalog-hover'); current = null; };
+  list.addEventListener('pointermove',event => {
+    if (event.pointerType === 'touch' || event.buttons) return;
+    const card = event.target.closest?.('.scene-card,.media-card');
+    // Keep the last card enlarged across row gaps. Scaling changes the visual
+    // hit area, so those gaps must never reset the whole catalog between cards.
+    if (!card || card.parentElement !== list || card === current) return;
+    clear(); current = card; card.setAttribute('data-catalog-hover','');
+  });
+  list.addEventListener('pointerleave',clear);
+  list.addEventListener('pointercancel',clear);
+}
+
 // Reveal only the visible rows, so scrolling down doesn't wait for offscreen rows.
 export function animateContentList(list) {
   if (!list?.getBoundingClientRect || list.hidden || document.body.classList.contains('scenes-hidden')) return;

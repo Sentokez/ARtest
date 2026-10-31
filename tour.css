@@ -119,3 +119,13 @@ body.scenes-hidden .scenes-panel{display:flex;transform:translateX(-100%);opacit
 .spotify-dialog[data-mode=docked]{transform-origin:top right;scale:1;transition:scale .24s cubic-bezier(.22,.68,0,1)}
 @media(hover:hover) and (pointer:fine){.spotify-dialog[data-mode=docked][data-hover-ready=true]:hover{scale:1.5}}
 @media(prefers-reduced-motion:reduce){.spotify-dialog[data-mode=docked]{transition:none}}
+
+/* Lift catalog cards without moving neighboring rows or their click targets. */
+#sceneList,#mediaList{padding-top:5px;padding-bottom:10px}
+.scene-card,.media-card{position:relative;scale:1;transform-origin:center;transition:scale .22s cubic-bezier(.2,.65,.2,1),box-shadow .22s ease,background .18s ease,border-color .18s ease}
+.scene-card:focus-visible,.media-card:focus-within{scale:1.035;z-index:1;box-shadow:0 5px 14px #20312e1a}
+@media(hover:hover) and (pointer:fine){
+  .scene-card[data-catalog-hover],.media-card[data-catalog-hover]{scale:1.08;z-index:2;box-shadow:0 7px 18px #20312e26;border-color:color-mix(in srgb,var(--accent) 25%,white);background:#fff}
+  .scene-card.active[data-catalog-hover]{background:color-mix(in srgb,var(--accent) 6%,white)}
+}
+@media(prefers-reduced-motion:reduce){.scene-card,.media-card{transition:none}#sceneList .scene-card,#mediaList .media-card{scale:1!important}}

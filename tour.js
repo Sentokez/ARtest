@@ -1,7 +1,7 @@
 import { navigateScene } from './scene-navigation.js';
 import { createImageViewer } from './image-viewer.js';
 import { animateContentEntrance, cancelContentEntrance, contentOrigin } from './content-motion.js';
-import { animateContentList } from './list-motion.js';
+import { animateContentList, enableCatalogHover } from './list-motion.js';
 import { MediaLibrary } from './media-library.js';
 import { SpotifyPlayer } from './spotify-player.js';
 import { validateProject } from './validation.mjs';
@@ -9,6 +9,7 @@ import { resolveIcon, iconElement, iconStroke, pointVisual } from './icons.js';
 
 // Public, read-only museum tour. The local editor is kept outside Git.
 const $ = id => document.getElementById(id);
+for (const id of ['sceneList','mediaList']) enableCatalogHover($(id));
 let museumMap, mapOpening = false, mapInitialization, spotifyPlayer, mediaLibrary;
 let hasRenderedContent = false;
 let imageViewer;
