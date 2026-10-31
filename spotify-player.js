@@ -31,6 +31,16 @@ export class SpotifyPlayer {
     this.externalLink = element('a',null,'Spotify’da aç ↗'); this.externalLink.target = '_blank'; this.externalLink.rel = 'noopener noreferrer';
     this.actions.append(this.listenButton,this.externalLink);
     this.dialog.append(this.header,this.frameViewport,this.actions); stage.append(this.dialog);
+    // A drag crossing the player must not enlarge it. Require a fresh pointer
+    // entry with no pressed buttons, including after releasing over the player.
+    this.dialog.addEventListener('pointerenter',event => {
+      this.dialog.dataset.hoverReady = String(event.buttons === 0 && event.pointerType !== 'touch');
+    });
+    this.dialog.addEventListener('pointerleave',() => { this.dialog.dataset.hoverReady = 'false'; });
+    this.onStagePointerDown = event => {
+      if (!event.composedPath().includes(this.dialog)) this.dialog.dataset.hoverReady = 'false';
+    };
+    stage.addEventListener('pointerdown',this.onStagePointerDown,true);
     this.resizeObserver = new ResizeObserver(() => this.updateLayout()); this.resizeObserver.observe(this.frameViewport);
     this.listenButton.addEventListener('click', () => this.dock());
     this.expandButton.addEventListener('click', () => this.expand());
@@ -77,6 +87,7 @@ export class SpotifyPlayer {
     if (this.dialog.open && this.mode === mode) { this.updateLayout(); return; }
     if (this.dialog.open) this.dialog.close();
     this.mode = mode; this.dialog.dataset.mode = mode;
+    this.dialog.dataset.hoverReady = 'false';
     this.caption.textContent = mode === 'modal' ? 'SPOTIFY · SESLİ İÇERİK' : 'GEZERKEN DİNLE';
     if (mode === 'modal') this.dialog.showModal(); else this.dialog.show();
     this.updateLayout();
@@ -128,5 +139,5 @@ export class SpotifyPlayer {
     this.iframe.removeAttribute('src');
   }
   stop() { if (this.dialog.open) this.dialog.close(); this.clear(); }
-  dispose() { this.resizeObserver.disconnect(); this.stop(); this.dialog.remove(); }
+  dispose() { this.stage.removeEventListener('pointerdown',this.onStagePointerDown,true); this.resizeObserver.disconnect(); this.stop(); this.dialog.remove(); }
 }
