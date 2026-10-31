@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { animateContentSettle, cancelContentEntrance } from './content-motion.js';
 import { OrbitControls } from './vendor/three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from './vendor/three/addons/loaders/GLTFLoader.js';
 import { DEFAULT_MAP, mapOpacity, mapMiniTilt, mapMiniZoom, validMapPoint, mapHeading } from './map-data.js';
@@ -50,9 +51,17 @@ export class MuseumMap {
     (document.getElementById('stage') || document.body).append(this.miniDock);
     this.dialog.addEventListener('close', () => {
       if (this.dialog.open) return; // A fullscreen reparent may have reopened it already.
+      const settleMini = this.settleMini;
+      this.cancelPanelMotion();
       this.cancelPlacement(); this.onClose?.(); this.dock();
+      if (settleMini && !this.miniDock.hidden) animateContentSettle(this.miniDock);
+    });
+    this.dialog.addEventListener('cancel', event => {
+      if (this.placement) return; // The editor handles Esc to cancel placement first.
+      event.preventDefault(); this.close();
     });
     this.onFullscreen = () => {
+      this.cancelPanelMotion();
       const wasOpen = this.dialog.open;
       if (wasOpen) this.dialog.close();
       (document.fullscreenElement || document.body).append(this.dialog);
@@ -63,6 +72,7 @@ export class MuseumMap {
   }
   settings() { return this.getProject().map3d || DEFAULT_MAP; }
   hide() {
+    this.cancelPanelMotion();
     this.suspended = true;
     if (this.dialog.open) this.dialog.close();
     this.miniDock.hidden = true; this.stop(); this.cancelPlacement();
@@ -88,16 +98,61 @@ export class MuseumMap {
   async open() {
     if (this.settings().enabled === false) { this.hide(); return; }
     this.suspended = false;
+    const wasOpen = this.dialog.open;
+    const source = !this.miniDock.hidden ? this.miniDock.getBoundingClientRect?.() : null;
+    this.cancelPanelMotion();
     this.miniDock.hidden = true; this.layout.prepend(this.viewport);
     this.markerLayer.setAttribute('aria-hidden','false');
     if (!this.dialog.open) this.dialog.showModal();
     try {
       this.initRenderer(); this.controls.enabled = true; this.resize();
+      if (!wasOpen) this.playPanelMotion(source,false);
       if (!this.model || this.loadedPath !== this.settings().model) await this.load();
       this.setOpacity(this.settings().opacity); this.setMiniTilt(this.settings().miniTilt); this.setMiniZoom(this.settings().miniZoom); this.refreshMarkers(); this.animate();
     } catch(error) { this.showError(error); }
   }
-  close() { this.dialog.close(); }
+  close() {
+    if (!this.dialog.open || this.isClosing) return;
+    const current = this.dialog.getBoundingClientRect?.();
+    this.cancelPanelMotion();
+    // The empty minimap keeps its layout dimensions, even while its canvas is expanded.
+    this.miniDock.hidden = false;
+    const target = this.miniDock.getBoundingClientRect?.();
+    this.miniDock.hidden = true;
+    const motion = this.playPanelMotion(target,true,current);
+    if (!motion) { this.dialog.close(); return; }
+    this.isClosing = true;
+    motion.finished.then(() => {
+      if (this.panelMotion !== motion) return;
+      this.panelMotion = null; this.isClosing = false;
+      this.settleMini = true;
+      this.dialog.close(); motion.cancel();
+    }).catch(() => {});
+  }
+  panelFrame(rect,base) {
+    if (!rect || rect.width <= 0 || rect.height <= 0) return {transform:'translateY(8px) scale(.97)',opacity:0};
+    return {transform:`translate(${rect.left-base.left}px,${rect.top-base.top}px) scale(${rect.width/base.width},${rect.height/base.height})`,opacity:.25};
+  }
+  playPanelMotion(miniRect,closing = false,currentRect) {
+    if (!this.dialog.animate || globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return null;
+    const base = this.dialog.getBoundingClientRect?.();
+    if (!base || base.width <= 0 || base.height <= 0) return null;
+    const full = {transform:'translate(0,0) scale(1,1)',opacity:1};
+    const initial = currentRect ? {...this.panelFrame(currentRect,base),opacity:1} : full;
+    const mini = {...this.panelFrame(miniRect,base),...(closing ? {opacity:0} : {})};
+    const frames = (closing ? [initial,mini] : [mini,full]).map(frame => ({...frame,transformOrigin:'top left'}));
+    const motion = this.dialog.animate(frames,{duration:closing ? 360 : 320,easing:'cubic-bezier(.22,.68,0,1)',fill:'both'});
+    this.panelMotion = motion;
+    if (!closing) motion.finished.then(() => {
+      if (this.panelMotion !== motion) return;
+      this.panelMotion = null; motion.cancel();
+    }).catch(() => {});
+    return motion;
+  }
+  cancelPanelMotion() {
+    this.settleMini = false; cancelContentEntrance(this.miniDock);
+    const motion = this.panelMotion; this.panelMotion = null; this.isClosing = false; motion?.cancel();
+  }
   initRenderer() {
     if (this.renderer) return;
     const renderer = new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'low-power'});
@@ -304,6 +359,7 @@ export class MuseumMap {
     });
   }
   dispose() {
+    this.cancelPanelMotion();
     this.stop(); this.resizeObserver.disconnect(); document.removeEventListener('fullscreenchange',this.onFullscreen);
     this.controls?.dispose(); if (this.model) this.disposeObject(this.model); if (this.grid) this.disposeObject(this.grid);
     this.renderer?.dispose(); this.dialog.remove(); this.miniDock.remove();

@@ -1,3 +1,5 @@
+import { animateContentEntrance, animateContentSettle, cancelContentEntrance, contentOrigin } from './content-motion.js';
+
 // Keep one iframe attached to the stage. Switching dialog modes changes only
 // presentation, so docking never reparents or navigates the playing iframe.
 function element(tag, className, text) {
@@ -39,7 +41,7 @@ export class SpotifyPlayer {
       if (!this.dialog.open) this.clear();
     });
   }
-  open({embed, href, title = 'Spotify sesli içerik'}) {
+  open({embed, href, title = 'Spotify sesli içerik', origin}) {
     const url = new URL(embed);
     if (url.origin !== 'https://open.spotify.com' || !/^\/embed\/(episode|track|album|playlist)\/[a-zA-Z0-9]+\/?$/.test(url.pathname)) throw new Error('Geçerli bir Spotify oynatıcı bağlantısı gerekli.');
     const height = /^\/embed\/(episode|track)\//.test(url.pathname) ? 152 : 352;
@@ -50,23 +52,67 @@ export class SpotifyPlayer {
     let external;
     try { external = new URL(href); } catch { external = url; }
     this.externalLink.href = external.origin === 'https://open.spotify.com' ? external.href : url.href;
-    this.expand();
+    const source = contentOrigin(origin);
+    if (source) {
+      this.cancelMotion(); this.switchMode('modal'); this.updateLayout();
+      animateContentEntrance(this.dialog,source);
+    } else this.expand();
     this.updateLayout();
   }
   expand() {
-    if (!this.currentEmbed || this.mode === 'modal') return;
-    if (this.dialog.open) this.dialog.close();
-    this.mode = 'modal'; this.dialog.dataset.mode = this.mode; this.caption.textContent = 'SPOTIFY · SESLİ İÇERİK';
-    this.dialog.showModal();
-    this.updateLayout();
+    if (!this.currentEmbed || (this.mode === 'modal' && !this.motion)) return;
+    const source = this.dialog.open ? this.dialog.getBoundingClientRect?.() : null;
+    this.cancelMotion(); this.switchMode('modal');
+    const target = this.dialog.getBoundingClientRect?.();
+    if (source && target && this.canAnimate()) this.playMotion(source,target,false);
   }
   dock() {
-    if (!this.currentEmbed || this.mode === 'docked') return;
+    if (!this.currentEmbed || this.mode === 'docked' || this.motion) return;
+    const source = this.dialog.getBoundingClientRect?.();
+    const target = this.canAnimate() ? this.measureDockRect() : null;
+    if (source && target && this.canAnimate()) this.playMotion(source,target,true,() => this.switchMode('docked'));
+    else this.switchMode('docked');
+  }
+  switchMode(mode) {
+    if (this.dialog.open && this.mode === mode) { this.updateLayout(); return; }
     if (this.dialog.open) this.dialog.close();
-    this.mode = 'docked'; this.dialog.dataset.mode = this.mode; this.caption.textContent = 'GEZERKEN DİNLE';
-    this.dialog.show();
+    this.mode = mode; this.dialog.dataset.mode = mode;
+    this.caption.textContent = mode === 'modal' ? 'SPOTIFY · SESLİ İÇERİK' : 'GEZERKEN DİNLE';
+    if (mode === 'modal') this.dialog.showModal(); else this.dialog.show();
     this.updateLayout();
   }
+  canAnimate() { return !!this.dialog.animate && !globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches; }
+  measureDockRect() {
+    // Measure a lightweight shell: never clone, detach or navigate the real iframe.
+    const probe = element('div','spotify-dialog'); probe.dataset.mode = 'docked';
+    probe.setAttribute('open',''); probe.setAttribute('aria-hidden','true'); probe.inert = true;
+    probe.style.visibility = 'hidden'; probe.style.pointerEvents = 'none';
+    const header = element('div','spotify-header');
+    header.append(element('span','media-caption','GEZERKEN DİNLE'),element('span','spotify-expand','⤢'),element('span','spotify-close','×'));
+    const frame = element('div','spotify-frame-viewport'); probe.append(header,frame);
+    this.stage.append(probe);
+    try {
+      const layout = fitSpotifyFrame(frame.clientWidth,this.frameHeight || 152);
+      if (!layout) return null;
+      frame.style.height = `${layout.height}px`;
+      return probe.getBoundingClientRect();
+    } finally { probe.remove(); }
+  }
+  playMotion(source,target,shrinking,onFinish) {
+    this.cancelMotion();
+    const base = this.dialog.getBoundingClientRect?.();
+    if (!base?.width || !base.height || !source.width || !target.width) { onFinish?.(); return; }
+    const frame = (rect,opacity) => ({transform:`translate(${rect.left-base.left}px,${rect.top-base.top}px) scale(${rect.width/base.width},${rect.height/base.height})`,transformOrigin:'top left',opacity});
+    const motion = this.dialog.animate([frame(source,shrinking ? 1 : .35),frame(target,shrinking ? 0 : 1)],{duration:shrinking ? 360 : 320,easing:'cubic-bezier(.22,.68,0,1)',fill:'both'});
+    this.motion = motion; this.listenButton.disabled = true;
+    motion.finished.then(() => {
+      if (this.motion !== motion) return;
+      this.motion = null; this.listenButton.disabled = false;
+      onFinish?.(); motion.cancel();
+      if (shrinking && this.dialog.open) animateContentSettle(this.dialog);
+    }).catch(() => {});
+  }
+  cancelMotion() { cancelContentEntrance(this.dialog); const motion = this.motion; this.motion = null; this.listenButton.disabled = false; motion?.cancel(); }
   updateLayout() {
     const layout = fitSpotifyFrame(this.frameViewport.clientWidth,this.frameHeight || 152);
     if (!layout || !this.dialog.open) return;
@@ -77,6 +123,7 @@ export class SpotifyPlayer {
     this.frameViewport.style.setProperty('--spotify-scaled-height',`${layout.height}px`);
   }
   clear() {
+    this.cancelMotion();
     this.mode = 'closed'; this.dialog.dataset.mode = this.mode; this.currentEmbed = null;
     this.iframe.removeAttribute('src');
   }

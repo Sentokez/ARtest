@@ -1,10 +1,16 @@
+import { createImageViewer } from './image-viewer.js';
+import { animateContentEntrance, cancelContentEntrance, contentOrigin } from './content-motion.js';
+import { animateContentList } from './list-motion.js';
+import { MediaLibrary } from './media-library.js';
 import { SpotifyPlayer } from './spotify-player.js';
 import { validateProject } from './validation.mjs';
 import { resolveIcon, iconElement, iconStroke, pointVisual } from './icons.js';
 
 // Public, read-only museum tour. The local editor is kept outside Git.
 const $ = id => document.getElementById(id);
-let museumMap, mapOpening = false, mapInitialization, spotifyPlayer;
+let museumMap, mapOpening = false, mapInitialization, spotifyPlayer, mediaLibrary;
+let hasRenderedContent = false;
+let imageViewer;
 if (innerWidth <= 850) document.body.classList.add('scenes-hidden');
 const defaults = { accent:'#284985', hotspotBg:'#ffffff', hotspotColor:'#284985', hotspotSize:40, hotspotStroke:2.5, hotspotShape:'circle', animate:true, labels:true, loadingBg:'#284985', loadingMessage:'Sanal tur yükleniyor…' };
 let project, viewer, active, toastTimer, loadingTimer;
@@ -51,15 +57,15 @@ function makePoint(hs, index) {
         if (/^#[0-9a-f]{6}$/i.test(hs.style.color)) el.style.setProperty('--hs-color', hs.style.color);
         el.style.setProperty('--hs-size', `${Math.max(24,Math.min(80,Number(hs.style.size) || 40))}px`);
       }
-      el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activatePoint(hs,index); } });
+      el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activatePoint(hs,index,el); } });
     },
-    clickHandlerFunc:e => { e.stopPropagation(); activatePoint(hs,index); }
+    clickHandlerFunc:e => { e.stopPropagation(); activatePoint(hs,index,e.currentTarget); }
   };
 }
 
-function activatePoint(hs) {
+function activatePoint(hs,index,trigger) {
   if (pointKind(hs) === 'scene') return viewer.loadScene(hs.sceneId);
-  openContent(hs);
+  openContent(hs,contentOrigin(trigger));
 }
 function fillScene() { syncMapVisibility(); $('sceneHeading').textContent = scene().title; museumMap?.refreshMarkers(); }
 function mount(id = project.firstSceneId) {
@@ -73,7 +79,10 @@ function mount(id = project.firstSceneId) {
   renderSceneList(); fillScene();
 }
 
-function renderSceneList() {
+function renderSceneList({animate = false} = {}) {
+  if (!project) return;
+  const reveal = animate || !hasRenderedContent; hasRenderedContent = true;
+  if (mediaLibrary?.activeTab === 'media') { mediaLibrary.refresh({animate:reveal}); return; }
   const query = $('search').value.toLocaleLowerCase('tr');
   $('sceneCount').textContent = Object.keys(project.scenes).length;
   $('sceneList').replaceChildren();
@@ -85,6 +94,8 @@ function renderSceneList() {
     const sub = document.createElement('small'); sub.textContent = `${String(index+1).padStart(2,'0')} · ${s.hotSpots.length} nokta${id === project.firstSceneId ? ' · Başlangıç' : ''}`;
     text.append(title,sub); button.append(img,text); button.onclick = () => { if (id !== active) viewer.loadScene(id); if(innerWidth <= 850) document.body.classList.add('scenes-hidden'); }; $('sceneList').append(button);
   });
+  mediaLibrary?.refresh();
+  if (reveal) animateContentList($('sceneList'));
 }
 
 function updateAudio() {
@@ -108,13 +119,14 @@ function embedUrl(value) {
   } catch { /* Unrecognised URL is shown as an external link. */ }
   return null;
 }
-function openContent(hs) {
+function openContent(hs,origin) {
+  imageViewer?.dispose(); imageViewer = null;
   const mediaUrl = hs.videoURL || hs.URL;
   const spotifyEmbed = pointKind(hs) === 'video' ? embedUrl(mediaUrl) : null;
   if (spotifyEmbed && new URL(spotifyEmbed).hostname === 'open.spotify.com') {
     if ($('contentDialog').open) $('contentDialog').close();
     spotifyPlayer ||= new SpotifyPlayer($('stage'));
-    spotifyPlayer.open({embed:spotifyEmbed,href:safeAsset(mediaUrl),title:hs.text || hs.description || 'Spotify sesli içerik'});
+    spotifyPlayer.open({embed:spotifyEmbed,href:safeAsset(mediaUrl),title:hs.text || hs.description || 'Spotify sesli içerik',origin});
     return;
   }
   const body = $('contentBody'); body.replaceChildren(); delete $('contentDialog').dataset.media;
@@ -128,18 +140,23 @@ function openContent(hs) {
     const href = safeAsset(url); if (href) { const a = document.createElement('a'); a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = 'İçeriği yeni sekmede aç ↗'; body.append(a); }
   } else {
     if (hs.coverImage) {
-      const img = document.createElement('img'); img.src = safeAsset(hs.coverImage); img.alt = hs.text || 'Eser görseli';
-      const viewport = document.createElement('div'); viewport.className = 'image-viewport'; viewport.append(img);
-      const controls = document.createElement('div'); controls.className = 'image-tools'; let scale = 1;
-      const resize = () => { img.style.width = `${scale*100}%`; };
-      for (const [label,fn] of [['−',() => scale = Math.max(1,scale-.25)],['Sıfırla',() => scale = 1],['+',() => scale = Math.min(4,scale+.25)]]) { const b = document.createElement('button'); b.textContent = label; b.onclick = () => { fn(); resize(); }; controls.append(b); }
-      resize(); body.append(controls,viewport);
+      imageViewer = createImageViewer(safeAsset(hs.coverImage),hs.text || 'Eser görseli');
+      body.append(imageViewer.element);
     }
-    const text = document.createElement('p'); text.textContent = hs.description || hs.text || ''; body.append(text);
+    const description = hs.coverImage ? hs.description : hs.description || hs.text;
+    if (description?.trim()) {
+      const text = document.createElement('p'); text.textContent = description; body.append(text);
+    }
   }
-  $('contentDialog').showModal();
+  showContentDialog(origin);
 }
 
+function showContentDialog(origin) {
+  const dialog = $('contentDialog');
+  cancelContentEntrance(dialog);
+  if (!dialog.open) dialog.showModal();
+  animateContentEntrance(dialog,origin);
+}
 function handle(id, fn) { $(id).addEventListener('click', async event => { try { await fn(event); } catch(error) { notify(error.message); } }); }
 
 
@@ -184,7 +201,19 @@ window.addEventListener('pagehide',event => { if (event.persisted) museumMap?.st
 window.addEventListener('pageshow',event => { if (event.persisted) startMiniMap(); });
 
 handle('retry', () => mount(active));
-handle('toggleScenes', () => { document.body.classList.toggle('scenes-hidden'); viewer.resize(); });
+let sidebarWasHidden = document.body.classList.contains('scenes-hidden');
+function syncSidebarState() {
+  const hidden = document.body.classList.contains('scenes-hidden');
+  $('toggleScenes').setAttribute('aria-expanded',String(!hidden));
+  $('scenesPanel').inert = hidden;
+  if (sidebarWasHidden && !hidden) animateContentList(mediaLibrary?.activeTab === 'media' ? $('mediaList') : $('sceneList'));
+  sidebarWasHidden = hidden;
+  if (hidden && $('scenesPanel').contains(document.activeElement)) $('toggleScenes').focus({preventScroll:true});
+}
+$('toggleScenes').setAttribute('aria-controls','scenesPanel');
+new MutationObserver(syncSidebarState).observe(document.body,{attributes:true,attributeFilter:['class']});
+syncSidebarState();
+handle('toggleScenes', () => { document.body.classList.toggle('scenes-hidden'); viewer?.resize(); });
 handle('zoomIn', () => viewer.setHfov(viewer.getHfov()-10));
 handle('zoomOut', () => viewer.setHfov(viewer.getHfov()+10));
 handle('fullscreen', async () => { if (document.fullscreenElement) await document.exitFullscreen(); else await $('stage').requestFullscreen(); });
@@ -195,7 +224,35 @@ document.addEventListener('fullscreenchange', () => {
 handle('audioToggle', async () => { const audio = $('audio'); if (audio.paused) await audio.play(); else audio.pause(); $('audioToggle').textContent = audio.paused ? '♫ Sesi oynat' : 'Ⅱ Sesi durdur'; });
 $('audio').addEventListener('error', () => notify('Ses dosyası açılamadı. Dosya yolunu kontrol edin.'));
 handle('closeContent', () => { $('contentDialog').close(); });
-$('contentDialog').addEventListener('close', () => $('contentBody').replaceChildren());
+$('contentDialog').addEventListener('close', () => {
+  if ($('contentDialog').open) return;
+  cancelContentEntrance($('contentDialog'));
+  imageViewer?.dispose(); imageViewer = null;
+  for (const media of $('contentBody').querySelectorAll('audio,video')) media.pause();
+  $('contentBody').replaceChildren();
+});
+mediaLibrary = new MediaLibrary({
+  root:$('scenesPanel'),getProject:() => project,onTabChange:() => renderSceneList({animate:true}),
+  onNavigate:sceneId => {
+    if (!project.scenes[sceneId]) return;
+    if (sceneId !== active) viewer.loadScene(sceneId);
+    if (innerWidth <= 850) document.body.classList.add('scenes-hidden');
+  },
+  onOpen:(entry,trigger) => {
+    const origin = contentOrigin(trigger);
+
+    if (entry.audioSource) {
+      imageViewer?.dispose(); imageViewer = null;
+      const body = $('contentBody'); body.replaceChildren(); delete $('contentDialog').dataset.media;
+      const title = document.createElement('p'); title.textContent = entry.label;
+      const audio = document.createElement('audio'); audio.controls = true; audio.preload = 'metadata'; audio.src = safeAsset(entry.audioSource); audio.style.width = '100%';
+      audio.setAttribute('aria-label',entry.label);
+      $('audio').pause(); $('audioToggle').textContent = '♫ Sesi oynat';
+      body.append(title,audio); showContentDialog(origin);
+    } else openContent(entry.hotspot,origin);
+    if (innerWidth <= 850) document.body.classList.add('scenes-hidden');
+  }
+});
 $('search').addEventListener('input', renderSceneList);
 
 new ResizeObserver(() => viewer?.resize()).observe($('stage'));
