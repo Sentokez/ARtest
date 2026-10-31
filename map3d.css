@@ -52,3 +52,13 @@ body.is-editor:not(.is-preview) .stage-toolbar{top:auto;bottom:86px}
 body.is-editor:not(.is-preview) #placementHint{bottom:150px}
 @media(max-width:1000px){.map-minimap{width:180px;height:155px;top:14px;right:14px}.stage:has(.map-minimap:not([hidden])) .stage-heading{max-width:calc(100% - 225px)}}
 @media(max-width:560px){.map-minimap{width:145px;height:128px;top:10px;right:10px;border-radius:10px}.map-mini-label{font-size:7px;left:8px;top:8px;letter-spacing:1px}.map-mini-scene{left:8px;bottom:9px;right:55px;font-size:8px}.map-mini-expand{font-size:8px;right:5px;bottom:5px;padding:3px 4px}.stage:has(.map-minimap:not([hidden])) .stage-heading{max-width:calc(100% - 180px)}.stage:has(.map-minimap:not([hidden])) .stage-heading h2{font-size:16px}}
+
+/* Shared HUD dimensions keep a listening player aligned with the minimap. */
+.stage{--hud-base-width:220px;--hud-width:var(--hud-base-width);--hud-map-height:182px;--hud-offset:18px;--spotify-dock-top:var(--hud-offset)}
+.map-minimap{width:var(--hud-width);height:var(--hud-map-height);top:var(--hud-offset);right:var(--hud-offset)}
+.stage:has(.map-minimap:not([hidden])){--spotify-dock-top:calc(var(--hud-offset) + var(--hud-map-height) + 10px)}
+@media(max-width:1000px){.stage{--hud-base-width:180px;--hud-map-height:155px;--hud-offset:14px}}
+@media(max-width:560px){.stage{--hud-base-width:145px;--hud-map-height:128px;--hud-offset:10px}}
+/* Give the embedded controls a readable minimum width while listening. */
+.stage:has(.spotify-dialog[data-mode=docked][open]){--hud-width:max(200px,var(--hud-base-width))}
+.stage:has(.spotify-dialog[data-mode=docked][open]) .stage-heading{max-width:calc(100% - var(--hud-width) - 48px)}

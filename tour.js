@@ -1,9 +1,10 @@
+import { SpotifyPlayer } from './spotify-player.js';
 import { validateProject } from './validation.mjs';
 import { resolveIcon, iconElement, iconStroke, pointVisual } from './icons.js';
 
 // Public, read-only museum tour. The local editor is kept outside Git.
 const $ = id => document.getElementById(id);
-let museumMap, mapOpening = false, mapInitialization;
+let museumMap, mapOpening = false, mapInitialization, spotifyPlayer;
 if (innerWidth <= 850) document.body.classList.add('scenes-hidden');
 const defaults = { accent:'#284985', hotspotBg:'#ffffff', hotspotColor:'#284985', hotspotSize:40, hotspotStroke:2.5, hotspotShape:'circle', animate:true, labels:true, loadingBg:'#284985', loadingMessage:'Sanal tur yükleniyor…' };
 let project, viewer, active, toastTimer, loadingTimer;
@@ -108,25 +109,23 @@ function embedUrl(value) {
   return null;
 }
 function openContent(hs) {
+  const mediaUrl = hs.videoURL || hs.URL;
+  const spotifyEmbed = pointKind(hs) === 'video' ? embedUrl(mediaUrl) : null;
+  if (spotifyEmbed && new URL(spotifyEmbed).hostname === 'open.spotify.com') {
+    if ($('contentDialog').open) $('contentDialog').close();
+    spotifyPlayer ||= new SpotifyPlayer($('stage'));
+    spotifyPlayer.open({embed:spotifyEmbed,href:safeAsset(mediaUrl),title:hs.text || hs.description || 'Spotify sesli içerik'});
+    return;
+  }
   const body = $('contentBody'); body.replaceChildren(); delete $('contentDialog').dataset.media;
   if (pointKind(hs) === 'video') {
     const url = hs.videoURL || hs.URL; const embed = embedUrl(url);
     if (embed) {
-      const spotify = new URL(embed).hostname === 'open.spotify.com';
-      if (spotify) {
-        $('contentDialog').dataset.media = 'spotify';
-        const caption = document.createElement('div'); caption.className = 'media-caption'; caption.textContent = 'SPOTIFY · SESLİ İÇERİK';
-        body.append(caption);
-      }
       const iframe = document.createElement('iframe'); iframe.src = embed; iframe.title = hs.text || 'Müze medya içeriği';
       iframe.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture'; iframe.allowFullscreen = true;
-      if (spotify) {
-        const height = /\/embed\/(episode|track)\//.test(embed) ? 152 : 352;
-        iframe.height = String(height); iframe.style.height = `${height}px`;
-      }
       body.append(iframe);
     }
-    const href = safeAsset(url); if (href) { const a = document.createElement('a'); a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = $('contentDialog').dataset.media === 'spotify' ? 'Spotify’da aç ↗' : 'İçeriği yeni sekmede aç ↗'; body.append(a); }
+    const href = safeAsset(url); if (href) { const a = document.createElement('a'); a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = 'İçeriği yeni sekmede aç ↗'; body.append(a); }
   } else {
     if (hs.coverImage) {
       const img = document.createElement('img'); img.src = safeAsset(hs.coverImage); img.alt = hs.text || 'Eser görseli';
@@ -181,7 +180,7 @@ async function openMap3D() {
   finally { mapOpening = false; }
 }
 handle('openMap',openMap3D);
-window.addEventListener('pagehide',event => { if (event.persisted) museumMap?.stop(); else museumMap?.dispose(); });
+window.addEventListener('pagehide',event => { if (event.persisted) museumMap?.stop(); else { museumMap?.dispose(); spotifyPlayer?.dispose(); } });
 window.addEventListener('pageshow',event => { if (event.persisted) startMiniMap(); });
 
 handle('retry', () => mount(active));
