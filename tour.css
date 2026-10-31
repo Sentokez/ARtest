@@ -75,3 +75,7 @@
 .spotify-dialog[data-mode=docked] .spotify-frame-viewport{border-radius:8px}
 .spotify-dialog[data-mode=docked] .spotify-actions{display:none}
 @media(max-width:560px){.spotify-dialog{padding:16px 12px 13px}.spotify-actions{gap:10px}}
+
+.map-control-group{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.map-control-group .logos{position:static;display:flex;align-items:center;gap:8px}
+@media(max-width:560px){.map-control-group{gap:7px}.map-control-group .logos{gap:6px}.map-control-group .logos img{width:34px;height:34px}}
