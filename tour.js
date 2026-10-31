@@ -1,3 +1,4 @@
+import { navigateScene } from './scene-navigation.js';
 import { createImageViewer } from './image-viewer.js';
 import { animateContentEntrance, cancelContentEntrance, contentOrigin } from './content-motion.js';
 import { animateContentList } from './list-motion.js';
@@ -63,8 +64,10 @@ function makePoint(hs, index) {
   };
 }
 
+function goToScene(id,preserveView = true) { return navigateScene(viewer,project,id,preserveView); }
+
 function activatePoint(hs,index,trigger) {
-  if (pointKind(hs) === 'scene') return viewer.loadScene(hs.sceneId);
+  if (pointKind(hs) === 'scene') return goToScene(hs.sceneId);
   openContent(hs,contentOrigin(trigger));
 }
 function fillScene() { syncMapVisibility(); $('sceneHeading').textContent = scene().title; museumMap?.refreshMarkers(); }
@@ -92,7 +95,7 @@ function renderSceneList({animate = false} = {}) {
     const img = document.createElement('img'); img.src = safeAsset(s.thumbnail || s.panorama); img.alt = ''; img.loading = 'lazy'; img.decoding = 'async';
     const text = document.createElement('span'); const title = document.createElement('strong'); title.textContent = s.title;
     const sub = document.createElement('small'); sub.textContent = `${String(index+1).padStart(2,'0')} · ${s.hotSpots.length} nokta${id === project.firstSceneId ? ' · Başlangıç' : ''}`;
-    text.append(title,sub); button.append(img,text); button.onclick = () => { if (id !== active) viewer.loadScene(id); if(innerWidth <= 850) document.body.classList.add('scenes-hidden'); }; $('sceneList').append(button);
+    text.append(title,sub); button.append(img,text); button.onclick = () => { goToScene(id,false); if(innerWidth <= 850) document.body.classList.add('scenes-hidden'); }; $('sceneList').append(button);
   });
   mediaLibrary?.refresh();
   if (reveal) animateContentList($('sceneList'));
@@ -175,7 +178,7 @@ async function ensureMuseumMap() {
     museumMap = new MuseumMap({
       getProject:() => project,
       getActive:() => ({id:active,yaw:viewer?.getYaw() || 0}),
-      onNavigate:id => { if (id !== active) viewer.loadScene(id); },
+      onNavigate:id => { if (id !== active) goToScene(id); },
       keepOpen:false
     });
 
@@ -235,7 +238,7 @@ mediaLibrary = new MediaLibrary({
   root:$('scenesPanel'),getProject:() => project,onTabChange:() => renderSceneList({animate:true}),
   onNavigate:sceneId => {
     if (!project.scenes[sceneId]) return;
-    if (sceneId !== active) viewer.loadScene(sceneId);
+    if (sceneId !== active) goToScene(sceneId);
     if (innerWidth <= 850) document.body.classList.add('scenes-hidden');
   },
   onOpen:(entry,trigger) => {

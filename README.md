@@ -2,7 +2,9 @@
 
 Bu depo, müzenin ziyaretçilere açık statik sanal turunu içerir.
 
-`index.html`, `tour.js`, `tour.css`, `media-library.js`, `list-motion.js`, `content-motion.js`, `image-viewer.js`, `spotify-player.js`, `icons.js`, `validation.mjs`, `map-data.js`, `map3d.js`, `map3d.css`, `config.json`, `vendor/`, `models/`, `images/` ve varsa `audio/` birlikte yayınlanmalıdır. GitHub Pages ile sunulabilir.
+`index.html`, `tour.js`, `tour.css`, `media-library.js`, `list-motion.js`, `content-motion.js`, `image-viewer.js`, `scene-navigation.js`, `spotify-player.js`, `icons.js`, `validation.mjs`, `map-data.js`, `map3d.js`, `map3d.css`, `config.json`, `vendor/`, `models/`, `images/` ve varsa `audio/` birlikte yayınlanmalıdır. GitHub Pages ile sunulabilir.
+
+Panorama üzerindeki sahne geçişlerinde bakış yönü, dikey açı ve yakınlık korunur. Sol taraftaki sahne listesinden seçim yapıldığında ise kayıtlı başlangıç açısı ve yakınlığı kullanılır. Panoramalar arasındaki yön farkı haritanın yön düzeltmelerinden hesaplanır; harita kapalıyken de çalışır. İlk açılışta sahnenin kayıtlı başlangıç açısı kullanılır.
 
 Bilgi ve medya pencereleri, tıklanan panorama noktasından veya medya kartından büyüyerek ekranın ortasına gelir. Sahne geçişleri bundan etkilenmez. Cihazın hareket azaltma tercihi açıksa bu animasyon atlanır.
 
