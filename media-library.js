@@ -41,11 +41,15 @@ export function collectMedia(project) {
     const key = mediaSource(href); if (!key || panoramas.has(key)) return;
     const occurrence = {sceneId,sceneTitle:scenes[sceneId].title,index};
     if (library.has(key)) { library.get(key).occurrences.push(occurrence); return; }
-    library.set(key,{key,href,kind,label:(typeof label === 'string' ? label.trim() : '') || ({image:'Eser görseli',audio:'Sesli anlatım',podcast:'Podcast',document:'Belge',video:'Video / medya'})[kind],hotspot,audioSource,occurrences:[occurrence]});
+    library.set(key,{key,href,kind,label:(typeof label === 'string' ? label.trim() : '') || ({model:'3D eser',image:'Eser görseli',audio:'Sesli anlatım',podcast:'Podcast',document:'Belge',video:'Video / medya'})[kind],hotspot,audioSource,occurrences:[occurrence]});
   }
   for (const [sceneId,scene] of Object.entries(scenes)) {
     for (const [index,hs] of (scene.hotSpots || []).entries()) {
       if (hs.type === 'scene') continue;
+      if (hs.modelURL) {
+        add({href:hs.modelURL,kind:'model',label:hs.text || hs.description,hotspot:hs},sceneId,index);
+        continue;
+      }
       const href = hs.videoURL || hs.URL;
       if (href) {
         const kind = linkedKind(href), label = hs.text || hs.description;
@@ -64,7 +68,7 @@ export function filterMedia(entries,query = '') {
   const search = searchText(query.trim());
   return entries.filter(entry => searchText([entry.label,entry.kind,kinds[entry.kind]?.text,...entry.occurrences.map(item => item.sceneTitle)].join(' ')).includes(search));
 }
-const kinds = {podcast:{text:'Podcast',icon:'headphones'},video:{text:'Video / medya',icon:'video'},audio:{text:'Ses',icon:'volume'},image:{text:'Görsel',icon:'image'},document:{text:'Belge',icon:'book'}};
+const kinds = {model:{text:'3D model',icon:'model'},podcast:{text:'Podcast',icon:'headphones'},video:{text:'Video / medya',icon:'video'},audio:{text:'Ses',icon:'volume'},image:{text:'Görsel',icon:'image'},document:{text:'Belge',icon:'book'}};
 export class MediaLibrary {
   constructor({root,getProject,onOpen,onNavigate,onTabChange}) {
     Object.assign(this,{getProject,onOpen,onNavigate,onTabChange}); this.activeTab = 'scenes'; this.queries = {scenes:'',media:''};

@@ -273,6 +273,16 @@
           "coverImage": null,
           "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519712285",
           "id": "907af14f-7fed-4f45-8d0a-579f384b849e"
+        },
+        {
+          "id": "0e64dc9b-0b9e-4109-b9d9-8b9d9d39b22f",
+          "type": "info",
+          "text": "İskelet Sistemi Modeli",
+          "description": "",
+          "pitch": 0.937287587413489,
+          "yaw": 79.5064051716938,
+          "icon": "model",
+          "modelURL": "models/upload-7ba2ba7e-04f7-4888-8010-987c2d0574ff.glb"
         }
       ],
       "thumbnail": "images/thumbs/8.jpg"

@@ -13,6 +13,7 @@ for (const id of ['sceneList','mediaList']) enableCatalogHover($(id));
 let museumMap, mapOpening = false, mapInitialization, spotifyPlayer, mediaLibrary;
 let hasRenderedContent = false;
 let imageViewer;
+let modelViewerPromise;
 if (innerWidth <= 850) document.body.classList.add('scenes-hidden');
 const defaults = { accent:'#284985', hotspotBg:'#ffffff', hotspotColor:'#284985', hotspotSize:40, hotspotStroke:2.5, hotspotShape:'circle', animate:true, labels:true, loadingBg:'#284985', loadingMessage:'Sanal tur yükleniyor…' };
 let project, viewer, active, toastTimer, loadingTimer;
@@ -20,7 +21,7 @@ let project, viewer, active, toastTimer, loadingTimer;
 function notify(text) { $('toast').textContent = text; $('toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('toast').hidden = true, 4500); }
 
 function scene() { return project.scenes[active]; }
-function pointKind(hs) { return hs.type === 'scene' ? 'scene' : hs.videoURL || hs.URL || hs.cssClass?.includes('type-video') ? 'video' : 'info'; }
+function pointKind(hs) { return hs.type === 'scene' ? 'scene' : hs.modelURL ? 'model' : hs.videoURL || hs.URL || hs.cssClass?.includes('type-video') ? 'video' : 'info'; }
 function pointIcon(hs) { return resolveIcon(hs, pointKind(hs) === 'scene' ? 'arrow-up' : pointKind(hs)); }
 function normalise(data) {
   validateProject(data);
@@ -125,6 +126,10 @@ function embedUrl(value) {
 }
 function openContent(hs,origin) {
   imageViewer?.dispose(); imageViewer = null;
+  if (hs.modelURL) {
+    if ($('contentDialog').open) $('contentDialog').close();
+    openModelContent(hs); return;
+  }
   const mediaUrl = hs.videoURL || hs.URL;
   const spotifyEmbed = pointKind(hs) === 'video' ? embedUrl(mediaUrl) : null;
   if (spotifyEmbed && new URL(spotifyEmbed).hostname === 'open.spotify.com') {
@@ -153,6 +158,13 @@ function openContent(hs,origin) {
     }
   }
   showContentDialog(origin);
+}
+
+async function openModelContent(hs) {
+  try {
+    modelViewerPromise ||= import('./model-viewer.js').then(({ModelViewer}) => new ModelViewer()).catch(error => {modelViewerPromise = null; throw error;});
+    await (await modelViewerPromise).open(hs);
+  } catch(error) { notify(error.message); }
 }
 
 function showContentDialog(origin) {

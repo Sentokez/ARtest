@@ -1,4 +1,5 @@
 import { validateMap } from './map-data.js';
+import { validModelPath } from './model-data.js';
 
 export function validateProject(project) {
   const fail = message => { throw new Error(message); };
@@ -13,6 +14,7 @@ export function validateProject(project) {
     for (const hs of scene.hotSpots) {
       if (!Number.isFinite(hs.pitch) || Math.abs(hs.pitch) > 90 || !Number.isFinite(hs.yaw) || Math.abs(hs.yaw) > 180) fail('Nokta koordinatları geçersiz.');
       if (hs.type === 'scene' && !ids.includes(hs.sceneId)) fail('Bir geçişin hedef sahnesi bulunamadı.');
+      if (hs.modelURL != null && !validModelPath(hs.modelURL)) fail('3D eser için models/ klasöründen bir GLB model seçin.');
     }
   }
   validateMap(project.map3d, project.scenes);

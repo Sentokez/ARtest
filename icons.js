@@ -31,6 +31,8 @@ const icons = {
   star: ['Öne çıkan eser', ['m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z']]
 };
 
+icons.model = ['3D model / eser', ['M2 5h5a3.5 3.5 0 0 1 0 7H4m3 0a3.5 3.5 0 0 1 0 7H2','M14 5v14h2a7 7 0 0 0 0-14Z']];
+
 export const iconOptions = Object.entries(icons).map(([id, [label]]) => ({ id, label }));
 export function resolveIcon(hs, fallback = 'info') {
   if (Object.hasOwn(icons, hs.icon)) return hs.icon;
