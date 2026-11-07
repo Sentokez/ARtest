@@ -72,7 +72,7 @@ body.is-editor:not(.is-preview) #placementHint{bottom:150px}
 }
 
 .is-embedded #tourWorkspace:not(:fullscreen) .stage {
-  --hud-base-width: clamp(120px, var(--embedded-hud-width, 165px), 200px);
-  --hud-listening-min: 160px;
+  --hud-base-width: clamp(130px, var(--embedded-hud-width, 185px), 220px);
+  --hud-listening-min: 175px;
   --hud-map-height: calc(var(--hud-width) * .82);
 }

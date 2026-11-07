@@ -279,7 +279,7 @@ $('search').addEventListener('input', renderSceneList);
 new ResizeObserver(([{target, contentRect}]) => {
   if (embedded) {
     const {width,height} = contentRect;
-    const panelWidth = Math.min(width * .18,height * .27);
+    const panelWidth = Math.min(width * .20,height * .30);
     target.style.setProperty('--embedded-hud-width',`${panelWidth}px`);
   }
   viewer?.resize();
