@@ -60,7 +60,7 @@ body.is-editor:not(.is-preview) #placementHint{bottom:150px}
 @media(max-width:1000px){.stage{--hud-base-width:180px;--hud-map-height:155px;--hud-offset:14px}}
 @media(max-width:560px){.stage{--hud-base-width:145px;--hud-map-height:128px;--hud-offset:10px}}
 /* Give the embedded controls a readable minimum width while listening. */
-.stage:has(.spotify-dialog[data-mode=docked][open]){--hud-width:max(200px,var(--hud-base-width))}
+.stage:has(.spotify-dialog[data-mode=docked][open]){--hud-width:max(var(--hud-listening-min,200px),var(--hud-base-width))}
 .stage:has(.spotify-dialog[data-mode=docked][open]) .stage-heading{max-width:calc(100% - var(--hud-width) - 48px)}
 
 #tourWorkspace:fullscreen .stage {
@@ -69,4 +69,10 @@ body.is-editor:not(.is-preview) #placementHint{bottom:150px}
 }
 #tourWorkspace:fullscreen .stage:has(.map-minimap:not([hidden])) .stage-heading {
   max-width: calc(100% - var(--hud-width) - 48px);
+}
+
+.is-embedded #tourWorkspace:not(:fullscreen) .stage {
+  --hud-base-width: clamp(120px, var(--embedded-hud-width, 165px), 200px);
+  --hud-listening-min: 160px;
+  --hud-map-height: calc(var(--hud-width) * .82);
 }

@@ -9,6 +9,8 @@ import { resolveIcon, iconElement, iconStroke, pointVisual } from './icons.js';
 
 // Public, read-only museum tour. The local editor is kept outside Git.
 const $ = id => document.getElementById(id);
+const embedded = window.self !== window.top;
+document.documentElement.classList.toggle('is-embedded',embedded);
 for (const id of ['sceneList','mediaList']) enableCatalogHover($(id));
 let museumMap, mapOpening = false, mapInitialization, spotifyPlayer, mediaLibrary;
 let hasRenderedContent = false;
@@ -274,7 +276,14 @@ mediaLibrary = new MediaLibrary({
 });
 $('search').addEventListener('input', renderSceneList);
 
-new ResizeObserver(() => viewer?.resize()).observe($('stage'));
+new ResizeObserver(([{target, contentRect}]) => {
+  if (embedded) {
+    const {width,height} = contentRect;
+    const panelWidth = Math.min(width * .18,height * .27);
+    target.style.setProperty('--embedded-hud-width',`${panelWidth}px`);
+  }
+  viewer?.resize();
+}).observe($('stage'));
 
 try {
   const response = await fetch('config.json', {cache:'no-store'}); if (!response.ok) throw new Error('config.json okunamadı.');
