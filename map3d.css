@@ -62,3 +62,11 @@ body.is-editor:not(.is-preview) #placementHint{bottom:150px}
 /* Give the embedded controls a readable minimum width while listening. */
 .stage:has(.spotify-dialog[data-mode=docked][open]){--hud-width:max(200px,var(--hud-base-width))}
 .stage:has(.spotify-dialog[data-mode=docked][open]) .stage-heading{max-width:calc(100% - var(--hud-width) - 48px)}
+
+#tourWorkspace:fullscreen .stage {
+  --hud-base-width: clamp(145px, min(22vw, 35dvh), 310px);
+  --hud-map-height: calc(var(--hud-width) * .82);
+}
+#tourWorkspace:fullscreen .stage:has(.map-minimap:not([hidden])) .stage-heading {
+  max-width: calc(100% - var(--hud-width) - 48px);
+}

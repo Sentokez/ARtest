@@ -232,7 +232,10 @@ syncSidebarState();
 handle('toggleScenes', () => { document.body.classList.toggle('scenes-hidden'); viewer?.resize(); });
 handle('zoomIn', () => viewer.setHfov(viewer.getHfov()-10));
 handle('zoomOut', () => viewer.setHfov(viewer.getHfov()+10));
-handle('fullscreen', async () => { if (document.fullscreenElement) await document.exitFullscreen(); else await $('stage').requestFullscreen(); });
+handle('fullscreen', async () => {
+  if (document.fullscreenElement) await document.exitFullscreen();
+  else await $('tourWorkspace').requestFullscreen();
+});
 document.addEventListener('fullscreenchange', () => {
   for (const id of ['contentDialog']) (document.fullscreenElement ? $('stage') : document.body).append($(id));
   viewer?.resize();

@@ -115,6 +115,28 @@ body.scenes-hidden .scenes-panel{display:flex;transform:translateX(-100%);opacit
 @media(max-width:560px){body.is-editor:not(.is-preview) .workspace,body.is-editor.scenes-hidden:not(.is-preview) .workspace{grid-template-columns:minmax(0,1fr)}}
 @media(prefers-reduced-motion:reduce){.workspace,.scenes-panel,body.scenes-hidden .scenes-panel{transition:none}}
 
+#tourWorkspace:fullscreen {
+  height: 100%;
+  grid-template-columns: var(--sidebar-track) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  background: var(--paper);
+}
+#tourWorkspace:fullscreen .inspector { display: none; }
+#tourWorkspace:fullscreen .stage {
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  border-radius: 0;
+}
+#tourWorkspace:fullscreen .stage-bottom { bottom: 30px; }
+@media (max-width: 850px) {
+  #tourWorkspace:fullscreen { grid-template-columns: minmax(0, 1fr); }
+  #tourWorkspace:fullscreen .scenes-panel {
+    top: 0;
+    bottom: 80px;
+  }
+}
+
 /* Anchor the listening player below the map: hover grows left and down. */
 .spotify-dialog[data-mode=docked]{transform-origin:top right;scale:1;transition:scale .24s cubic-bezier(.22,.68,0,1)}
 @media(hover:hover) and (pointer:fine){.spotify-dialog[data-mode=docked][data-hover-ready=true]:hover{scale:1.5}}
