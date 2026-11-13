@@ -86,6 +86,16 @@
           "coverImage": null,
           "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780519434323",
           "id": "b62b715f-3cc3-47a5-9f35-c474872ccf8f"
+        },
+        {
+          "id": "62787ad2-2016-4092-b48e-566f22909a92",
+          "type": "info",
+          "text": "Mikroskop ",
+          "description": "",
+          "pitch": 7.96353868968148,
+          "yaw": 0.955121265176361,
+          "icon": "model",
+          "modelURL": "models/upload-5261c15f-d5ed-45d5-a125-7f1fcc490e01.glb"
         }
       ],
       "thumbnail": "images/thumbs/2.jpg"
@@ -623,6 +633,26 @@
           "coverImage": null,
           "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520479716",
           "id": "6a7d3345-5fd8-4be1-b604-fd505a684e19"
+        },
+        {
+          "id": "b0b2e345-4a05-44cb-83fa-8a00def70853",
+          "type": "info",
+          "text": "Fotoğraf Büyütme Cihazı",
+          "description": "",
+          "pitch": -23.9888814594901,
+          "yaw": -22.6774763526471,
+          "icon": "model",
+          "modelURL": "models/upload-f1f31622-40b5-4fcd-8d2b-7025e543b0b1.glb"
+        },
+        {
+          "id": "f1d309ca-7bc4-4d10-b8ea-258211dc01c3",
+          "type": "info",
+          "text": "Körüklü Kamera",
+          "description": "",
+          "pitch": -22.8772929935879,
+          "yaw": -6.85094808293674,
+          "icon": "model",
+          "modelURL": "models/upload-2e7b5479-a400-417e-ad92-9e850afaa205.glb"
         }
       ],
       "thumbnail": "images/thumbs/15.jpg"
@@ -864,6 +894,26 @@
           "coverImage": null,
           "cssClass": "vt-hotspot icon-move-forward type-scene hs-id-hs_1780520468272",
           "id": "9bb0e670-14a2-419e-84d4-9365dfafa547"
+        },
+        {
+          "id": "bbad306e-1c0d-476d-95a2-4f3111a5d41b",
+          "type": "info",
+          "text": "Fotoğraf Büyütme Cihazı",
+          "description": "",
+          "pitch": -35.27358582059471,
+          "yaw": -153.57912838528546,
+          "icon": "model",
+          "modelURL": "models/upload-f1f31622-40b5-4fcd-8d2b-7025e543b0b1.glb"
+        },
+        {
+          "id": "9e573290-aeca-446b-b7df-725210315f3d",
+          "type": "info",
+          "text": "Körüklü Kamera",
+          "description": "",
+          "pitch": -35.460665216522486,
+          "yaw": -113.08842639024229,
+          "icon": "model",
+          "modelURL": "models/upload-2e7b5479-a400-417e-ad92-9e850afaa205.glb"
         }
       ],
       "thumbnail": "images/thumbs/19.jpg"
